@@ -1,30 +1,36 @@
-import cpp from './images/cpp.png'
-import cs from './images/cs.png'
-import css from './images/css.png'
-import django from './images/django.png'
-import html from './images/html.png'
-import java from './images/java.png'
-import js from './images/js.png'
-import kotlin from './images/kotlin.png'
-import python from './images/python.png'
-import react from './images/react.png'
-import unity from './images/unity.png'
-import github from './images/github.png';
-import instagram from './images/instagram.png';
-import logo from './images/myLogo.png';
+import cpp from './images/cpp.png';
+import cs from './images/cs.png';
+import css from './images/css.png';
+import django from './images/django.png';
+import html from './images/html.png';
+import java from './images/java.png';
+import js from './images/js.png';
+import kotlin from './images/kotlin.png';
+import python from './images/python.png';
+import react from './images/react.png';
+import unity from './images/unity.png';
+import Topnav from './Topnav';
+import Bottomnav from './Bottomnav';
 
 function About() {
     return (
     <div className="App">
         <body className="App-body">
 
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+
             <h1 className="App-heading">ABOUT</h1>
-            <p>
-            Hello! My name is Nyx!
-            <br></br>
-            <br></br>
-            I'm a teenager passionate about Computer Science and all things STEM! As a programmer, I aim to create fun via the code I write, which is translated into games, web apps, and other interesting projects. In doing so, I hope to teach and inspire those who aspire to pursue STEM in the future.
-            </p>
+            <div style={{width:'80%'}}>
+                <p>
+                Hello! My name is Nyx!
+                <br></br>
+                <br></br>
+                I'm a teenager passionate about Computer Science and all things STEM! As a programmer, I aim to create fun via the code I write, which is translated into games, web apps, and other interesting projects. In doing so, I hope to teach and inspire those who aspire to pursue STEM in the future.
+                </p>
+            </div>
 
             <p></p>
 
@@ -98,73 +104,15 @@ function About() {
             <div class="module-border-wrap">
                 <div class="module">
                     <h1 className="App-heading">Goals</h1>
-                    <p>As I pursue my passion in programming, I look forward to learning many more concepts and techniques in the ever-growing field of Computer Science. Currently, I am learning Machine Learning and Quantum Computing because I am extremely intrigued by those fields! Furthermore, I hope to create more games and apps because, in all honesty, I thoroughly enjoy programming and designing as both allow me to express myself creatively in this thought-provoking field. Last but not least, I want to dive into competitive programming as I hope to polish up my problem solving and creative thinking skills. All in all, I aim to learn something new every single day!</p>
+                    <p>As I pursue my passion in programming, I look forward to learning many more concepts and techniques in the ever-growing field of Computer Science. Currently, I am learning Quantum Computing because I am extremely intrigued by that field! Furthermore, I hope to create more games and apps because, in all honesty, I thoroughly enjoy programming and designing as both allow me to express myself creatively in this thought-provoking field. Last but not least, I want to dive into competitive programming as I hope to polish up my problem solving and creative thinking skills. All in all, I aim to learn something new every single day!</p>
                 </div>
             </div>
 
+            <Topnav/>
             <p></p>
             <p></p>
-            <p></p>
-            <p></p>
+            <Bottomnav/>
 
-
-
-            <div className="App-link-container">
-                <a
-                    href="/"
-                    rel="noopener noreferrer"
-                    className="App-link">
-                    <div class="module-border-wrap-link" style={{width:'400px'}}>
-                        <div class="module" style={{textAlign:'center'}}>
-                            <h1 className="App-heading">Home</h1>
-                        </div>
-                    </div>
-                </a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a
-                    href="/xyntechx-challenges"
-                    rel="noopener noreferrer"
-                    className="App-link">
-                    <div class="module-border-wrap-link" style={{width:'400px'}}>
-                        <div class="module" style={{textAlign:'center'}}>
-                            <h1 className="App-heading">Xyntechx Challenges</h1>
-                        </div>
-                    </div>
-                </a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a
-                    href="/projects"
-                    rel="noopener noreferrer"
-                    className="App-link">
-                    <div class="module-border-wrap-link" style={{width:'400px'}}>
-                        <div class="module" style={{textAlign:'center'}}>
-                            <h1 className="App-heading">Projects</h1>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-
-            <div class="topnav">
-                <a href="/" rel="noopener noreferrer">
-                    <img className="App-logo" src={logo} alt="xyntechx"/>
-                </a>
-                <a
-                    href="https://github.com/xyntechx"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img className="App-logo" src={github} alt="GitHub"/>
-                </a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a
-                    href="https://www.instagram.com/xyntechx/?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img className="App-logo" src={instagram} alt="Instagram"/>
-                </a>
-            </div>
         </body>
     </div>
     );
