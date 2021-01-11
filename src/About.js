@@ -85,7 +85,7 @@ function About() {
             <div class="module-border-wrap">
                 <div class="module">
                     <h1 className="App-heading">Achievements</h1>
-                    <li>Top in Cohort (Grades 1 - 9) (as of now)</li>
+                    <li>Top in Cohort (Grades 1 - 10) (as of now)</li>
                     <li>IBM Quantum Challenge Fall 2020 Foundational Badge</li>
                     <li>Bronze Medal in the 2020 Singapore Junior Physics Olympiad</li>
                     <li>President of Student Council (2019 - 2020)</li>
