@@ -39,7 +39,7 @@ function Projects() {
 
                 <div style={{width:'60%'}} class="module-border-wrap">
                     <div class="module">
-                        <h1 className="App-heading">Quditi | Challenges</h1>
+                        <h1 className="App-heading">Quditi Challenges</h1>
                         <p>This project is a React web application for Quditi, a startup of which I am a founding member! This web application hosts coding challenges for people to attempt and complete.</p>
                     </div>
                 </div>
