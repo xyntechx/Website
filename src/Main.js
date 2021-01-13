@@ -5,7 +5,7 @@ import Projects from './Projects';
 import Blog from './Blog'
 import Topnav from './Topnav';
 import Bottomnav from './Bottomnav';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 
 function renderMain() {
@@ -44,21 +44,21 @@ function renderMain() {
 }
 
 function Main() {
-  return (
-      <div>
-          <Router>
-              <Switch>
-                  <Route exact path='/' render={() => {
-                      return renderMain()
-                  }}/>
-                    <Route path='/about' component={About}/>
-                    <Route path='/xyntechx-challenges' component={Challenges}/>
-                    <Route path='/projects' component={Projects}/>
-                    <Route path='/blog' component={Blog}/>
-              </Switch>
-          </Router>
-      </div>
-  );
+    return (
+        <div>
+            <Router>
+                <Switch>
+                    <Route exact path='/' render={() => {
+                        return renderMain()
+                    }}/>
+                        <Route path='/about' component={About}/>
+                        <Route path='/xyntechx-challenges' component={Challenges}/>
+                        <Route path='/projects' component={Projects}/>
+                        <Route path='/blog' component={Blog}/>
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default Main;
