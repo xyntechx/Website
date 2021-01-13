@@ -44,21 +44,21 @@ function renderMain() {
 }
 
 function Main() {
-    return (
-        <div>
-            <Router>
-                <div>
-                    <Route exact path='/' render={() => {
-                        return renderMain()
-                    }}/>
+  return (
+      <div>
+          <Router>
+              <Switch>
+                  <Route exact path='/' render={() => {
+                      return renderMain()
+                  }}/>
                     <Route path='/about' component={About}/>
                     <Route path='/xyntechx-challenges' component={Challenges}/>
                     <Route path='/projects' component={Projects}/>
                     <Route path='/blog' component={Blog}/>
-                </div>
-            </Router>
-        </div>
-    );
+              </Switch>
+          </Router>
+      </div>
+  );
 }
 
 export default Main;
