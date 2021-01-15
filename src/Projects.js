@@ -32,16 +32,22 @@ function Projects() {
                             </div>
                         </div>
                     </a>
-                </div>
-
-                <p></p>
-                <p></p>
-
-                <div style={{width:'60%'}} class="module-border-wrap">
-                    <div class="module">
-                        <h1 className="App-heading">Quditi Challenges</h1>
-                        <p>This project is a React web application for Quditi, a startup of which I am a founding member! This web application hosts coding challenges for people to attempt and complete.</p>
-                    </div>
+        
+                    <p></p>
+                    <p></p>
+        
+                    <a
+                        href="https://github.com/xyntechx/Quditi-Challenges"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="App-link">
+                        <div class="module-border-wrap-link">
+                            <div class="module">
+                                <h1 className="App-heading">Quditi Challenges</h1>
+                                <p>This project is a React web application for Quditi, a startup of which I am a founding member! This web app hosts coding challenges for you to attempt and complete. Upon successful completion of each challenge or 'chapter', which is the equivalent terminology used in this web app, you will receive a Completion Email as a reward for your hard work!</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <p></p>
