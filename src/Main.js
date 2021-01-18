@@ -1,6 +1,5 @@
 import me from './images/me.png';
 import About from './About';
-import Challenges from './Challenges';
 import Projects from './Projects';
 import Blog from './Blog'
 import Topnav from './Topnav';
@@ -52,7 +51,6 @@ function Main() {
                         return renderMain()
                     }}/>
                         <Route path='/about' component={About}/>
-                        <Route path='/xyntechx-challenges' component={Challenges}/>
                         <Route path='/projects' component={Projects}/>
                         <Route path='/blog' component={Blog}/>
                 </Switch>
