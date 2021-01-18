@@ -29,10 +29,11 @@ function Bottomnav() {
                 Projects
             </a>
             <a
-                href="/xyntechx-challenges"
+                href="https://quditi-challenges.netlify.app/"
+                target="_blank"
                 rel="noopener noreferrer"
             >
-                Xyntechx
+                Quditi
                 <br></br>
                 Challenges
             </a>
