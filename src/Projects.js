@@ -123,7 +123,7 @@ function Projects() {
                 <div style={{width:'60%'}} class="module-border-wrap">
                     <div class="module">
                         <h1 className="App-heading">Be a Whiz</h1>
-                        <p>This project is a web application made using Django and React. It is similar to Kahoot in which users can create quizzes for others to do. I'm looking into improving and deploying it soon.</p>
+                        <p>This project is a web application made using Django and React. It is similar to Kahoot in which users can create quizzes for others to do.</p>
                     </div>
                 </div>
 
