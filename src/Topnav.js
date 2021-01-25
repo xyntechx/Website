@@ -1,6 +1,7 @@
 import github from './images/github.png';
 import instagram from './images/instagram.png';
 import logo from './images/myLogo.png';
+import fiverr from './images/fiverr.png';
 import './App.css';
 
 function Topnav() {
@@ -9,7 +10,7 @@ function Topnav() {
             <a href="/" rel="noopener noreferrer">
                 <img className="App-logo" src={logo} alt="xyntechx"/>
             </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;
             <a
                 href="https://github.com/xyntechx"
                 target="_blank"
@@ -17,13 +18,21 @@ function Topnav() {
             >
                 <img className="App-logo" src={github} alt="GitHub"/>
             </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;
             <a
                 href="https://www.instagram.com/xyntechx/"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 <img className="App-logo" src={instagram} alt="Instagram"/>
+            </a>
+            &nbsp;&nbsp;
+            <a
+                href="https://www.fiverr.com/share/zz3bDg"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img className="App-logo" src={fiverr} alt="Fiverr"/>
             </a>
         </div>
     )
