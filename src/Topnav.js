@@ -1,16 +1,11 @@
 import github from './images/github.png';
 import instagram from './images/instagram.png';
-import logo from './images/myLogo.png';
 import fiverr from './images/fiverr.png';
 import './App.css';
 
 function Topnav() {
     return (
         <div className="topnav">
-            <a href="/" rel="noopener noreferrer">
-                <img className="App-logo" src={logo} alt="xyntechx"/>
-            </a>
-            &nbsp;&nbsp;
             <a
                 href="https://github.com/xyntechx"
                 target="_blank"
