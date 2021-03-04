@@ -2,6 +2,7 @@ import me from './images/me.png';
 import github from './images/github.png';
 import instagram from './images/instagram.png';
 import fiverr from './images/fiverr.png';
+import linkedin from './images/linkedin.png'
 import cpp from './images/cpp.png';
 import cs from './images/cs.png';
 import css from './images/css.png';
@@ -15,7 +16,6 @@ import react from './images/react.png';
 import unity from './images/unity.png';
 import Navbar from './Navbar';
 import xyntechx from './images/xyntechx.png'
-import linkedin from './images/linkedin.png'
 import './App.css';
 
 function Main() {
@@ -30,7 +30,25 @@ function Main() {
     
                 <img style={{height: "300px"}} src={me} alt="Me"/>
     
-                <h1 className="App-heading" style={{textAlign:'center'}}>Nyx Iskandar</h1>
+                <h1 className="App-heading" style={{textAlign:'center', letterSpacing:'5px'}}>Nyx Iskandar</h1>
+
+                <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                    <p style={{color:'#ff7c1f'}}>Student</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>|</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <p style={{color:'#067eed'}}>Programmer</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>|</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <p style={{color:'#ff7c1f'}}>Athlete</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>|</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <p style={{color:'#067eed'}}>Artist</p>
+                </div>
+
+                <p></p>
     
                 <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                     <a
