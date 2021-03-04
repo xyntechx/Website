@@ -144,7 +144,7 @@ function Main() {
                 <p></p>
 
                 <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    <img style={{height: "300px"}} src={xyntechx} alt="My logo"/>
+                    <img style={{height: "200px"}} src={xyntechx} alt="My logo"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div>
                         <h1 className="App-heading">Stay Hungry</h1>
