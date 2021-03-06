@@ -2,7 +2,8 @@ import me from './images/me.png';
 import github from './images/github.png';
 import instagram from './images/instagram.png';
 import fiverr from './images/fiverr.png';
-import linkedin from './images/linkedin.png'
+import linkedin from './images/linkedin.png';
+import email from './images/email.png';
 import cpp from './images/cpp.png';
 import cs from './images/cs.png';
 import css from './images/css.png';
@@ -81,6 +82,10 @@ function Main() {
                         rel="noopener noreferrer"
                     >
                         <img className="App-logo" src={linkedin} alt="Linkedin"/>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="mailto:xyntechx@gmail.com">
+                        <img className="App-logo" src={email} alt="Email"/>
                     </a>
                 </div>
     
