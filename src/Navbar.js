@@ -1,27 +1,58 @@
 import './App.css';
+import github from './images/github.png';
+import instagram from './images/instagram.png';
+import fiverr from './images/fiverr.png';
+import linkedin from './images/linkedin.png';
+import email from './images/email.png';
+import xyntechx from './images/xyntechx.png'
 
 function Navbar() {
     return (
-        <nav role="navigation">
-            <div id="menuToggle">
-                <input type="checkbox" />
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="menu">
-                    <a href="#introduction"><li>Introduction</li></a>
-                    <li></li>
-                    <a href="#languages-and-tools"><li>Languages & Tools</li></a>
-                    <li></li>
-                    <a href="#interests"><li>Interests</li></a>
-                    <li></li>
-                    <a href="#achievements"><li>Achievements</li></a>
-                    <li></li>
-                    <a href="#goals"><li>Goals</li></a>
-                    <li></li>
-                </ul>
+        <div className="box-container" style={{backgroundColor:'#F5F5F5'}}>
+            <div className='nav-bar'>
+                <img style={{height:'100px'}} src={xyntechx} alt="Xyntechx"/>
+                <p>Stay Hungry | Stay Foolish</p>
+                <div style={{display:'flex', justifyContent:'center', alignItems:'center', padding:'20px'}}>
+                    <a
+                        href="https://github.com/xyntechx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img className="App-logo" src={github} alt="GitHub"/>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a
+                        href="https://www.instagram.com/xyntechx/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img className="App-logo" src={instagram} alt="Instagram"/>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a
+                        href="https://www.fiverr.com/share/zz3bDg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img className="App-logo" src={fiverr} alt="Fiverr"/>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a
+                        href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img className="App-logo" src={linkedin} alt="Linkedin"/>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="mailto:xyntechx@gmail.com">
+                        <img className="App-logo" src={email} alt="Email"/>
+                    </a>
+                </div>
+                <p></p>
+                <p style={{fontSize:'20px'}}>Programmed and Designed by Nyx Iskandar</p>
             </div>
-        </nav>
+        </div>
     )
 }
 
