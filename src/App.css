@@ -6,6 +6,7 @@ html {
   text-align: center;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -30,125 +31,72 @@ html {
   text-align: left;
   font-size: calc(10px + 2vmin);
   font-weight: 200;
-  width: 50%;
+  width: 100%;
 }
 
-#menuToggle
-{
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 50px;
-  padding-left: 50px;
-  
-  z-index: 1;
-  
-  -webkit-user-select: none;
-  user-select: none;
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
 }
 
-#menuToggle a
-{
+.box-container {
+  height: max-content; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 50px;
+}
+
+a.button4 {
+  display:inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgba(255,255,255,0);
+  border-radius: 2em;
+  box-sizing: border-box;
   text-decoration: none;
-  color: #303030;
-  transition: color 0.3s ease;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color: #FFFFFF;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  text-align: center;
+  transition: all 0.2s;
 }
 
-#menuToggle a:hover
-{
-  color: #ffffff;
+a.button4:hover {
+  border-color: #000000;
 }
 
-#menuToggle input
-{
+@media all and (max-width:30em){
+ a.button4 {
   display: block;
-  position: fixed;
-
-  width: 45px;
-  height: 32px;
-  top: 40px;
-  left: 40px;
-
-  cursor: pointer;
-  
-  opacity: 0;
-  z-index: 2;
-  
-  -webkit-touch-callout: none;
+  margin: 0.2em auto;
+  }
 }
 
-#menuToggle span
-{
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
+.bouncy{
+  animation: bouncy 5s infinite linear;
   position: relative;
-  
-  background: #303030;
-  border-radius: 3px;
-  
-  z-index: 1;
-  
-  transform-origin: 4px 0px;
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
 }
 
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
+@keyframes bouncy {
+  0%{top:0em}
+  40%{top:0em}
+  43%{top:-0.9em}
+  46%{top:0em}
+  48%{top:-0.4em}
+  50%{top:0em}
+  100%{top:0em;}
 }
 
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
-}
-
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #303030;
-}
-
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-#menu
-{
-  position: absolute;
-  width: 10vw;
-  height: 100vh;
-  margin: -100px 0 0 -100px;
-  padding: 100px;
-  padding-top: 125px;
-  background: linear-gradient(rgba(255, 124, 31, 0.8), rgba(6, 126, 237, 0.8));
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-
-#menu li
-{
-  padding: 10px 0;
-  font-size: 22px;
-}
-
-#menuToggle input:checked ~ ul
-{
-  transform: none;
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
