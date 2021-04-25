@@ -1,12 +1,7 @@
 import me from './images/me.png';
-import website from './images/website.png';
-import console from './images/console.png';
-import code from './images/code.png';
-import bronze from './images/bronze.png';
-import gold from './images/gold.png';
-import document from './images/document.png';
-import netball from './images/netball.png';
-import leadership from './images/leadership.png';
+import my_website from './images/my website.png';
+import python_projects from './images/python projects.png';
+import milky_way from './images/milky way.png';
 import Navbar from './Navbar';
 import './App.css';
 import 'aos/dist/aos.css';
@@ -26,135 +21,103 @@ function Main() {
         <div className="App">
             <body className="App-body">
 
-                <div className="box-container">
+                <div className="box-container" style={{paddingTop:'0px'}}>
                     <div className="box">
                         <h1 className="App-heading" style={{textAlign:'center', letterSpacing:'10px'}}>Nyx Iskandar</h1>
                         <p>Hello there! Welcome to my website 🤩!</p>
                         <p></p>
                         <img style={{height: "300px"}} src={me} alt="Me"/>
                         <p></p>
-
-                        <a className="button4 bouncy" style={{backgroundColor:'#067EED'}} href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            Find Out More
-                        </a>
-                        <p></p>
-                        <a className="button4 bouncy" style={{backgroundColor:'#FF7C1F'}} href="mailto:xyntechx@gmail.com">
-                            Let's Connect
-                        </a>
-
+                        <div style={{display:'flex', alignItems:'center', justifyContent:'center', columnGap:'20px'}}>
+                            <a className="button bouncy" style={{backgroundColor:'#067EED', borderColor:'#000000'}} href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                Learn More
+                            </a>
+                            <p></p>
+                            <a className="button bouncy" style={{backgroundColor:'#FF7C1F', borderColor:'#000000'}} href="mailto:xyntechx@gmail.com">
+                                Let's Connect
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <p></p>
-                <p></p>
-                
+                <div className="box-container" style={{backgroundColor:'#000000', color:'#FFFFFF', letterSpacing:'10px'}}>
+                    <div className="box" data-aos="flip-up">
+                        <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                            <h1 className="App-heading">WHO I AM</h1>
+                            <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px'}}>
+                                <p>Hi! I am Nyx, a driven, ambitious, and inquisitive teenager passionate about <span style={{color:'#FF7C1F'}}>computer science</span>, <span style={{color:'#067EED'}}>entrepreneurship</span>, and <span style={{color:'#FF7C1F'}}>service-learning</span>. I love to experiment with and try out new things, striving to improve myself every day. I do not shy away from responsibilities nor opportunities as I crave challenges and chase goals ardently every step of the way. I believe that with the right mindset and the right people around, anyone can do anything in any way.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <div className="box-container">
+                <div className="box-container" style={{letterSpacing:'10px'}}>
+                    <div className="box" data-aos="flip-up">
+                        <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                            <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px'}}>
+                                <h1 style={{color:'#FF7C1F'}}>Computer Science.</h1>
+                                <h1 style={{color:'#067EED'}}>Entrepreneurship.</h1>
+                                <h1 style={{color:'#FF7C1F'}}>Service-Learning.</h1>
+                            </div>
+                            <h1 className="App-heading" style={{textAlign:'right'}}>WHAT I LOVE</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="box-container" style={{backgroundColor:'#000000', color:'#FFFFFF', letterSpacing:'10px', paddingBottom:'0px'}}>
                     <div className="box" data-aos="flip-up">
                         <div style={{width:'100%', textAlign:'center'}}>
-                            <h1 className="App-heading">Project Highlights</h1>
+                            <h1 className="App-heading">PROJECT HIGHLIGHTS</h1>
                         </div>
                     </div>
                 </div>
-                <div className="box-container">
+                <div className="box-container" style={{backgroundColor:'#000000', color:'#FFFFFF', paddingTop:'0px', paddingBottom:'0px'}}>
                     <div className="box" data-aos="flip-up">
                         <div style={{display:'flex', justifyContent:'center', alignItems:'center', columnGap:'20px'}}>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>My Website</h3>
-                                <img style={{width:'75%', height:'auto'}} src={website} alt="website"/>
+                            <div className='section'>
+                                <p>My Website</p>
+                                <a
+                                href="https://github.com/xyntechx/Website"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >
+                                    <img className="img-link" src={my_website} alt="My Website"/>
+                                </a>
                             </div>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>Milky Way</h3>
-                                <img style={{width:'75%', height:'auto'}} src={console} alt="console"/>
+                            <div className='section'>
+                                <p>Milky Way</p>
+                                <a
+                                href="https://github.com/xyntechx/MilkyWay"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >
+                                    <img className="img-link" src={milky_way} alt="Milky Way Gameplay"/>
+                                </a>
                             </div>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>Python Projects</h3>
-                                <img style={{width:'75%', height:'auto'}} src={code} alt="code"/>
+                            <div className='section'>
+                                <p>Python Projects</p>
+                                <a
+                                href="https://github.com/xyntechx/Python-Projects"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >
+                                    <img className="img-link" src={python_projects} alt="Python Projects"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="box-container" style={{backgroundColor:'#000000', color:'#FFFFFF', paddingTop:'100px'}}>
+                            <div className="box" data-aos="flip-up">
+                                <a className="button bouncy" style={{backgroundColor:'#067EED', borderColor:'#FFFFFF'}} href="https://github.com/xyntechx"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    More Projects
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p></p>
-                <a className="button4 bouncy" style={{backgroundColor:'#067EED'}} href="https://github.com/xyntechx"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                        More Projects on GitHub
-                </a>
-
-                <p></p>
-                <p></p>
-
-                <div className="box-container">
-                    <div className="box" data-aos="flip-up">
-                        <div style={{width:'100%', textAlign:'center'}}>
-                            <h1 className="App-heading">Recent Achievements</h1>
-                        </div>
-                    </div>
-                </div>
-                <div className="box-container">
-                    <div className="box" data-aos="flip-up">
-                        <div style={{display:'flex', justifyContent:'center', alignItems:'center', columnGap:'20px'}}>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>IBM Quantum Challenge Fall 2020: Foundational Badge</h3>
-                                <img style={{width:'75%', height:'auto'}} src={bronze} alt="IBM Q Challenge - Bronze"/>
-                            </div>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>iCAN 2019: Gold</h3>
-                                <img style={{width:'75%', height:'auto'}} src={gold} alt="iCAN - Gold"/>
-                            </div>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>2019 National Public Speaking Competition: Grand Finalist, 10th</h3>
-                                <img style={{width:'75%', height:'auto'}} src={gold} alt="NPSC - Gold"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p></p>
-                <a className="button4 bouncy" style={{backgroundColor:'#FF7C1F'}} href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                        Learn More
-                </a>
-
-                <p></p>
-                <p></p>
-
-                <div className="box-container">
-                    <div className="box" data-aos="flip-up">
-                        <div style={{width:'100%', textAlign:'center'}}>
-                            <h1 className="App-heading">Experience</h1>
-                        </div>
-                    </div>
-                </div>
-                <div className="box-container">
-                    <div className="box" data-aos="flip-up">
-                        <div style={{display:'flex', justifyContent:'center', alignItems:'center', columnGap:'20px'}}>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>2021 Nanyang Research Programme: Document Layout Analysis Using Machine Learning</h3>
-                                <img style={{width:'75%', height:'auto'}} src={document} alt="NRP"/>
-                            </div>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>2019-2020 President of Students' Council</h3>
-                                <img style={{width:'75%', height:'auto'}} src={leadership} alt="President of Students' Council"/>
-                            </div>
-                            <div style={{width:'100%', textAlign:'center'}}>
-                                <h3>2017-2018 Netball Captain</h3>
-                                <img style={{width:'75%', height:'auto'}} src={netball} alt="Netball"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p></p>
-                <a className="button4 bouncy" style={{backgroundColor:'#067EED'}} href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                        View More
-                </a>
-
-                <p></p>
-                <p></p>
 
                 <Navbar/>
     
