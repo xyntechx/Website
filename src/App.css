@@ -20,6 +20,7 @@ html {
 
 .App-heading {
   font-weight: 400;
+  font-size: calc(100px + 2vmin);
 }
 
 .App-body {
@@ -48,10 +49,12 @@ html {
   align-items: center;
   width: 100%;
   padding: 50px;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
-a.button4 {
-  display:inline-block;
+a.button {
+  display: inline-block;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 0;
   border: 0.16em solid rgba(255,255,255,0);
@@ -66,12 +69,12 @@ a.button4 {
   transition: all 0.2s;
 }
 
-a.button4:hover {
-  border-color: #000000;
+a.button:hover {
+  transform: scale(1.2);
 }
 
 @media all and (max-width:30em){
- a.button4 {
+ a.button {
   display: block;
   margin: 0.2em auto;
   }
@@ -99,4 +102,20 @@ a.button4:hover {
   align-items: center;
   padding-top: 100px;
   padding-bottom: 100px;
+}
+
+.section {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.img-link {
+  width: 75%;
+  height: auto;
+  transition: transform .2s;
+}
+
+.img-link:hover {
+  transform: scale(1.2);
 }
