@@ -21,7 +21,7 @@ function Main() {
         <div className="App">
             <body className="App-body">
 
-                <div className="box-container" style={{paddingTop:'150px'}}>
+                <div className="box-container" style={{paddingTop:'50px'}}>
                     <div className="box">
                         <h1 className="App-heading" style={{textAlign:'center', letterSpacing:'10px'}}>Nyx Iskandar</h1>
                         <p>Hello there! Welcome to my website 🤩!</p>
