@@ -44,9 +44,9 @@ function Main() {
 
                 <div className="box-container" style={{backgroundColor:'#000000', color:'#FFFFFF', letterSpacing:'10px'}}>
                     <div className="box" data-aos="flip-up">
-                        <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
-                            <h1 className="App-heading">WHO I AM</h1>
-                            <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px'}}>
+                        <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center', columnGap:'50px'}}>
+                            <h1 className="App-heading">WHO</h1>
+                            <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px', textAlign:'justify'}}>
                                 <p>Hi! I am Nyx, a driven, ambitious, and inquisitive teenager passionate about <span style={{color:'#FF7C1F'}}>computer science</span>, <span style={{color:'#067EED'}}>entrepreneurship</span>, and <span style={{color:'#FF7C1F'}}>service-learning</span>. I love to experiment with and try out new things, striving to improve myself every day. I do not shy away from responsibilities nor opportunities as I crave challenges and chase goals ardently every step of the way. I believe that with the right mindset and the right people around, anyone can do anything in any way.</p>
                             </div>
                         </div>
@@ -55,13 +55,12 @@ function Main() {
 
                 <div className="box-container" style={{letterSpacing:'10px'}}>
                     <div className="box" data-aos="flip-up">
-                        <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
-                            <div style={{width:'50%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px'}}>
-                                <p style={{color:'#FF7C1F'}}>Computer Science.</p>
-                                <p style={{color:'#067EED'}}>Entrepreneurship.</p>
-                                <p style={{color:'#FF7C1F'}}>Service-Learning.</p>
+                        <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center', columnGap:'50px'}}>
+                            <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px', textAlign:'justify'}}>
+                                <p>I aim to make a difference through leading and collaborating with like-minded change-makers to innovate something of value to society. I aspire to teach and be taught, as well as to inspire and be inspired. I hope you and I can come together to better our world and leave our mark, not forgetting to enjoy and cherish the journey! By and large, I strive to <span style={{color:'#FF7C1F'}}>stay hungry and foolish</span>, and work towards becoming a <span style={{color:'#067EED'}}>multi-hyphenate</span>.
+                                </p>
                             </div>
-                            <h1 className="App-heading" style={{textAlign:'right'}}>WHAT I LOVE</h1>
+                            <h1 className="App-heading">WHY</h1>
                         </div>
                     </div>
                 </div>
