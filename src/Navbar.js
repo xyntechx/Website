@@ -8,10 +8,11 @@ import xyntechx from './images/xyntechx.png'
 
 function Navbar() {
     return (
-        <div className="box-container" style={{backgroundColor:'#F5F5F5'}}>
+        <div className="box-container" style={{backgroundColor:'#F5F5F5', paddingTop:'0px', paddingBottom:'0px'}}>
             <div className='nav-bar'>
                 <img style={{height:'100px'}} src={xyntechx} alt="Xyntechx"/>
                 <p>Stay Hungry | Stay Foolish</p>
+                <p></p>
                 <div style={{display:'flex', justifyContent:'center', alignItems:'center', padding:'20px'}}>
                     <a
                         href="https://github.com/xyntechx"
