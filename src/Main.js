@@ -21,7 +21,7 @@ function Main() {
         <div className="App">
             <body className="App-body">
 
-                <div className="box-container" style={{paddingTop:'0px'}}>
+                <div className="box-container" style={{paddingTop:'150px'}}>
                     <div className="box">
                         <h1 className="App-heading" style={{textAlign:'center', letterSpacing:'10px'}}>Nyx Iskandar</h1>
                         <p>Hello there! Welcome to my website 🤩!</p>
@@ -56,10 +56,10 @@ function Main() {
                 <div className="box-container" style={{letterSpacing:'10px'}}>
                     <div className="box" data-aos="flip-up">
                         <div style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
-                            <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px'}}>
-                                <h1 style={{color:'#FF7C1F'}}>Computer Science.</h1>
-                                <h1 style={{color:'#067EED'}}>Entrepreneurship.</h1>
-                                <h1 style={{color:'#FF7C1F'}}>Service-Learning.</h1>
+                            <div style={{width:'50%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', letterSpacing:'0px'}}>
+                                <p style={{color:'#FF7C1F'}}>Computer Science.</p>
+                                <p style={{color:'#067EED'}}>Entrepreneurship.</p>
+                                <p style={{color:'#FF7C1F'}}>Service-Learning.</p>
                             </div>
                             <h1 className="App-heading" style={{textAlign:'right'}}>WHAT I LOVE</h1>
                         </div>
