@@ -1,5 +1,5 @@
 import me from './images/me.png';
-import my_website from './images/my website.png';
+import website from './images/website.png';
 import python_projects from './images/python projects.png';
 import milky_way from './images/milky way.png';
 import Navbar from './Navbar';
@@ -82,7 +82,7 @@ function Main() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 >
-                                    <img className="img-link" src={my_website} alt="My Website"/>
+                                    <img className="img-link" src={website} alt="My Website"/>
                                 </a>
                             </div>
                             <div className='section'>
