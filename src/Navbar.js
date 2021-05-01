@@ -39,7 +39,7 @@ function Navbar() {
                     </a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a
-                        href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
+                        href="https://www.linkedin.com/in/nyx-iskandar/"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
