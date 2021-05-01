@@ -29,7 +29,7 @@ function Main() {
                         <img style={{height: "300px"}} src={me} alt="Me"/>
                         <p></p>
                         <div style={{display:'flex', alignItems:'center', justifyContent:'center', columnGap:'20px'}}>
-                            <a className="button bouncy" style={{backgroundColor:'#067EED', borderColor:'#000000'}} href="https://www.linkedin.com/in/nyx-iskandar-ba456a205/"
+                            <a className="button bouncy" style={{backgroundColor:'#067EED', borderColor:'#000000'}} href="https://www.linkedin.com/in/nyx-iskandar/"
                                 target="_blank"
                                 rel="noopener noreferrer">
                                 Learn More
