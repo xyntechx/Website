@@ -51,7 +51,7 @@ function Navbar() {
                     </a>
                 </div>
                 <p></p>
-                <p style={{fontSize:'20px'}}>Programmed and Designed by Nyx Iskandar</p>
+                <p style={{fontSize:'20px', textAlign: 'center'}}>Programmed and Designed by Nyx Iskandar</p>
             </div>
         </div>
     )
