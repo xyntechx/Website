@@ -13,7 +13,7 @@ function Navbar() {
                 <img style={{height:'100px'}} src={xyntechx} alt="Xyntechx"/>
                 <p>Stay Hungry | Stay Foolish</p>
                 <p></p>
-                <div style={{display:'flex', justifyContent:'center', alignItems:'center', padding:'20px'}}>
+                <div style={{display:'flex', justifyContent:'center', alignItems:'center', padding:'20px', textAlign: 'center'}}>
                     <a
                         href="https://github.com/xyntechx"
                         target="_blank"
