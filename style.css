@@ -67,7 +67,7 @@ section {
 }
 
 hr {
-	border-top: 3px solid #ffffff;
+  border-top: 3px solid #ffffff;
 }
 
 .img-link {
@@ -80,10 +80,6 @@ hr {
 
 .left {
   grid-column: 5 / 12;
-}
-
-.card {
-  background: #282828;
 }
 
 .btn {
