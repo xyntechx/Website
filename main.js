@@ -9,6 +9,8 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
 
+// Makes 3D background responsive to screen size changes
+// after loading for the first time
 window.addEventListener( 'resize', function() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
@@ -22,12 +24,14 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
+// Torus #1
 const geometry = new THREE.TorusGeometry(10, 3, 15, 150);
 const material = new THREE.MeshStandardMaterial({ color: 0xff7c1f, wireframe: true });
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
 
+// Torus Knot #1
 const geometry2 = new THREE.TorusKnotGeometry(5, 1, 100, 16);
 const material2 = new THREE.MeshStandardMaterial({ color: 0x067eed, wireframe: true });
 const torusKnot = new THREE.Mesh(geometry2, material2);
@@ -38,6 +42,7 @@ torusKnot.position.x = -10;
 torusKnot.position.y = 0;
 torusKnot.position.z = 15;
 
+// Torus #2
 const geometry3 = new THREE.TorusGeometry(5, 1, 15, 100);
 const material3 = new THREE.MeshStandardMaterial({ color: 0x3ded87, wireframe: true });
 const torus2 = new THREE.Mesh(geometry3, material3);
@@ -48,6 +53,7 @@ torus2.position.x = 0;
 torus2.position.y = -5;
 torus2.position.z = 25;
 
+// Torus Knot #2
 const geometry4 = new THREE.TorusKnotGeometry(10, 3, 100, 16);
 const material4 = new THREE.MeshStandardMaterial({ color: 0xffff00, wireframe: true });
 const torusKnot2 = new THREE.Mesh(geometry4, material4);
@@ -58,12 +64,15 @@ torusKnot2.position.x = -12;
 torusKnot2.position.y = 0;
 torusKnot2.position.z = 50;
 
+// Point Light
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
 
+// Ambient Light
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
+// Generates white spheres of random sizes and positions
 function addStar() {
   const geometry = new THREE.SphereGeometry(Math.random()*0.5, 24, 24);
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
@@ -77,9 +86,11 @@ function addStar() {
   scene.add(star);
 }
 
+// Generates 200 stars
 Array(200).fill().forEach(addStar);
 
-function moveCamera() {
+// Creates animation when camera is moved (i.e. during scrolling)
+function animateScrolling() {
   const t = document.body.getBoundingClientRect().top;
 
   torus.rotation.x += 0.05;
@@ -95,9 +106,10 @@ function moveCamera() {
   camera.rotation.y = t * -0.0003;
 }
 
-document.body.onscroll = moveCamera;
-moveCamera();
+document.body.onscroll = animateScrolling;
+animateScrolling();
 
+// Creates animation continuously
 function animate() {
   requestAnimationFrame(animate);
 
