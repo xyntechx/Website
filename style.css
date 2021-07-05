@@ -84,7 +84,7 @@ hr {
 
 .btn {
   width: fit-content;
-  height: auto;
+  height: fit-content;
   font-size: 1.75rem;
   cursor: pointer;
   background: white;
@@ -114,5 +114,9 @@ hr {
 
   .left {
     grid-column: 2 / 11;
+  }
+
+  .btn {
+    font-size: 1rem;
   }
 }
