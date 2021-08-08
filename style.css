@@ -64,10 +64,26 @@ section {
   border-style: solid;
   border-color: #fff;
   border-radius: 10px;
+
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  text-align: center;
 }
 
 hr {
   border-top: 3px solid #ffffff;
+  width: 100%;
+}
+
+.socials-container {
+  display:flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.a-img {
+  padding: 30px;
 }
 
 .img-link {
@@ -101,6 +117,10 @@ hr {
   0 16px 10px -3px #39a2db;
 }
 
+.github-card {
+  width: 100%;
+}
+
 /* For small screens (e.g. mobile) */
 @media screen and (max-width: 990px) {
   header {
@@ -119,5 +139,13 @@ hr {
 
   .btn {
     font-size: 1rem;
+  }
+
+  .github-card {
+    width: 60vw;
+  }
+
+  .a-img {
+    padding: 10px;
   }
 }
