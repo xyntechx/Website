@@ -128,16 +128,16 @@ hr {
 @media screen and (max-width: 990px) {
     header {
         font-size: 1rem;
-        grid-column: 2 / 11;
+        grid-column: 2 / 12;
     }
 
     section {
         font-size: 1rem;
-        grid-column: 2 / 11;
+        grid-column: 2 / 12;
     }
 
     .left {
-        grid-column: 2 / 11;
+        grid-column: 2 / 12;
     }
 
     .btn {
