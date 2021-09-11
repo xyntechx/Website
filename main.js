@@ -24,6 +24,7 @@ window.addEventListener("resize", function () {
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+
 camera.position.setZ(30);
 camera.position.setX(-3);
 
@@ -58,7 +59,7 @@ const material3 = new THREE.MeshStandardMaterial({
 
 const torus2 = new THREE.Mesh(geometry3, material3);
 torus2.position.x = 10;
-torus2.position.y = -5
+torus2.position.y = -5;
 torus2.position.z = 30;
 
 // Torus Knot #2
