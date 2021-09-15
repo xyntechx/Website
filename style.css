@@ -40,7 +40,7 @@ canvas {
 }
 
 section {
-    grid-column: 2 / 10;
+    grid-column: 2 / 12;
     padding: 4rem;
     background: var(--dark-bg);
     font-size: 1.5rem;
@@ -81,10 +81,6 @@ hr {
     transform: scale(1.2);
 }
 
-.left {
-    grid-column: 5 / 12;
-}
-
 .btn {
     width: fit-content;
     height: fit-content;
@@ -111,15 +107,10 @@ hr {
 @media screen and (max-width: 990px) {
     section {
         font-size: 1.2rem;
-        grid-column: 2 / 12;
     }
 
     .a-img {
         padding: 10px;
-    }
-
-    .left {
-        grid-column: 2 / 12;
     }
 
     .btn {
