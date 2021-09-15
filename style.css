@@ -40,7 +40,7 @@ canvas {
 }
 
 section {
-    grid-column: 2 / 12;
+    grid-column: 4 / 10;
     padding: 4rem;
     background: var(--dark-bg);
     font-size: 1.5rem;
@@ -107,6 +107,7 @@ hr {
 @media screen and (max-width: 990px) {
     section {
         font-size: 1.2rem;
+        grid-column: 2 / 12;
     }
 
     .a-img {
