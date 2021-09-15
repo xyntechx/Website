@@ -1,6 +1,4 @@
-var slideIndex = 0;
-
-const carousel = () => {
+const slideshow = () => {
     var slides = document.getElementsByClassName("slides");
 
     for (var i = 0; i < slides.length; i++) {
@@ -16,7 +14,8 @@ const carousel = () => {
     slides[slideIndex - 1].style.display = "inline";
 
     // Swaps image every 2 seconds
-    setTimeout(carousel, 2000);
+    setTimeout(slideshow, 2000);
 };
 
-carousel();
+var slideIndex = 0;
+slideshow();
