@@ -24,7 +24,7 @@ main {
     position: absolute;
     width: 100%;
     margin: 0px auto;
-    padding: 120px 0px;
+    padding: 3rem 0rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     font-family: "Roboto Mono", monospace;
@@ -33,6 +33,13 @@ main {
 h1,
 h2 {
     font-size: 2.5rem;
+}
+
+h1,
+h2,
+p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 canvas {
@@ -72,14 +79,11 @@ hr {
 }
 
 .a-img {
-    padding: 30px;
-}
-
-.img-link {
+    padding: 0.5rem;
     transition: var(--transition);
 }
 
-.img-link:hover {
+.a-img:hover {
     transform: var(--transform);
 }
 
@@ -100,10 +104,6 @@ hr {
     color: white;
 }
 
-.github-card {
-    width: 100%;
-}
-
 /* For small screens (e.g. mobile) */
 @media screen and (max-width: 990px) {
     section {
@@ -111,15 +111,7 @@ hr {
         grid-column: 2 / 12;
     }
 
-    .a-img {
-        padding: 10px;
-    }
-
     .btn {
         font-size: 1rem;
-    }
-
-    .github-card {
-        width: 60vw;
     }
 }
