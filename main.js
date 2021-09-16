@@ -58,7 +58,7 @@ const material3 = new THREE.MeshStandardMaterial({
 });
 
 const torus2 = new THREE.Mesh(geometry3, material3);
-torus2.position.x = 10;
+torus2.position.x = 15;
 torus2.position.y = -5;
 torus2.position.z = 30;
 
@@ -70,7 +70,7 @@ const material4 = new THREE.MeshStandardMaterial({
 });
 
 const torusKnot2 = new THREE.Mesh(geometry4, material4);
-torusKnot2.position.z = 60;
+torusKnot2.position.z = 70;
 
 // Point Light
 const pointLight = new THREE.PointLight(0xffffff);
