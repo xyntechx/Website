@@ -2,12 +2,16 @@
 Check out my website by clicking [here](https://xyntechx.netlify.com/)!
 
 ## 🤖 Technologies
-- three.js
-- Vite
+-   Next.js
+-   TypeScript
 
 ## 🔨 Usage
 ```bash
-npm install
+npm install next react react-dom
+```
+
+```bash
+npm install typescript --save-dev
 ```
 
 ```bash
