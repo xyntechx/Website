@@ -165,7 +165,10 @@ const Home: NextPage = () => {
                     <div className={styles.divcard}>
                         <h2 className={styles.purple}>Founder</h2>
                         <h3>Inspire</h3>
-                        <p>Leads Inspire and develops Inspire's main website</p>
+                        <p>
+                            Leads Inspire and develops Inspire&apos;s main
+                            website
+                        </p>
                     </div>
                     <div className={styles.divcard}>
                         <h2 className={styles.purple}>
