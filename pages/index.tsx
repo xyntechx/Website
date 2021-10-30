@@ -211,7 +211,7 @@ const Home: NextPage = () => {
                             LinkedIn
                         </a>
                     </Link>{" "}
-                    for more projects!
+                    to find out more!
                 </p>
             </section>
 
