@@ -84,7 +84,7 @@
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
     max-width: 300px;
-    background-color: rgba(55, 65, 81);
+    background-color: rgba(55, 65, 81, 0.6);
 }
 
 .bcard:hover,
@@ -131,6 +131,7 @@
     border: 1px solid #eaeaea;
     border-radius: 10px;
     max-width: 300px;
+    background-color: rgba(55, 65, 81);
 }
 
 .divcard h2 {
@@ -159,19 +160,25 @@
 }
 
 .rlink {
-    color: rgba(239, 68, 68);
+    border: 0.15rem solid rgba(239, 68, 68);
+    padding: 0.3rem;
+    border-radius: 1rem;
+    transition: background-color 0.15s ease;
 }
 
 .rlink:hover {
-    text-decoration: underline;
+    background-color: rgba(239, 68, 68);
 }
 
 .plink {
-    color: rgba(167, 139, 250);
+    border: 0.15rem solid rgba(167, 139, 250);
+    padding: 0.3rem;
+    border-radius: 1rem;
+    transition: background-color 0.15s ease;
 }
 
 .plink:hover {
-    text-decoration: underline;
+    background-color: rgba(167, 139, 250);
 }
 
 @media (max-width: 768px) {

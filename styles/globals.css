@@ -5,10 +5,34 @@ body {
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
-    background-color: rgba(31, 41, 55);
     color: rgba(243, 244, 246);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    background: linear-gradient(
+        -45deg,
+        rgb(17, 34, 77),
+        rgb(44, 89, 157),
+        rgba(52, 211, 153),
+        rgba(5, 150, 105)
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+html {
+    background-color: rgba(31, 41, 55);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 a {
@@ -18,4 +42,21 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5rem;
+    background: rgba(251, 191, 36);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 158, 11);
 }

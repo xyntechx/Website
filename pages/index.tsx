@@ -221,8 +221,8 @@ const Home: NextPage = () => {
                         <Image
                             src="/github.png"
                             alt="GitHub Logo"
-                            width={50}
-                            height={50}
+                            width={35}
+                            height={35}
                         />
                     </a>
                 </Link>
@@ -232,8 +232,8 @@ const Home: NextPage = () => {
                         <Image
                             src="/linkedin.png"
                             alt="LinkedIn Logo"
-                            width={50}
-                            height={50}
+                            width={35}
+                            height={35}
                         />
                     </a>
                 </Link>
@@ -243,8 +243,8 @@ const Home: NextPage = () => {
                         <Image
                             src="/instagram.png"
                             alt="Instagram Logo"
-                            width={50}
-                            height={50}
+                            width={35}
+                            height={35}
                         />
                     </a>
                 </Link>
@@ -254,8 +254,8 @@ const Home: NextPage = () => {
                         <Image
                             src="/email.png"
                             alt="Email Logo"
-                            width={50}
-                            height={50}
+                            width={35}
+                            height={35}
                         />
                     </a>
                 </Link>
