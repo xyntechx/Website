@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import grid from "../styles/Grid.module.css";
 
 const Home: NextPage = () => {
     return (
@@ -18,7 +19,7 @@ const Home: NextPage = () => {
                 <meta name="author" content="Nyx Iskandar" />
             </Head>
 
-            <section className={styles.section}>
+            {/* <section className={styles.section}>
                 <h1 className={styles.title}>Nyx Iskandar</h1>
 
                 <Image
@@ -44,6 +45,29 @@ const Home: NextPage = () => {
                         <p>What has Nyx done?</p>
                     </a>
                 </div>
+            </section> */}
+
+            <section className={grid.container}>
+                <section className={grid.animatedgrid}>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}></div>
+                    <div className={grid.card}>
+                        <h1 className={styles.title}>Nyx Iskandar</h1>
+                        <p className={styles.subtitle}>
+                            | Deep Learning | Web Development | Extended Reality |
+                        </p>
+                    </div>
+                </section>
             </section>
 
             <hr className={styles.bseparator} />

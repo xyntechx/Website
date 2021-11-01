@@ -1,0 +1,168 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 1150px) {
+    .animatedgrid {
+        height: 85vh;
+        margin: 2rem;
+        width: 100vw;
+
+        display: grid;
+        gap: 1rem;
+
+        grid-template-areas:
+            "b  a  c  d"
+            "b  🌟 🌟  g"
+            "b  🌟 🌟  g"
+            "j  i  h  g";
+
+        grid-template-rows: repeat(4, 25%);
+        grid-template-columns: 240px auto auto 240px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .animatedgrid {
+        height: 85vh;
+        margin: 2rem;
+        width: 100vw;
+
+        display: grid;
+        gap: 0.5rem;
+
+        grid-template-areas:
+            "k  f  d"
+            "k  🌟 e"
+            "c  h  e";
+
+        grid-template-rows: repeat(3, 33%);
+        grid-template-columns: repeat(3, 33%);
+    }
+}
+
+@media (max-width: 1000px) {
+    .animatedgrid {
+        height: 85vh;
+        margin: 2rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        width: 100vw;
+
+        display: grid;
+        gap: 0.5rem;
+
+        grid-template-areas:
+            "i  c"
+            "🌟  🌟"
+            "e  k";
+
+        grid-template-rows: repeat(3, 33%);
+        grid-template-columns: repeat(2, 50%);
+    }
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.card {
+    animation: cardEntrance 700ms ease-out;
+    animation-fill-mode: backwards;
+    box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
+        rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    transition: all 500ms;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card:nth-child(1) {
+    grid-area: a;
+    animation-delay: calc(1 * 100ms);
+    background-image: url("../public/apple.jpg");
+}
+
+.card:nth-child(2) {
+    grid-area: b;
+    animation-delay: calc(2 * 100ms);
+    background-image: url("../public/back.jpg");
+}
+
+.card:nth-child(3) {
+    grid-area: c;
+    animation-delay: calc(3 * 100ms);
+    background-image: url("../public/foobar.jpg");
+}
+
+.card:nth-child(4) {
+    grid-area: d;
+    animation-delay: calc(4 * 100ms);
+    background-image: url("../public/park.jpg");
+}
+
+.card:nth-child(5) {
+    grid-area: e;
+    animation-delay: calc(5 * 100ms);
+    background-image: url("../public/setup.jpg");
+}
+
+.card:nth-child(6) {
+    grid-area: f;
+    animation-delay: calc(6 * 100ms);
+    background-image: url("../public/friends.jpg");
+}
+
+.card:nth-child(7) {
+    grid-area: g;
+    animation-delay: calc(7 * 100ms);
+    background-image: url("../public/ball-in-hand.jpg");
+}
+
+.card:nth-child(8) {
+    grid-area: h;
+    animation-delay: calc(8 * 100ms);
+    background-image: url("../public/stairs.jpg");
+}
+
+.card:nth-child(9) {
+    grid-area: i;
+    animation-delay: calc(9 * 100ms);
+    background-image: url("../public/ysap.jpg");
+}
+
+.card:nth-child(10) {
+    grid-area: j;
+    animation-delay: calc(10 * 100ms);
+    background-image: url("../public/hackathonx.jpg");
+}
+
+.card:nth-child(12) {
+    grid-area: k;
+    animation-delay: calc(12 * 100ms);
+    background-image: url("../public/volleyball.jpg");
+}
+
+.card:last-child {
+    grid-area: 🌟;
+    animation-delay: calc(13 * 100ms);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(243, 244, 246);
+    text-align: center;
+}

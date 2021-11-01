@@ -29,12 +29,19 @@
     margin-right: 3rem;
 }
 
-.title {
+.title,
+.subtitle {
     margin-left: 2rem;
     margin-right: 2rem;
     line-height: 1.15;
     font-size: 4rem;
     width: 100vw;
+    color: rgba(31, 41, 55);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 0;
 }
 
 .title,
@@ -181,13 +188,59 @@
     background-color: rgba(167, 139, 250);
 }
 
+/* @media (max-width: 1400px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+} */
+
+/* @media (max-width: 1350px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+} */
+
+@media (max-width: 1300px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 1rem;
+    }
+
+    .subtitle {
+        font-size: 0.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
-    .title {
-        font-size: 3rem;
     }
 
     .description {
