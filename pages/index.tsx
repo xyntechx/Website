@@ -19,34 +19,6 @@ const Home: NextPage = () => {
                 <meta name="author" content="Nyx Iskandar" />
             </Head>
 
-            {/* <section className={styles.section}>
-                <h1 className={styles.title}>Nyx Iskandar</h1>
-
-                <Image
-                    src="/nyx.png"
-                    alt="Nyx Iskandar"
-                    width={200}
-                    height={200}
-                />
-
-                <div className={styles.grid}>
-                    <a href="#about" className={styles.bcard}>
-                        <h2>About 👩‍💻</h2>
-                        <p>Who is Nyx?</p>
-                    </a>
-
-                    <a href="#projects" className={styles.rcard}>
-                        <h2>Projects 🚀</h2>
-                        <p>What has Nyx built?</p>
-                    </a>
-
-                    <a href="#experience" className={styles.pcard}>
-                        <h2>Experience 💭</h2>
-                        <p>What has Nyx done?</p>
-                    </a>
-                </div>
-            </section> */}
-
             <section className={grid.container}>
                 <section className={grid.animatedgrid}>
                     <div className={grid.card}></div>
@@ -62,15 +34,10 @@ const Home: NextPage = () => {
                     <div className={grid.card}></div>
                     <div className={grid.card}></div>
                     <div className={grid.card}>
-                        <h1 className={styles.title}>Nyx Iskandar</h1>
-                        <p className={styles.subtitle}>
-                            | Deep Learning | Web Development | Extended Reality |
-                        </p>
+                        <h1 className={styles.maintitle}>Nyx Iskandar</h1>
                     </div>
                 </section>
             </section>
-
-            <hr className={styles.bseparator} />
 
             <section id="about" className={styles.section}>
                 <h1 className={styles.title}>👩‍💻 About</h1>
@@ -118,11 +85,7 @@ const Home: NextPage = () => {
                         </p>
                     </div>
                 </div>
-            </section>
 
-            <hr className={styles.rseparator} />
-
-            <section id="projects" className={styles.section}>
                 <h1 className={styles.title}>🚀 Projects</h1>
 
                 <div className={styles.grid}>
@@ -189,11 +152,7 @@ const Home: NextPage = () => {
                     </Link>{" "}
                     for more projects!
                 </p>
-            </section>
 
-            <hr className={styles.pseparator} />
-
-            <section id="experience" className={styles.section}>
                 <h1 className={styles.title}>💭 Experience</h1>
 
                 <div className={styles.grid}>
