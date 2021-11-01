@@ -163,6 +163,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(243, 244, 246);
+    box-shadow: none;
     text-align: center;
 }
