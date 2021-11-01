@@ -16,7 +16,7 @@
     display: flex;
     flex: 1;
     padding: 2rem 0;
-    border-top: 0.25rem dotted rgba(243, 244, 246);
+    border-top: 0.2rem solid rgba(243, 244, 246);
     border-bottom: none;
     justify-content: center;
     align-items: center;
@@ -30,18 +30,17 @@
 }
 
 .title,
-.subtitle {
+.maintitle {
     margin-left: 2rem;
     margin-right: 2rem;
     line-height: 1.15;
     font-size: 4rem;
     width: 100vw;
-    color: rgba(31, 41, 55);
+    color: rgba(243, 244, 246);
 }
 
-.subtitle {
-    font-size: 1.5rem;
-    margin-top: 0;
+.title {
+    margin-top: 8rem;
 }
 
 .title,
@@ -61,7 +60,6 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin: 2rem;
 }
 
 .bseparator,
@@ -188,53 +186,10 @@
     background-color: rgba(167, 139, 250);
 }
 
-/* @media (max-width: 1400px) {
-    .title {
-        font-size: 3rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-} */
-
-/* @media (max-width: 1350px) {
-    .title {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-} */
-
 @media (max-width: 1300px) {
-    .title {
+    .title,
+    .maintitle {
         font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 1000px) {
-    .title {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .title {
-        font-size: 1rem;
-    }
-
-    .subtitle {
-        font-size: 0.5rem;
     }
 }
 
