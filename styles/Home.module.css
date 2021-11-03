@@ -26,13 +26,15 @@
 }
 
 .title,
-.maintitle {
+.maintitle,
+.titlelight {
     line-height: 1.15;
     font-size: 4rem;
     color: rgba(243, 244, 246);
 }
 
-.title {
+.title,
+.titlelight {
     margin: 0 2rem;
     margin-bottom: 2rem;
     color: rgba(31, 41, 55);
@@ -44,7 +46,8 @@
 }
 
 .title,
-.description {
+.description,
+.titlelight {
     text-align: center;
 }
 
@@ -55,6 +58,10 @@
     margin: 2rem 0;
     text-align: center;
     width: 100%;
+}
+
+.titlelight {
+    color: rgba(243, 244, 246);
 }
 
 .descriptionblack {
@@ -165,7 +172,8 @@
 
 @media (max-width: 1300px) {
     .title,
-    .maintitle {
+    .maintitle,
+    .titlelight {
         font-size: 2rem;
     }
 }

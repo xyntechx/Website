@@ -98,7 +98,7 @@ const Home: NextPage = () => {
 
             <section id="projects" className={curves.red}>
                 <div className={curves.blobcontent}>
-                    <h1 className={styles.title}>🚀 Projects</h1>
+                    <h1 className={styles.titlelight}>🚀 Projects</h1>
 
                     <div className={styles.grid}>
                         <Link href="https://github.com/xyntechx/Inspire">
