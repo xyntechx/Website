@@ -92,13 +92,13 @@
 
 .card:nth-child(1) {
     grid-area: a;
-    animation-delay: calc(1 * 100ms);
+    animation-delay: calc(2 * 100ms);
     background-image: url("../public/apple.jpg");
 }
 
 .card:nth-child(2) {
     grid-area: b;
-    animation-delay: calc(2 * 100ms);
+    animation-delay: calc(1 * 100ms);
     background-image: url("../public/back.jpg");
 }
 
@@ -116,49 +116,49 @@
 
 .card:nth-child(5) {
     grid-area: e;
-    animation-delay: calc(5 * 100ms);
+    animation-delay: calc(9 * 100ms);
     background-image: url("../public/setup.jpg");
 }
 
 .card:nth-child(6) {
     grid-area: f;
-    animation-delay: calc(6 * 100ms);
+    animation-delay: calc(10 * 100ms);
     background-image: url("../public/friends.jpg");
 }
 
 .card:nth-child(7) {
     grid-area: g;
-    animation-delay: calc(7 * 100ms);
+    animation-delay: calc(5 * 100ms);
     background-image: url("../public/ball-in-hand.jpg");
 }
 
 .card:nth-child(8) {
     grid-area: h;
-    animation-delay: calc(8 * 100ms);
+    animation-delay: calc(6 * 100ms);
     background-image: url("../public/stairs.jpg");
 }
 
 .card:nth-child(9) {
     grid-area: i;
-    animation-delay: calc(9 * 100ms);
+    animation-delay: calc(7 * 100ms);
     background-image: url("../public/ysap.jpg");
 }
 
 .card:nth-child(10) {
     grid-area: j;
-    animation-delay: calc(10 * 100ms);
+    animation-delay: calc(8 * 100ms);
     background-image: url("../public/hackathonx.jpg");
 }
 
 .card:nth-child(12) {
     grid-area: k;
-    animation-delay: calc(12 * 100ms);
+    animation-delay: calc(11 * 100ms);
     background-image: url("../public/volleyball.jpg");
 }
 
 .card:last-child {
     grid-area: 🌟;
-    animation-delay: calc(13 * 100ms);
+    animation-delay: calc(12 * 100ms);
     display: flex;
     align-items: center;
     justify-content: center;
