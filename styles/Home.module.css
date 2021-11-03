@@ -62,22 +62,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.bseparator,
-.rseparator,
-.pseparator {
-    border-top: 0.25rem dotted rgba(96, 165, 250);
-    border-bottom: none;
-}
-
-.rseparator {
-    border-top: 0.25rem dotted rgba(239, 68, 68);
-}
-
-.pseparator {
-    border-top: 0.25rem dotted rgba(167, 139, 250);
-}
-
-.bcard,
 .rcard,
 .pcard {
     margin: 1rem;
@@ -90,13 +74,6 @@
     transition: color 0.15s ease, border-color 0.15s ease;
     max-width: 300px;
     background-color: rgba(55, 65, 81, 0.6);
-}
-
-.bcard:hover,
-.bcard:focus,
-.bcard:active {
-    color: rgba(96, 165, 250);
-    border-color: rgba(96, 165, 250);
 }
 
 .rcard:hover,
@@ -113,14 +90,12 @@
     border-color: rgba(167, 139, 250);
 }
 
-.bcard h2,
 .rcard h2,
 .pcard h2 {
     margin: 0 0 1rem 0;
     font-size: 2rem;
 }
 
-.bcard p,
 .rcard p,
 .pcard p {
     margin: 0;
@@ -202,13 +177,11 @@
         font-size: 1.5rem;
     }
 
-    .bcard h2,
     .rcard h2,
     .pcard h2 {
         font-size: 1.5rem;
     }
 
-    .bcard p,
     .rcard p,
     .pcard p {
         font-size: 1.25rem;
