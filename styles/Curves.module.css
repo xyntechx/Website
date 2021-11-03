@@ -1,0 +1,53 @@
+.bluecurves,
+.purplecurves,
+.redcurves {
+    aspect-ratio: 960/300;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bluecurves {
+    margin-top: 1rem;
+}
+
+.bluecurves {
+    background-image: url("../public/layer-blue.svg");
+}
+
+.redcurves {
+    background-image: url("../public/layer-red.svg");
+    transform: rotate(180deg);
+    margin: 0;
+}
+
+.purplecurves {
+    background-image: url("../public/layer-purple.svg");
+}
+
+.blobcontent {
+    z-index: 1;
+    margin: 2rem 0;
+}
+
+.blue,
+.red,
+.purple {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue {
+    background: rgb(147, 197, 253);
+}
+
+.red {
+    background: rgb(185, 28, 28);
+}
+
+.purple {
+    background: rgb(196, 181, 253);
+}
