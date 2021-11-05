@@ -33,7 +33,6 @@ const Home: NextPage = () => {
                     <div className={grid.card}></div>
                     <div className={grid.card}></div>
                     <div className={grid.card}></div>
-                    <div className={grid.card}></div>
                     <div className={grid.card}>
                         <h1 className={styles.maintitle}>Nyx Iskandar</h1>
                     </div>
