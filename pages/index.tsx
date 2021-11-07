@@ -22,17 +22,94 @@ const Home: NextPage = () => {
 
             <section className={grid.container}>
                 <section className={grid.animatedgrid}>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
-                    <div className={grid.card}></div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/apple.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/back.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/foobar.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/park.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/setup.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/friends.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/ball-in-hand.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/stairs.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/ysap.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/hackathonx.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
+                    <div className={grid.card}>
+                        <Image
+                            src="/volleyball.jpg"
+                            alt="test"
+                            layout="fill"
+                            className={grid.image}
+                        />
+                    </div>
                     <div className={grid.card}>
                         <h1 className={styles.maintitle}>Nyx Iskandar</h1>
                     </div>
