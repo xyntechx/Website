@@ -68,9 +68,16 @@
     color: rgba(31, 41, 55);
 }
 
-.grid {
+.aboutgrid,
+.projectsgrid,
+.experiencegrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.projectsgrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .rcard,
@@ -179,7 +186,9 @@
 }
 
 @media (max-width: 768px) {
-    .grid {
+    .aboutgrid,
+    .projectsgrid,
+    .experiencegrid {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 

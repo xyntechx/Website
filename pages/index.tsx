@@ -122,7 +122,7 @@ const Home: NextPage = () => {
                 <div className={curves.blobcontent}>
                     <h1 className={styles.title}>👩‍💻 About</h1>
 
-                    <div className={styles.grid}>
+                    <div className={styles.aboutgrid}>
                         <div className={styles.divcard}>
                             <h2>🌰</h2>
                             <p>
@@ -176,7 +176,7 @@ const Home: NextPage = () => {
                 <div className={curves.blobcontent}>
                     <h1 className={styles.titlelight}>🚀 Projects</h1>
 
-                    <div className={styles.grid}>
+                    <div className={styles.projectsgrid}>
                         <Link href="https://github.com/xyntechx/Inspire">
                             <a
                                 target="_blank"
@@ -211,7 +211,6 @@ const Home: NextPage = () => {
 
                         <Link href="https://github.com/xyntechx/Book-Us">
                             <a
-                                href="https://github.com/xyntechx/Book-Us"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.rcard}
@@ -223,6 +222,23 @@ const Home: NextPage = () => {
                                     width={200}
                                     height={130}
                                 />
+                            </a>
+                        </Link>
+
+                        <Link href="https://github.com/xyntechx/My-DBZ">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>My DBZ &rarr;</h2>
+                                {/* <Image
+                                    src="/bookus.png"
+                                    alt="BookUs Homepage"
+                                    width={200}
+                                    height={130}
+                                /> */}
+                                <p>Coming Soon...</p>
                             </a>
                         </Link>
                     </div>
@@ -249,7 +265,7 @@ const Home: NextPage = () => {
                 <div className={curves.blobcontent}>
                     <h1 className={styles.title}>💭 Experience</h1>
 
-                    <div className={styles.grid}>
+                    <div className={styles.experiencegrid}>
                         <div className={styles.divcard}>
                             <h2 className={styles.purple}>Founder</h2>
                             <h3>Inspire</h3>
