@@ -232,13 +232,12 @@ const Home: NextPage = () => {
                                 className={styles.rcard}
                             >
                                 <h2>My DBZ &rarr;</h2>
-                                {/* <Image
-                                    src="/bookus.png"
-                                    alt="BookUs Homepage"
+                                <Image
+                                    src="/my-dbz.png"
+                                    alt="My DBZ Homepage"
                                     width={200}
                                     height={130}
-                                /> */}
-                                <p>Coming Soon...</p>
+                                />
                             </a>
                         </Link>
                     </div>
