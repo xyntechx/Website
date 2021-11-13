@@ -333,6 +333,17 @@ const Home: NextPage = () => {
                     </a>
                 </Link>
 
+                <Link href="https://medium.com/@xyntechx">
+                    <a target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src="/medium.svg"
+                            alt="Medium Logo"
+                            width={35}
+                            height={35}
+                        />
+                    </a>
+                </Link>
+
                 <Link href="https://www.instagram.com/xyntechx/">
                     <a target="_blank" rel="noopener noreferrer">
                         <Image
