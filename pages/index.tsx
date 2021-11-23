@@ -224,22 +224,6 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
-
-                        <Link href="https://github.com/xyntechx/My-DBZ">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>My DBZ &rarr;</h2>
-                                <Image
-                                    src="/my-dbz.png"
-                                    alt="My DBZ Homepage"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
                     </div>
 
                     <p className={styles.description}>
