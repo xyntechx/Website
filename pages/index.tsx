@@ -259,21 +259,25 @@ const Home: NextPage = () => {
                         </div>
 
                         <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Research Intern</h2>
+                            <h3>
+                                Advanced Remanufacturing and Technology Centre
+                                (ARTC)
+                            </h3>
+                            <p>
+                                Conducts research on robotic motion planning and
+                                grasping with the Advanced Robotic Applications
+                                (ARA) department
+                            </p>
+                        </div>
+
+                        <div className={styles.divcard}>
                             <h2 className={styles.purple}>
                                 Head of Web Development
                             </h2>
                             <h3>TEDxNewton</h3>
                             <p>
                                 Develops and designs the website for TEDxNewton
-                            </p>
-                        </div>
-
-                        <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Co-leader</h2>
-                            <h3>The Junior Academy</h3>
-                            <p>
-                                Ideates and develops a solution to prevent,
-                                monitor, and treat eutrophication
                             </p>
                         </div>
                     </div>
