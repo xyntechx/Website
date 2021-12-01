@@ -25,7 +25,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/apple.jpg"
-                            alt="test"
+                            alt="Nyx in front of an Apple store"
                             layout="fill"
                             className={grid.image}
                         />
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/back.jpg"
-                            alt="test"
+                            alt="Nyx wearing a blazer"
                             layout="fill"
                             className={grid.image}
                         />
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/foobar.jpg"
-                            alt="test"
+                            alt="Nyx's Google Foobar attempt"
                             layout="fill"
                             className={grid.image}
                         />
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/park.jpg"
-                            alt="test"
+                            alt="Nyx at a park"
                             layout="fill"
                             className={grid.image}
                         />
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/setup.jpg"
-                            alt="test"
+                            alt="Nyx's setup"
                             layout="fill"
                             className={grid.image}
                         />
@@ -65,7 +65,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/friends.jpg"
-                            alt="test"
+                            alt="Nyx wearing a F.R.I.E.N.D.S. shirt"
                             layout="fill"
                             className={grid.image}
                         />
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/ball-in-hand.jpg"
-                            alt="test"
+                            alt="Nyx with a volleyball"
                             layout="fill"
                             className={grid.image}
                         />
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/stairs.jpg"
-                            alt="test"
+                            alt="Nyx on a beautiful staircase"
                             layout="fill"
                             className={grid.image}
                         />
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/ysap.jpg"
-                            alt="test"
+                            alt="Nyx presenting for the Youth Science Ambassador Programme"
                             layout="fill"
                             className={grid.image}
                         />
@@ -97,7 +97,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/hackathonx.jpg"
-                            alt="test"
+                            alt="Nyx's HackathonX submission (Inspire's alpha version)"
                             layout="fill"
                             className={grid.image}
                         />
@@ -105,7 +105,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/volleyball.jpg"
-                            alt="test"
+                            alt="Nyx playing solo volleyball"
                             layout="fill"
                             className={grid.image}
                         />
