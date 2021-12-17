@@ -7,11 +7,7 @@ Check out my website by clicking [here](https://xyntechx.netlify.com/)!
 
 ## 🔨 Usage
 ```bash
-npm install next react react-dom
-```
-
-```bash
-npm install typescript --save-dev
+npm install
 ```
 
 ```bash
