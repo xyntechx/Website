@@ -203,7 +203,7 @@ const Home: NextPage = () => {
                                 <Image
                                     src="/mla.png"
                                     alt="Sample Manga Layout Analysis Result"
-                                    width={200}
+                                    width={130}
                                     height={130}
                                 />
                             </a>
@@ -260,14 +260,21 @@ const Home: NextPage = () => {
 
                         <div className={styles.divcard}>
                             <h2 className={styles.purple}>Research Intern</h2>
-                            <h3>
-                                Advanced Remanufacturing and Technology Centre
-                                (ARTC)
-                            </h3>
+                            <h3>ARTC</h3>
                             <p>
-                                Conducts research on robotic motion planning and
-                                grasping with the Advanced Robotic Applications
+                                Develops projects on robotic grasping and object
+                                detection with the Advanced Robotic Applications
                                 (ARA) department
+                            </p>
+                        </div>
+
+                        <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Chairperson</h2>
+                            <h3>Code for Hope</h3>
+                            <p>
+                                Leads, organises, and conducts the
+                                service-learning project to teach
+                                underprivileged students Python fundamentals
                             </p>
                         </div>
 
