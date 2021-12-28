@@ -18,6 +18,20 @@ const Home: NextPage = () => {
                 />
                 <meta name="description" content="Nyx Iskandar's website" />
                 <meta name="author" content="Nyx Iskandar" />
+                <meta property="og:title" content="Nyx Iskandar | xyntechx" />
+                <meta
+                    property="og:description"
+                    content="Nyx Iskandar's website"
+                />
+                <meta
+                    property="og:image"
+                    content="https://xyntechx.netlify.app/favicon.ico"
+                />
+                <meta
+                    property="og:url"
+                    content="https://xyntechx.netlify.app/"
+                />
+                <meta property="og:type" content="website" />
             </Head>
 
             <section className={grid.container}>
