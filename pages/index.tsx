@@ -191,7 +191,7 @@ const Home: NextPage = () => {
                     <h1 className={styles.titlelight}>🚀 Projects</h1>
 
                     <div className={styles.projectsgrid}>
-                        <Link href="https://github.com/xyntechx/Inspire">
+                        <Link href="https://inspire-me.sg/">
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -200,7 +200,7 @@ const Home: NextPage = () => {
                                 <h2>Inspire &rarr;</h2>
                                 <Image
                                     src="/inspire.png"
-                                    alt="Inspire Student View"
+                                    alt="Inspire Homepage"
                                     width={200}
                                     height={130}
                                 />
@@ -216,13 +216,31 @@ const Home: NextPage = () => {
                                 <h2>Manga Layout Analysis &rarr;</h2>
                                 <Image
                                     src="/mla.png"
-                                    alt="Sample Manga Layout Analysis Result"
+                                    alt="Manga Layout Analysis Overview"
                                     width={130}
                                     height={130}
                                 />
                             </a>
                         </Link>
 
+                        <Link href="https://tedxnewton.com/">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>TEDxNewton &rarr;</h2>
+                                <Image
+                                    src="/tedxnewton.png"
+                                    alt="TEDxNewton Homepage"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
+                    </div>
+
+                    <div className={styles.projectsgrid}>
                         <Link href="https://github.com/xyntechx/Book-Us">
                             <a
                                 target="_blank"
@@ -236,6 +254,35 @@ const Home: NextPage = () => {
                                     width={200}
                                     height={130}
                                 />
+                            </a>
+                        </Link>
+
+                        <Link href="https://github.com/xyntechx/RI-OH-2022">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>RI Open House 2022 Games &rarr;</h2>
+                                <Image
+                                    src="/rioh.png"
+                                    alt="RI Open House 2022 Games Select"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
+
+                        <Link href="https://github.com/xyntechx/Pi-Day-2022">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>Pi Day &rarr;</h2>
+                                <p className={styles.description}>
+                                    Coming Soon 😉
+                                </p>
                             </a>
                         </Link>
                     </div>
