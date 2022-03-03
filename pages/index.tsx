@@ -222,7 +222,9 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
+                    </div>
 
+                    <div className={styles.projectsgrid}>
                         <Link href="https://tedxnewton.com/">
                             <a
                                 target="_blank"
@@ -238,40 +240,6 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
-                    </div>
-
-                    <div className={styles.projectsgrid}>
-                        <Link href="https://github.com/xyntechx/Book-Us">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>BookUs &rarr;</h2>
-                                <Image
-                                    src="/bookus.png"
-                                    alt="BookUs Homepage"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
-
-                        <Link href="https://github.com/xyntechx/RI-OH-2022">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>RI Open House 2022 Games &rarr;</h2>
-                                <Image
-                                    src="/rioh.png"
-                                    alt="RI Open House 2022 Games Select"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
 
                         <Link href="https://github.com/xyntechx/Pi-Day-2022">
                             <a
@@ -280,9 +248,12 @@ const Home: NextPage = () => {
                                 className={styles.rcard}
                             >
                                 <h2>Pi Day &rarr;</h2>
-                                <p className={styles.description}>
-                                    Coming Soon 😉
-                                </p>
+                                <Image
+                                    src="/piday.png"
+                                    alt="Pi Day 2022"
+                                    width={200}
+                                    height={130}
+                                />
                             </a>
                         </Link>
                     </div>
