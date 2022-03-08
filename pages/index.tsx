@@ -217,8 +217,8 @@ const Home: NextPage = () => {
                                 <Image
                                     src="/mla.png"
                                     alt="Manga Layout Analysis Overview"
-                                    width={130}
-                                    height={130}
+                                    width={181}
+                                    height={148}
                                 />
                             </a>
                         </Link>
