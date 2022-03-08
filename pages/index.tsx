@@ -46,8 +46,8 @@ const Home: NextPage = () => {
                     </div>
                     <div className={grid.card}>
                         <Image
-                            src="/back.jpg"
-                            alt="Nyx wearing a blazer"
+                            src="/vball-laptop.jpg"
+                            alt="Nyx in volleyball windbreaker holding her laptop"
                             layout="fill"
                             className={grid.image}
                         />
@@ -70,8 +70,8 @@ const Home: NextPage = () => {
                     </div>
                     <div className={grid.card}>
                         <Image
-                            src="/setup.jpg"
-                            alt="Nyx's setup"
+                            src="/vball-laptop.jpg"
+                            alt="Nyx in volleyball windbreaker holding her laptop"
                             layout="fill"
                             className={grid.image}
                         />
@@ -160,11 +160,11 @@ const Home: NextPage = () => {
                             <h2>💻</h2>
                             <p className={styles.blue}>+ Deep Learning</p>
                             <p className={styles.blue}>+ Web Development</p>
-                            <p className={styles.blue}>+ Extended Reality</p>
+                            <p className={styles.blue}>+ Quantum Computing</p>
                             <p>+ Cybersecurity</p>
                             <p>+ Data Science</p>
+                            <p>+ Extended Reality</p>
                             <p>+ Game Development</p>
-                            <p>+ Quantum Computing</p>
                         </div>
 
                         <div className={styles.divcard}>
@@ -222,9 +222,23 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
-                    </div>
 
-                    <div className={styles.projectsgrid}>
+                        <Link href="https://tedxri.com/">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>TEDxRI &rarr;</h2>
+                                <Image
+                                    src="/tedxri.png"
+                                    alt="TEDxYouth@RafflesInstitution Homepage"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
+
                         <Link href="https://tedxnewton.com/">
                             <a
                                 target="_blank"
@@ -251,6 +265,22 @@ const Home: NextPage = () => {
                                 <Image
                                     src="/piday.png"
                                     alt="Pi Day 2022"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
+
+                        <Link href="https://github.com/xyntechx/RI-OH-2022">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>RI Open House 2022 &rarr;</h2>
+                                <Image
+                                    src="/rioh.png"
+                                    alt="RI Open House 2022"
                                     width={200}
                                     height={130}
                                 />
@@ -291,16 +321,6 @@ const Home: NextPage = () => {
                         </div>
 
                         <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Research Intern</h2>
-                            <h3>ARTC</h3>
-                            <p>
-                                Develops projects on robotic grasping and object
-                                detection with the Advanced Robotic Applications
-                                (ARA) department
-                            </p>
-                        </div>
-
-                        <div className={styles.divcard}>
                             <h2 className={styles.purple}>Chairperson</h2>
                             <h3>Code for Hope</h3>
                             <p>
@@ -311,12 +331,42 @@ const Home: NextPage = () => {
                         </div>
 
                         <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Researcher</h2>
+                            <h3>Manga Layout Analysis via Deep Learning</h3>
+                            <p>
+                                Innovates an integrated system of instance
+                                segmentation and optical character recognition
+                                to adapt manga into other media
+                            </p>
+                        </div>
+
+                        <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Founder</h2>
+                            <h3>TEDxRI</h3>
+                            <p>
+                                Develops the website of, organises, and leads
+                                the Executive Committee of the
+                                TEDxYouth@RafflesInstitution conference
+                            </p>
+                        </div>
+
+                        <div className={styles.divcard}>
                             <h2 className={styles.purple}>
                                 Head of Web Development
                             </h2>
                             <h3>TEDxNewton</h3>
                             <p>
                                 Develops and designs the website for TEDxNewton
+                            </p>
+                        </div>
+
+                        <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Research Intern</h2>
+                            <h3>ARTC</h3>
+                            <p>
+                                Developed projects on robotic grasping and
+                                object detection with the Advanced Robotic
+                                Applications (ARA) department
                             </p>
                         </div>
                     </div>
