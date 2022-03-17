@@ -25,7 +25,7 @@ const Home: NextPage = () => {
                 />
                 <meta
                     property="og:image"
-                    content="https://xyntechx.com/favicon.ico"
+                    content="https://xyntechx.com/xyntechx.png"
                 />
                 <meta property="og:url" content="https://xyntechx.com/" />
                 <meta property="og:type" content="website" />
