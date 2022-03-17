@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     return (
         <main>
             <Head>
-                <title>Nyx Iskandar | xyntechx</title>
+                <title>Nyx Iskandar</title>
                 <link rel="icon" href="favicon.ico" />
                 <meta
                     name="viewport"
@@ -18,19 +18,16 @@ const Home: NextPage = () => {
                 />
                 <meta name="description" content="Nyx Iskandar's website" />
                 <meta name="author" content="Nyx Iskandar" />
-                <meta property="og:title" content="Nyx Iskandar | xyntechx" />
+                <meta property="og:title" content="Nyx Iskandar" />
                 <meta
                     property="og:description"
                     content="Nyx Iskandar's website"
                 />
                 <meta
                     property="og:image"
-                    content="https://xyntechx.netlify.app/favicon.ico"
+                    content="https://xyntechx.com/favicon.ico"
                 />
-                <meta
-                    property="og:url"
-                    content="https://xyntechx.netlify.app/"
-                />
+                <meta property="og:url" content="https://xyntechx.com/" />
                 <meta property="og:type" content="website" />
             </Head>
 
@@ -145,7 +142,7 @@ const Home: NextPage = () => {
                                 <span className={styles.blue}>
                                     computer science
                                 </span>
-                                ,{" "}
+                                , <span className={styles.blue}>research</span>,{" "}
                                 <span className={styles.blue}>
                                     entrepreneurship
                                 </span>
