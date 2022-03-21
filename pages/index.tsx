@@ -235,54 +235,6 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
-
-                        <Link href="https://tedxnewton.com/">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>TEDxNewton &rarr;</h2>
-                                <Image
-                                    src="/tedxnewton.png"
-                                    alt="TEDxNewton Homepage"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
-
-                        <Link href="https://github.com/xyntechx/Pi-Day-2022">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>Pi Day &rarr;</h2>
-                                <Image
-                                    src="/piday.png"
-                                    alt="Pi Day 2022"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
-
-                        <Link href="https://github.com/xyntechx/RI-OH-2022">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>RI Open House 2022 &rarr;</h2>
-                                <Image
-                                    src="/rioh.png"
-                                    alt="RI Open House 2022"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
                     </div>
 
                     <p className={styles.description}>
@@ -328,22 +280,22 @@ const Home: NextPage = () => {
                         </div>
 
                         <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Researcher</h2>
-                            <h3>Manga Layout Analysis via Deep Learning</h3>
+                            <h2 className={styles.purple}>Co-Founder</h2>
+                            <h3>TEDxRI</h3>
                             <p>
-                                Innovates an integrated system of instance
-                                segmentation and optical character recognition
-                                to adapt manga into other media
+                                Organises, leads the Executive Committee of, and
+                                develops the website of
+                                TEDxYouth@RafflesInstitution
                             </p>
                         </div>
 
                         <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Founder</h2>
-                            <h3>TEDxRI</h3>
+                            <h2 className={styles.purple}>Researcher</h2>
+                            <h3>Manga Layout Analysis via Deep Learning</h3>
                             <p>
-                                Develops the website of, organises, and leads
-                                the Executive Committee of the
-                                TEDxYouth@RafflesInstitution conference
+                                Innovated an integrated system of instance
+                                segmentation and optical character recognition
+                                to adapt manga into other media
                             </p>
                         </div>
 
@@ -353,7 +305,7 @@ const Home: NextPage = () => {
                             </h2>
                             <h3>TEDxNewton</h3>
                             <p>
-                                Develops and designs the website for TEDxNewton
+                                Developed and designed the website of TEDxNewton
                             </p>
                         </div>
 
