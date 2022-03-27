@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                     <div className={grid.card}>
                         <Image
                             src="/hackathonx.jpg"
-                            alt="Nyx's HackathonX submission (Inspire's alpha version)"
+                            alt="Nyx's HackathonX submission (NXpyre's alpha version)"
                             layout="fill"
                             className={grid.image}
                         />
@@ -188,16 +188,16 @@ const Home: NextPage = () => {
                     <h1 className={styles.titlelight}>🚀 Projects</h1>
 
                     <div className={styles.projectsgrid}>
-                        <Link href="https://inspire-me.sg/">
+                        <Link href="https://nxpyre.com/">
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.rcard}
                             >
-                                <h2>Inspire &rarr;</h2>
+                                <h2>NXpyre &rarr;</h2>
                                 <Image
-                                    src="/inspire.png"
-                                    alt="Inspire Homepage"
+                                    src="/nxpyre.png"
+                                    alt="NXpyre Homepage"
                                     width={200}
                                     height={130}
                                 />
@@ -262,10 +262,10 @@ const Home: NextPage = () => {
                     <div className={styles.experiencegrid}>
                         <div className={styles.divcard}>
                             <h2 className={styles.purple}>Founder</h2>
-                            <h3>Inspire</h3>
+                            <h3>NXpyre</h3>
                             <p>
-                                Leads Inspire and develops Inspire&apos;s main
-                                website
+                                Leads NXpyre and develops NXpyre&apos;s web
+                                application
                             </p>
                         </div>
 
