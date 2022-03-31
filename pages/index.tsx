@@ -157,7 +157,7 @@ const Home: NextPage = () => {
                             <h2>💻</h2>
                             <p className={styles.blue}>+ Deep Learning</p>
                             <p className={styles.blue}>+ Web Development</p>
-                            <p className={styles.blue}>+ Quantum Computing</p>
+                            <p>+ Quantum Computing</p>
                             <p>+ Cybersecurity</p>
                             <p>+ Data Science</p>
                             <p>+ Extended Reality</p>
