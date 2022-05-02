@@ -210,10 +210,10 @@ const Home: NextPage = () => {
                                 rel="noopener noreferrer"
                                 className={styles.rcard}
                             >
-                                <h2>Manga Layout Analysis &rarr;</h2>
+                                <h2>MLA &rarr;</h2>
                                 <Image
                                     src="/mla.png"
-                                    alt="Manga Layout Analysis Overview"
+                                    alt="MLA Overview"
                                     width={181}
                                     height={148}
                                 />
