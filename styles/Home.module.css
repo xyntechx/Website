@@ -68,15 +68,12 @@
     color: rgba(31, 41, 55);
 }
 
-.aboutgrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
+.aboutgrid,
 .projectsgrid,
 .experiencegrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 90vw;
 }
 
 .rcard,
