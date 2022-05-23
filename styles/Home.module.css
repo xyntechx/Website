@@ -16,13 +16,7 @@
     border-bottom: none;
     justify-content: center;
     align-items: center;
-}
-
-.footer a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 3rem;
+    column-gap: 3rem;
 }
 
 .title,

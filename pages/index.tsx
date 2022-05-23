@@ -188,6 +188,22 @@ const Home: NextPage = () => {
                     <h1 className={styles.titlelight}>🚀 Projects</h1>
 
                     <div className={styles.projectsgrid}>
+                        <Link href="https://github.com/xyntechx/NexLiber">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>NexLiber &rarr;</h2>
+                                <Image
+                                    src="/nexliber.png"
+                                    alt="NexLiber Homepage"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
+
                         <Link href="https://nxpyre.com/">
                             <a
                                 target="_blank"
@@ -235,6 +251,38 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
+
+                        <Link href="https://wordle-xyntechx.vercel.app/">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>Wordle Clone &rarr;</h2>
+                                <Image
+                                    src="/wordle.png"
+                                    alt="Wordle Clone Game"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
+
+                        <Link href="https://github.com/xyntechx/Code-for-Hope">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.rcard}
+                            >
+                                <h2>Code for Hope &rarr;</h2>
+                                <Image
+                                    src="/cfh.png"
+                                    alt="Code for Hope GitHub Repository"
+                                    width={200}
+                                    height={130}
+                                />
+                            </a>
+                        </Link>
                     </div>
 
                     <p className={styles.description}>
@@ -264,18 +312,8 @@ const Home: NextPage = () => {
                             <h2 className={styles.purple}>Founder</h2>
                             <h3>NXpyre</h3>
                             <p>
-                                Leads NXpyre and develops NXpyre&apos;s web
+                                Lead NXpyre and develop NXpyre&apos;s web
                                 application
-                            </p>
-                        </div>
-
-                        <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Chairperson</h2>
-                            <h3>Code for Hope</h3>
-                            <p>
-                                Leads, organises, and conducts the
-                                service-learning project to teach
-                                underprivileged students Python fundamentals
                             </p>
                         </div>
 
@@ -283,9 +321,19 @@ const Home: NextPage = () => {
                             <h2 className={styles.purple}>Co-Founder</h2>
                             <h3>TEDxRI</h3>
                             <p>
-                                Organises, leads the Executive Committee of, and
-                                develops the website of
+                                Organise, lead the Executive Committee of, and
+                                develop the website of
                                 TEDxYouth@RafflesInstitution
+                            </p>
+                        </div>
+
+                        <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Founder</h2>
+                            <h3>Code for Hope</h3>
+                            <p>
+                                Led, organised, and conducted the
+                                service-learning project to teach
+                                underprivileged students Python fundamentals
                             </p>
                         </div>
 
@@ -300,13 +348,9 @@ const Home: NextPage = () => {
                         </div>
 
                         <div className={styles.divcard}>
-                            <h2 className={styles.purple}>
-                                Head of Web Development
-                            </h2>
-                            <h3>TEDxNewton</h3>
-                            <p>
-                                Developed and designed the website of TEDxNewton
-                            </p>
+                            <h2 className={styles.purple}>Web Developer</h2>
+                            <h3>EchoClass</h3>
+                            <p>Develop the EchoClass web application</p>
                         </div>
 
                         <div className={styles.divcard}>
@@ -353,28 +397,6 @@ const Home: NextPage = () => {
                         <Image
                             src="/linkedin.png"
                             alt="LinkedIn Logo"
-                            width={35}
-                            height={35}
-                        />
-                    </a>
-                </Link>
-
-                <Link href="https://medium.com/@xyntechx">
-                    <a target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/medium.svg"
-                            alt="Medium Logo"
-                            width={35}
-                            height={35}
-                        />
-                    </a>
-                </Link>
-
-                <Link href="https://www.instagram.com/xyntechx/">
-                    <a target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/instagram.png"
-                            alt="Instagram Logo"
                             width={35}
                             height={35}
                         />
