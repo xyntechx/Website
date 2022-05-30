@@ -188,7 +188,7 @@ const Home: NextPage = () => {
                     <h1 className={styles.titlelight}>🚀 Projects</h1>
 
                     <div className={styles.projectsgrid}>
-                        <Link href="https://github.com/xyntechx/NexLiber">
+                        <Link href="https://nexliber.com/">
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -310,6 +310,12 @@ const Home: NextPage = () => {
                     <div className={styles.experiencegrid}>
                         <div className={styles.divcard}>
                             <h2 className={styles.purple}>Founder</h2>
+                            <h3>NexLiber</h3>
+                            <p>Create, develop, and manage NexLiber</p>
+                        </div>
+
+                        <div className={styles.divcard}>
+                            <h2 className={styles.purple}>Founder</h2>
                             <h3>NXpyre</h3>
                             <p>
                                 Lead NXpyre and develop NXpyre&apos;s web
@@ -345,12 +351,6 @@ const Home: NextPage = () => {
                                 segmentation and optical character recognition
                                 to adapt manga into other media
                             </p>
-                        </div>
-
-                        <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Web Developer</h2>
-                            <h3>EchoClass</h3>
-                            <p>Develop the EchoClass web application</p>
                         </div>
 
                         <div className={styles.divcard}>
@@ -397,6 +397,17 @@ const Home: NextPage = () => {
                         <Image
                             src="/linkedin.png"
                             alt="LinkedIn Logo"
+                            width={35}
+                            height={35}
+                        />
+                    </a>
+                </Link>
+
+                <Link href="https://www.buymeacoffee.com/xyntechx">
+                    <a target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src="/bmc.png"
+                            alt="Buy Me a Coffee Logo"
                             width={35}
                             height={35}
                         />
