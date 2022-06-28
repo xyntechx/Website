@@ -235,54 +235,6 @@ const Home: NextPage = () => {
                                 />
                             </a>
                         </Link>
-
-                        <Link href="https://tedxri.com/">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>TEDxRI &rarr;</h2>
-                                <Image
-                                    src="/tedxri.png"
-                                    alt="TEDxYouth@RafflesInstitution Homepage"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
-
-                        <Link href="https://wordle-xyntechx.vercel.app/">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>Wordle Clone &rarr;</h2>
-                                <Image
-                                    src="/wordle.png"
-                                    alt="Wordle Clone Game"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
-
-                        <Link href="https://github.com/xyntechx/Code-for-Hope">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.rcard}
-                            >
-                                <h2>Code for Hope &rarr;</h2>
-                                <Image
-                                    src="/cfh.png"
-                                    alt="Code for Hope GitHub Repository"
-                                    width={200}
-                                    height={130}
-                                />
-                            </a>
-                        </Link>
                     </div>
 
                     <p className={styles.description}>
@@ -308,31 +260,6 @@ const Home: NextPage = () => {
                     <h1 className={styles.title}>💭 Experience</h1>
 
                     <div className={styles.experiencegrid}>
-                        <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Founder</h2>
-                            <h3>NexLiber</h3>
-                            <p>Create, develop, and manage NexLiber</p>
-                        </div>
-
-                        <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Founder</h2>
-                            <h3>NXpyre</h3>
-                            <p>
-                                Lead NXpyre and develop NXpyre&apos;s web
-                                application
-                            </p>
-                        </div>
-
-                        <div className={styles.divcard}>
-                            <h2 className={styles.purple}>Co-Founder</h2>
-                            <h3>TEDxRI</h3>
-                            <p>
-                                Organise, lead the Executive Committee of, and
-                                develop the website of
-                                TEDxYouth@RafflesInstitution
-                            </p>
-                        </div>
-
                         <div className={styles.divcard}>
                             <h2 className={styles.purple}>Founder</h2>
                             <h3>Code for Hope</h3>
