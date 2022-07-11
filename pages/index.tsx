@@ -137,19 +137,14 @@ const Home: NextPage = () => {
                         <div className={styles.divcard}>
                             <h2>🌰</h2>
                             <p>
-                                A driven, ambitious, and inquisitive teenager
-                                passionate about{" "}
-                                <span className={styles.blue}>
-                                    computer science
-                                </span>
-                                , <span className={styles.blue}>research</span>,{" "}
-                                <span className={styles.blue}>
-                                    entrepreneurship
-                                </span>
-                                , and{" "}
-                                <span className={styles.blue}>
-                                    service-learning
-                                </span>
+                                &quot;A creative creating creative things&quot;
+                            </p>
+                            <br />
+                            <p>
+                                I love to create for the community, aiming to
+                                innovate novel solutions to challenges both big
+                                and small while constantly learning and
+                                improving myself
                             </p>
                         </div>
 
