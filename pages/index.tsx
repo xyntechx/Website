@@ -162,14 +162,9 @@ const Home: NextPage = () => {
                         <div className={styles.divcard}>
                             <h2>🎯</h2>
                             <p>
-                                Striving to{" "}
-                                <span className={styles.blue}>
-                                    stay hungry and foolish
-                                </span>{" "}
-                                and aiming to become a{" "}
-                                <span className={styles.blue}>
-                                    multi-hyphenate
-                                </span>
+                                Challenging the process and pursuing my passions
+                                in computer science, research, entrepreneurship,
+                                and service-learning
                             </p>
                         </div>
                     </div>
