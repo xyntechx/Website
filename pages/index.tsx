@@ -136,7 +136,7 @@ const Home: NextPage = () => {
                     <div className={styles.aboutgrid}>
                         <div className={styles.divcard}>
                             <h2>🌰</h2>
-                            <p>
+                            <p className={styles.blue}>
                                 &quot;A creative creating creative things&quot;
                             </p>
                             <br />
