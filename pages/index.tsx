@@ -141,16 +141,16 @@ const Home: NextPage = () => {
                             </p>
                             <br />
                             <p>
-                                I love to create for the community, aiming to
-                                innovate novel solutions to challenges both big
-                                and small while constantly learning and
-                                improving myself
+                                I love to experiment with the unprecedented and
+                                innovate impactful solutions in my research,
+                                entrepreneurial, and service-learning pursuits
+                                in computer science and intersecting fields
                             </p>
                         </div>
 
                         <div className={styles.divcard}>
                             <h2>💻</h2>
-                            <p className={styles.blue}>+ Deep Learning</p>
+                            <p className={styles.blue}>+ AI</p>
                             <p className={styles.blue}>+ Web Development</p>
                             <p>+ Quantum Computing</p>
                             <p>+ Cybersecurity</p>
@@ -162,9 +162,10 @@ const Home: NextPage = () => {
                         <div className={styles.divcard}>
                             <h2>🎯</h2>
                             <p>
-                                Challenging the process and pursuing my passions
-                                in computer science, research, entrepreneurship,
-                                and service-learning
+                                Constantly challenging the process and not being
+                                afraid to fail, seizing any opportunity and
+                                pursuing passions with ardent energy and
+                                commitment
                             </p>
                         </div>
                     </div>
