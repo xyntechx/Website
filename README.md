@@ -2,8 +2,7 @@
 Check out my website by clicking [here](https://xyntechx.com/)!
 
 ## 🤖 Technologies
--   Next.js
--   TypeScript
+This website is built with Astro.
 
 ## 🔨 Usage
 ```bash
