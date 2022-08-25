@@ -24,6 +24,17 @@
     row-gap: 1rem;
 }
 
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    z-index: 1;
+    width: 100%;
+    margin-top: 4rem;
+    column-gap: 2rem;
+}
+
 .content-container {
     margin-left: 4rem;
     z-index: 1;
@@ -100,6 +111,12 @@
 
     .back-button {
         width: 50%;
+    }
+
+    .project-container {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 2rem;
     }
 }
 
