@@ -24,7 +24,8 @@
     row-gap: 1rem;
 }
 
-.project-container {
+.project-container,
+.exp-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +34,19 @@
     width: 100%;
     margin-top: 4rem;
     column-gap: 2rem;
+}
+
+.exp-container {
+    flex-direction: column;
+    column-gap: 0;
+}
+
+.explore {
+    padding: 4rem 0;
+    font-size: 1.2rem;
+    text-align: center;
+    z-index: 1;
+    width: 50vw;
 }
 
 .content-container {
@@ -99,6 +113,11 @@
     width: 20%;
 }
 
+.text-link {
+    text-decoration: underline;
+    color: inherit;
+}
+
 @media (max-width: 1150px) {
     .main {
         flex-direction: column;
@@ -117,6 +136,12 @@
         flex-direction: column;
         column-gap: 0;
         row-gap: 2rem;
+    }
+
+    .explore {
+        padding: 2rem 0;
+        width: 90vw;
+        font-size: 1rem;
     }
 }
 
