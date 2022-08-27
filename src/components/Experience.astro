@@ -1,0 +1,79 @@
+---
+import "../styles/styles.css";
+
+export interface Props {
+    position: string;
+    organisation: string;
+    period: string;
+    description: string;
+}
+
+const { position, organisation, period, description } = Astro.props as Props;
+---
+
+<div class="exp-container">
+    <div class="content">
+        <h1 class="position">{position}</h1>
+        <p class="org">{organisation}</p>
+    </div>
+    <div class="content">
+        <p class="period">{period}</p>
+        <p class="description">{description}</p>
+    </div>
+</div>
+
+<style>
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .position {
+        background-color: #7e80f1;
+        font-size: 1.2rem;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0.2rem 1rem;
+    }
+
+    .description,
+    .period {
+        margin: 0;
+        padding: 0 1rem;
+        text-align: justify;
+        width: 100%;
+    }
+
+    .period {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .org {
+        font-size: 1.2rem;
+        text-align: center;
+        margin: 0;
+        margin-top: 1rem;
+        padding: 0 1rem;
+        width: 100%;
+    }
+
+    @media (max-width: 1150px) {
+        .content {
+            width: 90%;
+        }
+
+        .position {
+            padding: 0.2rem 0;
+        }
+
+        .description,
+        .org {
+            padding: 0;
+        }
+    }
+</style>
