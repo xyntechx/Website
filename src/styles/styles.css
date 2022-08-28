@@ -50,7 +50,6 @@
 }
 
 .content-container {
-    margin-left: 4rem;
     z-index: 1;
 }
 
@@ -124,7 +123,6 @@
     }
 
     .content-container {
-        margin-left: 0rem;
         margin-top: 1rem;
     }
 
