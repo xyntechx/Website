@@ -12,9 +12,11 @@ const { imageUrl, name, description, githubUrl } = Astro.props as Props;
 ---
 
 <div class="project-container">
-    <img src={imageUrl} alt={"Image of " + name} class="img" />
+    <img src={imageUrl} alt={`Image of ${name}`} class="img" />
     <div class="content">
-        <a href={githubUrl} class="name" target="_blank">{name} <img src="/github.png" width="20"/></a>
+        <a href={githubUrl} class="name" target="_blank">
+            {name} <img src="/github.png" width="20" />
+        </a>
         <p class="description">{description}</p>
     </div>
 </div>
