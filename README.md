@@ -1,5 +1,5 @@
-# My Website
-Check out my website by clicking [here](https://xyntechx.com/)!
+# xyntechx.com
+Check out my website [here](https://xyntechx.com/)!
 
 ## 🤖 Technologies
 This website is built with Astro.
