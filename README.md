@@ -2,7 +2,7 @@
 Check out my website [here](https://xyntechx.com/)!
 
 ## 🤖 Technologies
-This website is built with Astro 🚀.
+This website is built with Astro 🚀
 
 ## 🔨 Usage
 ```bash
