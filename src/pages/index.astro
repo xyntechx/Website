@@ -1,122 +1,64 @@
 ---
+import Contact from "../components/Contact.astro";
+import Experience from "../components/Experience.astro";
+import Overview from "../components/Overview.astro";
+import Projects from "../components/projects/Projects.astro";
+import Tech from "../components/tech/Tech";
 import Layout from "../layouts/Layout.astro";
-import "../styles/styles.css";
 ---
 
-<Layout title="Nyx Iskandar">
-	<main class="main">
-		<section class="container">
-			<div class="fadein">
-				<span>print(“Hello, World! I'm ”)</span>
-				<span>console.log(“Hello, World! I'm ”)</span>
-				<span>cout << "Hello, World! I'm ";</span>
-				<span>Console.WriteLine("Hello, World! I'm ");</span>
-				<span>System.out.println("Hello, World! I'm ");</span>
-			</div>
-			<h1 class="name">Nyx Iskandar</h1>
-		</section>
-		<section class="container">
-			<a href="about" class="button-red">About</a>
-			<a href="projects" class="button-blue">Projects</a>
-			<a href="experience" class="button-purple">Experience</a>
-		</section>
-	</main>
+<Layout>
+    <div class="container">
+        <Overview />
+        <Projects />
+        <Tech client:load />
+        <Experience />
+        <Contact />
+        <footer class="footer">
+            <sub class="copyright">
+                Copyright &copy; 2022 Nyx Audrey Angelo Iskandar
+            </sub>
+        </footer>
+    </div>
 </Layout>
 
 <style>
-	.name {
-		font-size: 4rem;
-		margin: 0;
-		text-align: center;
-		z-index: 1;
-	}
+    .container {
+        margin: 2rem 0;
+        width: 50vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
-	.fadein {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		width: 100%;
-	}
+    .footer {
+        width: 100%;
+        border-top: 1px solid #ffffff4d;
+        margin-top: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-	.fadein span {
-		animation: fadeEffect 12.5s linear infinite 0s;
-		color: #dcc966;
-		opacity: 0;
-		overflow: hidden;
-		position: absolute;
-		font-size: 1rem;
-		margin: 0 0.5rem;
-	}
+    .copyright {
+        font-size: 0.8rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
 
-	.fadein span:nth-child(2) {
-		animation-delay: 2.5s;
-		-ms-animation-delay: 2.5s;
-		-webkit-animation-delay: 2.5s;
-	}
+    @media (max-width: 900px) {
+        .container {
+            width: 100vw;
+        }
 
-	.fadein span:nth-child(3) {
-		animation-delay: 5s;
-		-ms-animation-delay: 5s;
-		-webkit-animation-delay: 5s;
-	}
+        .footer {
+            width: 90%;
+            margin-top: 2rem;
+        }
 
-	.fadein span:nth-child(4) {
-		animation-delay: 7.5s;
-		-ms-animation-delay: 7.5s;
-		-webkit-animation-delay: 7.5s;
-	}
-
-	.fadein span:nth-child(5) {
-		animation-delay: 10s;
-		-ms-animation-delay: 10s;
-		-webkit-animation-delay: 10s;
-	}
-
-	.fadein span:nth-child(6) {
-		animation-delay: 12.5s;
-		-ms-animation-delay: 12.5s;
-		-webkit-animation-delay: 12.5s;
-	}
-
-	@keyframes fadeEffect {
-		0% {
-			opacity: 0;
-		}
-		5% {
-			opacity: 0;
-			transform: translateY(0px);
-		}
-		10% {
-			opacity: 1;
-			transform: translateY(0px);
-		}
-		25% {
-			opacity: 1;
-			transform: translateY(0px);
-		}
-		30% {
-			opacity: 0;
-			transform: translateY(0px);
-		}
-		80% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-
-	@media (max-width: 1150px) {
-		.name {
-			font-size: 2.5rem;
-			margin-bottom: 2rem;
-		}
-	}
-
-	@media (max-width: 500px) {
-		.fadein span {
-			font-size: 0.8rem;
-		}
-	}
+        .copyright {
+            font-size: 0.7rem;
+        }
+    }
 </style>

@@ -1,79 +1,152 @@
 ---
-import "../styles/styles.css";
-
-export interface Props {
-    position: string;
-    organisation: string;
-    period: string;
-    description: string;
-}
-
-const { position, organisation, period, description } = Astro.props as Props;
+const experiences = [
+    {
+        role: "Founder",
+        organisation: "NexLiber",
+        startDate: "May 2022",
+        endDate: "Present",
+        responsibilities: [
+            "Lead the development of nexliber.com",
+            "Write Workbooks to promote community-driven experiential learning in coding",
+            "Foster a global community of coders",
+            "Manage open-source contributions in terms of Workbooks and new features",
+        ],
+    },
+    {
+        role: "Web Developer",
+        organisation: "EchoClass",
+        startDate: "Mar 2022",
+        endDate: "Aug 2022",
+        responsibilities: [
+            "Developed a Next.js full-stack web application with Tailwind CSS, React Context, and Axios",
+            "Implemented front-end features based on Figma designs from scratch",
+            "Tested existing and newly implemented features in the full-stack web application",
+            "Fixed existing design and logic bugs",
+            "Mentored new recruits on HTML, CSS, React, Next.js, and Tailwind CSS",
+        ],
+    },
+    {
+        role: "Research Intern",
+        organisation: "Advanced Remanufacturing and Technology Centre (ARTC)",
+        startDate: "Nov 2021",
+        endDate: "Jan 2022",
+        responsibilities: [
+            "Developed intelligent industrial robotic systems with vision sensors and computer vision algorithms",
+            "Contributed to an intelligent robotic grasping project using a collaborative robot (UR5), deep neural networks and the Robotic Operating System (ROS) framework",
+            "Conducted an independent CNN-based computer vision project for identifying industrial parts from colour images (the project is to be integrated into the team's software stack)",
+        ],
+    },
+];
 ---
 
-<div class="exp-container">
-    <div class="content">
-        <h1 class="position">{position}</h1>
-        <p class="org">{organisation}</p>
-    </div>
-    <div class="content">
-        <p class="period">{period}</p>
-        <p class="description">{description}</p>
-    </div>
-</div>
+<section class="container">
+    <h1 class="title">My Work Experience</h1>
+    {
+        experiences.map((experience) => (
+            <div class="experience">
+                <h3 class="role">{experience.role}</h3>
+                <h3 class="organisation">{experience.organisation}</h3>
+                <sub class="date">
+                    {experience.startDate} - {experience.endDate}
+                </sub>
+                {experience.responsibilities.map((item) => (
+                    <p class="responsibilities">- {item}</p>
+                ))}
+            </div>
+        ))
+    }
+    <a
+        href="https://www.linkedin.com/in/nyx-iskandar/"
+        target="_blank"
+        class="findmore"
+    >
+        findMore("www.linkedin.com/in/nyx-iskandar") &rarr;
+    </a>
+</section>
 
 <style>
-    .content {
+    .container {
+        width: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         flex-direction: column;
-        width: 80%;
+        height: fit-content;
+        margin-top: 5rem;
     }
 
-    .position {
-        background-color: #7e80f1;
+    .title {
+        margin: 0;
+        margin-bottom: -1rem;
+        width: 100%;
+        font-size: 1.5rem;
+        color: #ff6633;
+    }
+
+    .experience {
+        width: 100%;
+        margin-top: 2rem;
+        border-left: 1px solid #ff663399;
+        padding: 1rem 0;
+        padding-left: 1rem;
+    }
+
+    .role {
+        color: #ff6633;
+    }
+
+    .role,
+    .organisation {
+        margin: 0;
         font-size: 1.2rem;
-        margin: 0;
-        width: 100%;
-        text-align: center;
-        padding: 0.2rem 1rem;
     }
 
-    .description,
-    .period {
-        margin: 0;
-        padding: 0 1rem;
-        text-align: justify;
-        width: 100%;
+    .date {
+        margin: 0.5rem 0;
+        font-size: 0.8rem;
     }
 
-    .period {
+    .responsibilities {
         margin: 1rem 0;
-        text-align: center;
+        font-size: 1rem;
     }
 
-    .org {
-        font-size: 1.2rem;
-        text-align: center;
+    .findmore {
+        color: #ff663399;
+        text-decoration: none;
         margin: 0;
         margin-top: 1rem;
-        padding: 0 1rem;
-        width: 100%;
+        transition: 0.15s;
+        text-align: center;
+        font-size: 1rem;
     }
 
-    @media (max-width: 1150px) {
-        .content {
+    .findmore:hover,
+    .findmore:focus {
+        color: #ff6633;
+    }
+
+    @media (max-width: 900px) {
+        .container {
             width: 90%;
         }
 
-        .position {
-            padding: 0.2rem 0;
+        .title {
+            font-size: 1.2rem;
         }
 
-        .description,
-        .org {
-            padding: 0;
+        .role,
+        .organisation {
+            font-size: 1rem;
+        }
+
+        .responsibilities,
+        .findmore {
+            font-size: 0.8rem;
+        }
+
+        .date {
+            font-size: 0.7rem;
         }
     }
 </style>

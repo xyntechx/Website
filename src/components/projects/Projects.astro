@@ -1,0 +1,68 @@
+---
+import ProjectCards from "./ProjectCards";
+import styles from "./Projects.module.css";
+
+const projects = [
+    {
+        name: "NexLiber",
+        description:
+            "A comprehensive library of projects to supercharge your learning in all things Computer Science",
+        url: "https://nexliber.com",
+        special: true,
+    },
+    {
+        name: "MLA",
+        description:
+            "A deep learning automatic manga reading & analysis system",
+        url: "https://github.com/xyntechx/Manga-Layout-Analysis",
+        special: true,
+    },
+    {
+        name: "Code for Hope",
+        description:
+            "A service-learning project teaching underprivileged students Python fundamentals",
+        url: "https://github.com/xyntechx/Code-for-Hope",
+        special: true,
+    },
+    {
+        name: "NXpyre",
+        description:
+            "A platform connecting youth and professionals to make career information more accessible",
+        url: "https://nxpyre.com",
+        special: true,
+    },
+    {
+        name: "diKnow",
+        description: "A web application to learn about dinosaurs",
+        url: "https://xyntechx-diknow.deno.dev",
+        special: false,
+    },
+    {
+        name: "Project Manager",
+        description:
+            "A local storage-driven web app to manage projects or other todos",
+        url: "https://xyntechx-project-manager.deno.dev",
+        special: false,
+    },
+    {
+        name: "roygbiv",
+        description: "A colorful reaction time game",
+        url: "https://roygbiv.vercel.app",
+        special: false,
+    },
+];
+---
+
+<section class={styles.mainContainer}>
+    <h1 class={styles.title}>My Projects</h1>
+
+    <ProjectCards projects={projects} client:load />
+
+    <a
+        href="https://github.com/xyntechx"
+        target="_blank"
+        class={styles.findmore}
+    >
+        findMore("github.com/xyntechx") &rarr;
+    </a>
+</section>

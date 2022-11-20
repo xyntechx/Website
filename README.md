@@ -2,7 +2,9 @@
 Check out my website [here](https://xyntechx.com/)
 
 ## 🤖 Technologies
-This website is built with Astro 🚀
+- Astro
+- React
+- Getform
 
 ## 🔨 Usage
 ```bash
