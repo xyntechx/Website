@@ -11,13 +11,35 @@ interface Props {
 }
 
 const ProjectCards = ({ projects }: Props) => {
+    const [touchStart, setTouchStart] = useState<number>();
+    const [touchEnd, setTouchEnd] = useState<number>();
+    const [checkTouch, setCheckTouch] = useState(true); // true/false only used as toggle
+
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(2);
+
     const [current, setCurrent] = useState(0); // index of focused toggle
+
     const [transition, setTransition] = useState(true); // true/false only used as toggle
     const [pause, setPause] = useState(false);
 
     const targets = useRef([...Array(Math.ceil(projects.length / 2)).keys()]);
+
+    const handleTouch = () => {
+        if (touchEnd! < touchStart!) {
+            // swiped left: forward
+            if (current < targets.current.length - 1) handleToggle(current + 1);
+            else handleToggle(0);
+            setPause(true);
+        }
+
+        if (touchEnd! > touchStart!) {
+            // swiped right: backward
+            if (current > 0) handleToggle(current - 1);
+            else handleToggle(targets.current.length - 1);
+            setPause(true);
+        }
+    };
 
     const handleToggle = (target: number) => {
         setStartIndex(target * 2);
@@ -37,9 +59,20 @@ const ProjectCards = ({ projects }: Props) => {
         }
     }, [transition, pause]);
 
+    useEffect(() => {
+        handleTouch();
+    }, [checkTouch]);
+
     return (
         <>
-            <div className={styles.projects}>
+            <div
+                className={styles.projects}
+                onTouchStart={(e) => setTouchStart(e.changedTouches[0].screenX)}
+                onTouchEnd={(e) => {
+                    setTouchEnd(e.changedTouches[0].screenX);
+                    setCheckTouch(!checkTouch);
+                }}
+            >
                 {projects.slice(startIndex, endIndex).map((project) => (
                     <a
                         href={project.url}
@@ -73,6 +106,7 @@ const ProjectCards = ({ projects }: Props) => {
                             setPause(true);
                         }}
                         key={target}
+                        aria-label={`See group ${target + 1} of projects`}
                     />
                 ))}
             </div>
