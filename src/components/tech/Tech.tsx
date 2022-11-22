@@ -1,9 +1,14 @@
 import { useState } from "react";
+import Category from "./Category";
 import styles from "./Tech.module.css";
 
 const Tech = () => {
     const [shown, setShown] = useState(0);
     // 0: CS Fields, 1: Programming Languages, 2: Technologies
+
+    const fields = ["Web Development", "Artificial intelligence", "Quantum Computing"];
+    const languages = ["Python", "TypeScript/JavaScript", "C#", "Go", "Julia"];
+    const tech = ["Next.js", "Astro", "Remix", "Prisma", "Tensorflow + Keras", "OpenCV", "Qiskit"];
 
     return (
         <section className={styles.container}>
@@ -40,38 +45,9 @@ const Tech = () => {
                     Technologies
                 </button>
             </nav>
-            <ul
-                style={{ display: shown === 0 ? "flex" : "none" }}
-                className={styles.list}
-            >
-                <li>Web Development</li>
-                <li>Artificial intelligence</li>
-                <li>Quantum Computing</li>
-            </ul>
-            <ul
-                style={{ display: shown === 1 ? "flex" : "none" }}
-                className={styles.list}
-            >
-                <li>Python</li>
-                <li>TypeScript/JavaScript</li>
-                <li>C#</li>
-                <li>Go</li>
-                <li>Julia</li>
-            </ul>
-            <ul
-                style={{ display: shown === 2 ? "flex" : "none" }}
-                className={styles.list}
-            >
-                <li>Next.js</li>
-                <li>Astro</li>
-                <li>Fresh</li>
-                <li>Remix</li>
-                <li>Nuxt</li>
-                <li>Prisma</li>
-                <li>Tensorflow + Keras</li>
-                <li>OpenCV</li>
-                <li>Qiskit</li>
-            </ul>
+            <Category shown={shown} index={0} items={fields} />
+            <Category shown={shown} index={1} items={languages} />
+            <Category shown={shown} index={2} items={tech} />
         </section>
     );
 };
