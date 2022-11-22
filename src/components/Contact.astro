@@ -8,10 +8,29 @@
         Want to collaborate, have questions about my projects, need a freelance
         web developer, or just want to chat? I'd love to hear from you!
     </p>
-    <input type="text" name="name" placeholder="Name" class="input" />
-    <input type="email" name="email" placeholder="Email" class="input" />
-    <textarea name="message" placeholder="Message" rows="10" class="input"
-    ></textarea>
+    <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        class="input"
+        required
+        aria-required="true"
+    />
+    <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        class="input"
+        required
+        aria-required="true"
+    />
+    <textarea
+        name="message"
+        placeholder="Message"
+        rows="10"
+        class="input"
+        required
+        aria-required="true"></textarea>
     <input type="hidden" name="_gotcha" style="display:none !important" />
     <button type="submit" class="button">Let's Go!</button>
 </form>
