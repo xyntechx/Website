@@ -8,7 +8,7 @@ const Tech = () => {
 
     const fields = ["Web Development", "Artificial intelligence", "Quantum Computing"];
     const languages = ["Python", "TypeScript/JavaScript", "C#", "Go", "Julia"];
-    const tech = ["Next.js", "Astro", "Remix", "Prisma", "Tensorflow + Keras", "OpenCV", "Qiskit"];
+    const tech = ["Next.js", "Astro", "Remix", "Supabase", "Tensorflow + Keras", "OpenCV", "Qiskit"];
 
     return (
         <section className={styles.container}>
