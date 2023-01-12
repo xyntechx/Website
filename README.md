@@ -8,7 +8,7 @@ Check out my website [here](https://xyntechx.com/)
 
 ## 🔨 Usage
 ```bash
-npm install
+npm i
 ```
 
 ```bash
