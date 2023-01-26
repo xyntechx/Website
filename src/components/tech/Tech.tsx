@@ -6,9 +6,21 @@ const Tech = () => {
     const [shown, setShown] = useState(0);
     // 0: CS Fields, 1: Programming Languages, 2: Technologies
 
-    const fields = ["Web Development", "Artificial intelligence", "Quantum Computing"];
+    const fields = [
+        "Web Development",
+        "Artificial Intelligence",
+        "Quantum Computing",
+    ];
     const languages = ["Python", "TypeScript/JavaScript", "C#", "Go", "Julia"];
-    const tech = ["Next.js", "Astro", "Remix", "Supabase", "Tensorflow + Keras", "OpenCV", "Qiskit"];
+    const tech = [
+        "Next.js",
+        "Astro",
+        "Remix",
+        "Supabase",
+        "Tensorflow + Keras",
+        "OpenCV",
+        "Qiskit",
+    ];
 
     return (
         <section className={styles.container}>
