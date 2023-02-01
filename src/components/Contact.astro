@@ -1,3 +1,19 @@
+<head>
+    <script
+        src="https://www.google.com/recaptcha/api.js?render=6LfvXEEkAAAAAOlglJA2n44UbSieij0Ozk1efH-I"
+    >
+        grecaptcha.ready(() => {
+            grecaptcha
+                .execute("6LfvXEEkAAAAAOlglJA2n44UbSieij0Ozk1efH-I", {
+                    action: "homepage",
+                })
+                .then((token) => {
+                    document.getElementById("captchaResponse").value = token;
+                });
+        });
+    </script>
+</head>
+
 <form
     action="https://getform.io/f/66010af6-9f3b-453d-9256-3d8d56be46ef"
     method="POST"
@@ -32,6 +48,7 @@
         required
         aria-required="true"></textarea>
     <input type="hidden" name="_gotcha" style="display:none !important" />
+    <input type="hidden" id="captchaResponse" name="g-recaptcha-response" />
     <button type="submit" class="button">Let's Go!</button>
 </form>
 
