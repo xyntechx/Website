@@ -5,7 +5,7 @@
         grecaptcha.ready(() => {
             grecaptcha
                 .execute("6LfvXEEkAAAAAOlglJA2n44UbSieij0Ozk1efH-I", {
-                    action: "homepage",
+                    action: "submit",
                 })
                 .then((token) => {
                     document.getElementById("captchaResponse").value = token;
