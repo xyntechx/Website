@@ -6,7 +6,6 @@ interface Props {
         name: string;
         description: string;
         url: string;
-        special: boolean;
     }[];
 }
 
@@ -78,11 +77,6 @@ const ProjectCards = ({ projects }: Props) => {
                         href={project.url}
                         target="_blank"
                         className={styles.project}
-                        style={{
-                            backgroundColor: project.special
-                                ? "#ffb13d33"
-                                : "#ffffff33",
-                        }}
                         key={project.name}
                     >
                         <h3 className={styles.name}>{project.name}</h3>
