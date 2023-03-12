@@ -1,5 +1,4 @@
-# xyntechx.com
-Check out my website [here](https://xyntechx.com/)
+# [xyntechx.com](https://xyntechx.com/)
 
 ## 🤖 Technologies
 - Astro
