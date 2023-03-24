@@ -11,11 +11,13 @@ const Tech = () => {
         "Artificial Intelligence",
         "Quantum Computing",
     ];
-    const languages = ["Python", "TypeScript/JavaScript", "C#", "Go", "Julia"];
+
+    const languages = ["Python", "TypeScript/JavaScript", "Rust", "C#", "Go"];
+
     const tech = [
         "Next.js",
         "Astro",
-        "Remix",
+        "Solid",
         "Supabase",
         "Tensorflow + Keras",
         "OpenCV",
