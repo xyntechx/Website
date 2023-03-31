@@ -18,6 +18,7 @@ const Tech = () => {
         "Next.js",
         "Astro",
         "Solid",
+        "PocketBase",
         "Supabase",
         "Tensorflow + Keras",
         "OpenCV",
