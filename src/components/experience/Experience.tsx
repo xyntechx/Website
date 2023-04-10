@@ -21,17 +21,19 @@ const Experience = ({ experience }: Props) => {
             <sub className={styles.date}>
                 {experience.startDate} - {experience.endDate}
             </sub>
-            <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className={styles.readmore}
-            >
-                {isExpanded ? "Read Less \u25B2" : "Read More \u25BC"}
-            </button>
+            {experience.responsibilities.length > 0 && (
+                <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className={styles.readmore}
+                >
+                    {isExpanded ? "Read Less \u25B2" : "Read More \u25BC"}
+                </button>
+            )}
             {isExpanded && (
                 <>
                     {experience.responsibilities.map((item) => (
                         <p key={item} className={styles.responsibilities}>
-                            - {item}
+                            + {item}
                         </p>
                     ))}
                 </>
