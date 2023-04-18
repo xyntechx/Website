@@ -1,21 +1,12 @@
 ---
-import Contact from "../components/Contact.astro";
-import Experiences from "../components/experience/Experiences.astro";
-import Overview from "../components/Overview.astro";
-import Projects from "../components/projects/Projects.astro";
-import Tech from "../components/tech/Tech";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
     <div class="container">
-        <Overview />
-        <Projects />
-        <Tech client:load />
-        <Experiences />
-        <Contact />
+        <h1>nyx</h1>
         <footer class="footer">
-            <sub class="copyright">
+            <sub>
                 Copyright &copy; 2023 Nyx Audrey Angelo Iskandar
             </sub>
         </footer>
@@ -23,43 +14,19 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-    .container {
-        margin: 2rem 0;
-        width: 50vw;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+	.container {
+		width: 80%;
+	}
+	.footer {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-top: 2px solid #000;
+		padding: 1rem;
+	}
 
-    .footer {
-        width: 100%;
-        border-top: 1px solid #ffffff4d;
-        margin-top: 5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .copyright {
-        font-size: 0.8rem;
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    @media (max-width: 900px) {
-        .container {
-            width: 100vw;
-        }
-
-        .footer {
-            width: 90%;
-            margin-top: 2rem;
-        }
-
-        .copyright {
-            font-size: 0.7rem;
-        }
-    }
+	.footer sub {
+		font-size: 0.8rem;
+	}
 </style>
