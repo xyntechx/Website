@@ -1,33 +1,40 @@
 ---
-import HelloWorld from "../components/helloworld.astro";
 import Layout from "../layouts/Layout.astro";
+import HelloWorld from "../components/sections/helloworld.astro";
+import AboutMe from "../components/sections/aboutme.astro";
+// import Topnav from "../components/topnav";
 ---
 
 <Layout>
+    <!-- <Topnav client:load /> -->
     <main class="container">
         <HelloWorld />
+        <AboutMe />
         <footer class="footer">
-            <sub>
-                Copyright &copy; 2023 Nyx Audrey Angelo Iskandar
-            </sub>
+            <sub> Copyright &copy; 2023 Nyx Audrey Angelo Iskandar</sub>
         </footer>
     </main>
 </Layout>
 
 <style>
-	.container {
-		width: 80%;
-	}
-	.footer {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-top: 2px solid #000;
-		padding: 1rem;
-	}
+    .container {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
-	.footer sub {
-		font-size: 0.8rem;
-	}
+    .footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 2px solid #000;
+        padding: 1rem;
+    }
+
+    .footer sub {
+        font-size: 0.8rem;
+    }
 </style>
