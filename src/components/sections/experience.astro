@@ -1,0 +1,88 @@
+---
+import type { IExperience } from "../../../utils/types";
+import ExpCard from "../expCard";
+
+const experiences: IExperience[] = [
+    {
+        position: "Software Engineer (Intern)",
+        org: "GovTech Singapore",
+        startDate: "Apr 2023",
+        endDate: "Present",
+        responsibilities: [],
+    },
+    {
+        position: "Intern",
+        org: "IMDA Singapore",
+        startDate: "Jan 2023",
+        endDate: "Mar 2023",
+        responsibilities: [
+            "Co-authored a mini-journal on sustainable computing",
+            "Researched on digital transformation efforts of various countries",
+            "Proposed augmentations to IMDA's Digital Leaders Programme",
+        ],
+    },
+    {
+        position: "Research Intern",
+        org: "Advanced Remanufacturing and Technology Centre (ARTC)",
+        startDate: "Nov 2021",
+        endDate: "Jan 2022",
+        responsibilities: [
+            "Led a CNN-based computer vision project for identifying industrial parts from colour images (the project is to be integrated into the team's software stack)",
+            "Assisted an intelligent robotic grasping project using a collaborative robot (UR5), deep neural networks and the Robotic Operating System (ROS) framework",
+        ],
+    },
+];
+---
+
+<div class="bg" id="work-experience">
+    <div class="container">
+        {experiences.map((exp) => <ExpCard {...{ exp }} client:load />)}
+        <a
+            href="https://www.linkedin.com/in/nyx-iskandar/details/experience/"
+            target="_blank"
+            class="link"
+        >
+            findMore("in/nyx-iskandar") &rarr;
+        </a>
+    </div>
+</div>
+
+<style>
+    .bg {
+        width: 100vw;
+        background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #ff6633 20%,
+            #ff6633 80%,
+            #ffffff 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .container {
+        width: 80vw;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 2rem;
+        padding: 5rem 0;
+    }
+
+    .link {
+        text-decoration: none;
+        color: #000;
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    .link:hover {
+        color: #fff;
+    }
+</style>
