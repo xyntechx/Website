@@ -1,51 +1,46 @@
+---
+import type { IProject } from "../../../utils/types";
+
+const projects: IProject[] = [
+    {
+        name: "NexLiber",
+        desc: "A library of comprehensive coding project documentations extinguishing tutorial hell",
+        url: "https://nexliber.com/",
+    },
+    {
+        name: "Plasma",
+        desc: "The web development tech stack of the future (Solid + Tailwind + PocketBase)",
+        url: "https://github.com/teamxynlab/plasma",
+    },
+    {
+        name: "MLA",
+        desc: "A deep learning automatic manga reading and analysis system",
+        url: "https://github.com/xyntechx/Manga-Layout-Analysis",
+    },
+];
+---
+
 <div class="container" id="main-projects">
-    <h1>My Projects</h1>
-    <p class="subtitle">
-        which are long-term in nature and are (imho) very useful and cool
-    </p>
     <div class="grid">
-        <a
-            href="https://github.com/teamxynlab/plasma"
-            target="_blank"
-            class="griditem"
-        >
-            <h3>Plasma &rarr;</h3>
-            <p>
-                The web development tech stack of the future (Solid + Tailwind +
-                PocketBase)
-            </p>
-        </a>
-        <a href="https://nexliber.com/" target="_blank" class="griditem">
-            <h3>NexLiber &rarr;</h3>
-            <p>
-                A library of comprehensive coding project documentations
-                extinguishing tutorial hell
-            </p>
-        </a>
-        <a
-            href="https://github.com/xyntechx/Manga-Layout-Analysis"
-            target="_blank"
-            class="griditem"
-        >
-            <h3>MLA &rarr;</h3>
-            <p>A deep learning automatic manga reading and analysis system</p>
-        </a>
+        {
+            projects.map((project) => (
+                <a href={project.url} target="_blank" class="griditem">
+                    <h3>{project.name} &rarr;</h3>
+                    <p>{project.desc}</p>
+                </a>
+            ))
+        }
     </div>
-    <a href="https://github.com/xyntechx" target="_blank" class="link"
-        >findMore("github.com/xyntechx") &rarr;</a
-    >
+    <a href="https://github.com/xyntechx" target="_blank" class="link">
+        findMore("github.com/xyntechx") &rarr;
+    </a>
 </div>
 
 <style>
-    h1,
     h3,
     p {
         margin: 0;
         text-align: center;
-    }
-
-    h1 {
-        font-size: 4rem;
     }
 
     h3 {
@@ -56,14 +51,9 @@
         font-size: 1.2rem;
     }
 
-    .subtitle {
-        font-size: 1.5rem;
-        width: 50%;
-    }
-
     .container {
         width: 80vw;
-        min-height: 70vh;
+        min-height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -72,12 +62,24 @@
     }
 
     .grid {
-        width: 80vw;
+        width: 80%;
         display: grid;
-        grid-template-columns: 1fr 1.5fr 1fr;
-        column-gap: 50px;
-        justify-items: center;
+        grid-template-areas: "a a" "b c";
+        column-gap: 3rem;
+        row-gap: 3rem;
         margin: 2rem 0;
+    }
+
+    .griditem:nth-child(1) {
+        grid-area: a;
+    }
+
+    .griditem:nth-child(2) {
+        grid-area: b;
+    }
+
+    .griditem:nth-child(3) {
+        grid-area: c;
     }
 
     .griditem {
@@ -85,7 +87,7 @@
         padding: 2rem 1rem;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         flex-direction: column;
         row-gap: 0.5rem;
         border: 2px solid #000;
