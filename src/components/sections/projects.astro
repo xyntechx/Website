@@ -1,0 +1,115 @@
+---
+import type { IProject } from "../../../utils/types";
+
+const projects: IProject[] = [
+    {
+        name: "NexLiber",
+        desc: "A library of comprehensive coding project documentations extinguishing tutorial hell",
+        url: "https://nexliber.com/",
+    },
+    {
+        name: "Plasma",
+        desc: "The web development tech stack of the future (Solid + Tailwind + PocketBase)",
+        url: "https://github.com/teamxynlab/plasma",
+    },
+    {
+        name: "MLA",
+        desc: "A deep learning automatic manga reading and analysis system",
+        url: "https://github.com/xyntechx/Manga-Layout-Analysis",
+    },
+];
+---
+
+<div class="container" id="main-projects">
+    <div class="grid">
+        {
+            projects.map((project) => (
+                <a href={project.url} target="_blank" class="griditem">
+                    <h3>{project.name} &rarr;</h3>
+                    <p>{project.desc}</p>
+                </a>
+            ))
+        }
+    </div>
+    <a href="https://github.com/xyntechx" target="_blank" class="link">
+        findMore("github.com/xyntechx") &rarr;
+    </a>
+</div>
+
+<style>
+    h3,
+    p {
+        margin: 0;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        width: 80vw;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+
+    .grid {
+        width: 80%;
+        display: grid;
+        grid-template-areas: "a a" "b c";
+        column-gap: 3rem;
+        row-gap: 3rem;
+        margin: 2rem 0;
+    }
+
+    .griditem:nth-child(1) {
+        grid-area: a;
+    }
+
+    .griditem:nth-child(2) {
+        grid-area: b;
+    }
+
+    .griditem:nth-child(3) {
+        grid-area: c;
+    }
+
+    .griditem {
+        background-color: #fff;
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        border: 2px solid #000;
+        border-radius: 1rem;
+        box-shadow: 0px 10px 10px #ffb13daa;
+        transition: 0.15s;
+    }
+
+    .griditem:hover {
+        box-shadow: 0px 15px 20px #ffb13daa;
+        cursor: pointer;
+    }
+
+    .griditem:hover h3,
+    .link:hover {
+        background: linear-gradient(to right, #ffb13d, #ff6633);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .link {
+        font-weight: 800;
+        margin-top: 2rem;
+    }
+</style>

@@ -2,7 +2,7 @@
 
 ## 🤖 Technologies
 - Astro
-- React
+- Solid
 - Getform
 
 ## 🔨 Usage

@@ -1,0 +1,66 @@
+.exp {
+    background-color: #fff;
+    padding: 1.5rem 1rem;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    border: 2px solid #000;
+    border-radius: 1rem;
+    box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.25);
+}
+
+.exp h3,
+.exp h4,
+.exp sub {
+    margin: 0;
+    text-align: left;
+}
+
+.exp h3 {
+    font-size: 1.2rem;
+}
+
+.exp h4 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.exp sub {
+    font-size: 0.8rem;
+}
+
+.exp ul {
+    list-style-type: "+";
+    margin: 0;
+    padding: 0;
+    padding-left: 0.5rem;
+}
+
+.exp ul li {
+    margin: 0;
+    padding: 0;
+    padding-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.exp button {
+    outline: none;
+    background: none;
+    border: none;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.exp button:hover {
+    background: linear-gradient(to right, #ffb13d, #ff6633);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
