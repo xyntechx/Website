@@ -45,40 +45,25 @@
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
 
-            html,
+            html {
+                font-family: "Inter", sans-serif;
+                color: #eee;
+                background-color: #111;
+                margin: 0;
+                padding: 0;
+            }
+
             body {
                 padding: 0;
                 margin: 0;
-                font-family: "Inter", sans-serif;
-                background-color: #fff;
-                color: #000;
-                overflow-x: hidden;
-                scroll-behavior: smooth !important;
             }
 
             main {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
                 width: 100vw;
-            }
-        </style>
-
-        <style is:global>
-            ::-webkit-scrollbar {
-                width: 15px;
-            }
-
-            ::-webkit-scrollbar-track {
-                background: #ff6633aa;
-                border-left: 2px solid #fff;
-                border-right: 2px solid #fff;
-            }
-
-            ::-webkit-scrollbar-thumb {
-                background: #f63;
-                border: 2px solid #fff;
+                min-height: 100vh;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
             }
 
             a {
@@ -88,11 +73,6 @@
 
             * {
                 box-sizing: border-box;
-            }
-
-            textarea,
-            code {
-                font-family: "Inter", sans-serif;
             }
         </style>
     </body>

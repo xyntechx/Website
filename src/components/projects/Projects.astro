@@ -1,0 +1,40 @@
+---
+import ProjectCards from "./ProjectCards";
+import type { IProject } from "../../utils/types";
+import styles from "./Projects.module.css";
+
+const projects: IProject[] = [
+    {
+        name: "NexLiber",
+        description:
+            "A library of comprehensive coding project documentations extinguishing tutorial hell",
+        url: "https://nexliber.com",
+    },
+    {
+        name: "Plasma",
+        description:
+            "The web development tech stack of the future (Solid + Tailwind + PocketBase)",
+        url: "https://github.com/teamxynlab/plasma",
+    },
+    {
+        name: "MLA",
+        description:
+            "A deep learning automatic manga reading and analysis system",
+        url: "https://github.com/xyntechx/Manga-Layout-Analysis",
+    },
+];
+---
+
+<section class={styles.mainContainer}>
+    <h1 class={styles.title}>Main Projects</h1>
+
+    <ProjectCards {...{ projects }} client:load />
+
+    <a
+        href="https://github.com/xyntechx"
+        target="_blank"
+        class={styles.findmore}
+    >
+        findMore("github.com/xyntechx") &rarr;
+    </a>
+</section>

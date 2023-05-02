@@ -1,0 +1,108 @@
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    margin-top: 5rem;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: -1rem;
+    width: 100%;
+    font-size: 1.5rem;
+    color: #ff6633;
+}
+
+.experience {
+    width: 100%;
+    margin-top: 2rem;
+    border-left: 1px solid #ff663399;
+    padding: 1rem 0;
+    padding-left: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.role {
+    color: #ff6633;
+}
+
+.role,
+.organisation {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.organisation {
+    font-weight: 400;
+}
+
+.date {
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+}
+
+.responsibilities {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.readmore {
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: #ff663399;
+    text-decoration: none;
+    margin: 0.5rem 0;
+    transition: 0.15s;
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.findmore {
+    color: #ff663399;
+    text-decoration: none;
+    margin: 0;
+    margin-top: 1rem;
+    transition: 0.15s;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.findmore:hover,
+.findmore:focus,
+.readmore:hover {
+    color: #ff6633;
+}
+
+@media (max-width: 900px) {
+    .container {
+        width: 90%;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .role,
+    .organisation {
+        font-size: 1rem;
+    }
+
+    .responsibilities,
+    .findmore,
+    .readmore {
+        font-size: 0.8rem;
+    }
+
+    .date {
+        font-size: 0.7rem;
+    }
+}

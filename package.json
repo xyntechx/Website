@@ -1,7 +1,7 @@
 {
   "name": "xyntechx",
   "type": "module",
-  "version": "3.0.0",
+  "version": "2.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,8 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^2.1.0",
-    "astro": "^2.3.0",
-    "solid-js": "^1.7.3"
+    "@astrojs/react": "^2.1.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "astro": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
