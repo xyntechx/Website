@@ -1,5 +1,4 @@
 # [xyntechx.com](https://xyntechx.com/)
-My portfolio website
 
 ## 🤖 Technologies
 - Astro
