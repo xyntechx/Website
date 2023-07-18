@@ -2,12 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Topnav from "../components/Topnav.astro";
 import Overview from "../components/Overview.astro";
+import About from "../components/About.astro";
 ---
 
 <Layout>
     <Topnav />
     <main>
         <Overview />
+        <About />
     </main>
 </Layout>
 
@@ -19,6 +21,7 @@ import Overview from "../components/Overview.astro";
         justify-content: center;
         flex-direction: column;
     }
+
     h1 {
         font-size: 3rem;
         font-weight: 800;
