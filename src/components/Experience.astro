@@ -1,0 +1,109 @@
+---
+interface IExperience {
+    role: string;
+    organisation: string;
+    fields: string[];
+    techs: string[];
+}
+
+const experiences: IExperience[] = [
+    {
+        role: "Founder",
+        organisation: "NexLiber",
+        fields: ["Full Stack Web Development", "Education"],
+        techs: [
+            "Next.js",
+            "Supabase",
+            "Stripe",
+            "Storyblok",
+            "SendGrid",
+            "Orama",
+        ],
+    },
+    {
+        role: "Software Engineer",
+        organisation: "GovTech Singapore",
+        fields: ["Full Stack Web Development"],
+        techs: ["React", "Redux", "WebSocket", "Ruby on Rails", "MySQL", "AWS"],
+    },
+    {
+        role: "Robotic Intelligence Researcher",
+        organisation: "Advanced Remanufacturing and Technology Centre",
+        fields: ["Robotics", "Deep Learning", "Computer Vision"],
+        techs: ["Robotic Operating System (ROS)", "UR5", "CNN"],
+    },
+];
+---
+
+<section>
+    <h1><span class="titleArrow">&gt;</span> Experience</h1>
+    {
+        experiences.map((exp) => (
+            <div>
+                <h3 class="role">{exp.role}</h3>
+                <p class="organisation">{exp.organisation}</p>
+                <p class="fields">
+                    <b>{exp.fields.length > 1 ? "Fields" : "Field"}</b>:{" "}
+                    {exp.fields.join(", ")}
+                </p>
+                <p class="techs">
+                    <b>Tech</b>: {exp.techs.join(", ")}
+                </p>
+            </div>
+        ))
+    }
+</section>
+
+<style>
+    section {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 70vh;
+        width: fit-content;
+        padding: 1rem;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    div {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #fff;
+        filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+            drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+        margin: 2rem 0;
+        padding: 1.5rem 2rem;
+        width: 100%;
+        border-radius: 0.5rem;
+        row-gap: 0.5rem;
+    }
+
+    .role,
+    .organisation,
+    .fields,
+    .techs {
+        text-align: left;
+    }
+
+    .role {
+        font-size: 2rem;
+        margin: 0;
+        color: var(--orange);
+    }
+
+    .fields {
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .role {
+            font-size: 1.5rem;
+        }
+    }
+</style>
