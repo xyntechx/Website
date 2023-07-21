@@ -1,65 +1,34 @@
 ---
-import Overview from "../components/Overview.astro";
-import Intro from "../components/Intro.astro";
-import Projects from "../components/projects/Projects.astro";
-import Experiences from "../components/experience/Experiences.astro";
-import Contact from "../components/Contact.astro";
 import Layout from "../layouts/Layout.astro";
+import Topnav from "../components/Topnav.astro";
+import Overview from "../components/Overview.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <Layout>
-    <div class="container">
+    <Topnav />
+    <main>
         <Overview />
-        <Intro />
-        <Projects />
-        <Experiences />
+        <About />
+        <Experience />
         <Contact />
-        <footer class="footer">
-            <sub class="copyright">
-                Copyright &copy; 2023 Nyx Audrey Angelo Iskandar
-            </sub>
-        </footer>
-    </div>
+    </main>
 </Layout>
 
 <style>
-    .container {
-        margin: 2rem 0;
-        width: 50vw;
-        min-height: 100vh;
+    main {
+        width: 90%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
 
-    .footer {
-        width: 100%;
-        border-top: 1px solid #ffffff4d;
-        margin-top: 5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .copyright {
-        font-size: 0.8rem;
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    @media (max-width: 900px) {
-        .container {
-            width: 100vw;
-        }
-
-        .footer {
-            width: 90%;
-            margin-top: 2rem;
-        }
-
-        .copyright {
-            font-size: 0.7rem;
-        }
+    h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0;
     }
 </style>

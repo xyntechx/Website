@@ -1,87 +1,66 @@
-<section class="container">
-    <div class="details">
-        <h1 class="name">Nyx Iskandar</h1>
-        <h2 class="tagline">A creative creating creative things</h2>
-        <div class="socials">
-            <a href="https://github.com/xyntechx" target="_blank">
-                <img
-                    src="/assets/github.png"
-                    alt="Nyx's GitHub"
-                    width="20px"
-                    height="20px"
-                />
-            </a>
-            <a href="https://www.linkedin.com/in/nyx-iskandar/" target="_blank">
-                <img
-                    src="/assets/linkedin.png"
-                    alt="Nyx's LinkedIn"
-                    width="20px"
-                    height="20px"
-                />
-            </a>
-        </div>
+<section>
+    <div>
+        <h1>Hi,</h1>
+        <h1>I'm <span class="nyx">Nyx</span></h1>
+        <p>a creative creating creative things</p>
     </div>
-    <img
-        src="/assets/profile-pic.png"
-        alt="Nyx's Profile Picture"
-        width="100px"
-        height="100px"
-    />
+    <img src="/profile.png" alt="Nyx's Profile Picture" />
 </section>
+<p class="darr">&darr;</p>
 
 <style>
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: row;
-        width: 100%;
-        height: fit-content;
-    }
-
-    .details {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .name {
-        font-size: 2rem;
-        margin: 0;
-        text-align: left;
-    }
-
-    .tagline {
-        font-size: 1.2rem;
-        margin: 0;
-        text-align: left;
-        color: #ff6633;
-        font-weight: 400;
-    }
-
-    .socials {
-        width: fit-content;
-        margin-top: 0.5rem;
+    section {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: row;
-        column-gap: 0.5rem;
+        row-gap: 3rem;
+        column-gap: 5rem;
+        min-height: 90vh;
     }
 
-    @media (max-width: 900px) {
-        .container {
-            width: 90%;
-            column-gap: 2rem;
+    img {
+        width: 300px;
+        height: auto;
+    }
+
+    .nyx {
+        color: var(--orange);
+    }
+
+    .darr {
+        font-size: 3rem;
+        animation: bounce 1s infinite;
+        cursor: default;
+    }
+
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(-25%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        section {
+            flex-direction: column;
         }
 
-        .name {
-            font-size: 1.5rem;
+        img {
+            width: 200px;
         }
 
-        .tagline {
-            font-size: 1rem;
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
         }
     }
 </style>
