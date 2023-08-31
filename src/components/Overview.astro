@@ -1,10 +1,15 @@
+---
+import { Image } from 'astro:assets';
+import profilePic from '../assets/profile.png';
+---
+
 <section>
     <div>
         <h1>Hi,</h1>
         <h1>I'm <span class="nyx">Nyx</span></h1>
         <p>a creative creating creative things</p>
     </div>
-    <img src="/profile.png" alt="Nyx's Profile Picture" />
+    <Image src={profilePic} alt="Nyx's Profile Picture" class="img"/>
 </section>
 <p class="darr">&darr;</p>
 
@@ -19,9 +24,10 @@
         min-height: 90vh;
     }
 
-    img {
+    .img {
         width: 300px;
         height: auto;
+        clip-path: circle();
     }
 
     .nyx {
