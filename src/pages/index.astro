@@ -1,34 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Topnav from "../components/Topnav.astro";
-import Overview from "../components/Overview.astro";
-import About from "../components/About.astro";
-import Experience from "../components/Experience.astro";
-import Contact from "../components/Contact.astro";
+import Topnav from "../components/topnav/index.astro";
+import Landing from "../components/Landing.astro";
+import About from "../components/about/index.astro";
+import Exp from "../components/exp/index.astro";
+import Projects from "../components/projects/index.astro";
+import Research from "../components/research/index.astro";
+import Links from "../components/links/index.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-    <Topnav />
-    <main>
-        <Overview />
+    <main
+        class="min-h-screen flex flex-col items-center justify-center bg-primary-black text-white px-48 py-16"
+    >
+        <Topnav />
+        <Landing />
         <About />
-        <Experience />
-        <Contact />
+        <Exp />
+        <Projects />
+        <Research />
+        <Links />
     </main>
+    <Footer />
 </Layout>
-
-<style>
-    main {
-        width: 90%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-    }
-</style>

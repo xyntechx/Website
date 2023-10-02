@@ -1,0 +1,23 @@
+---
+const {
+    title,
+    url,
+    aim,
+    fields,
+    tech,
+} = Astro.props;
+---
+
+<div
+    class="text-lg font-normal bg-secondary-black border border-dim-black w-full rounded-md p-4 flex flex-row items-start justify-between"
+>
+    <div>
+        <p class="text-2xl">{title}</p>
+        <a href={url} target="_blank" class="text-xl text-primary-blue underline">{url}</a>
+        <p class="pt-4">Aim: {aim}</p>
+        <p>
+            {fields.length > 1 ? "Fields" : "Field"}: {fields.join(", ")}
+        </p>
+        <p>{tech.length > 1 ? "Techs" : "Tech"}: {tech.join(", ")}</p>
+    </div>
+</div>
