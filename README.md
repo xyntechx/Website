@@ -2,7 +2,7 @@
 
 ## 🤖 Technologies
 - Astro
-- Getform
+- Tailwind
 
 ## 🔨 Usage
 ```bash

@@ -1,8 +1,4 @@
----
-import Footer from "../components/Footer.astro";
----
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -30,7 +26,7 @@ import Footer from "../components/Footer.astro";
         <link
             rel="mask-icon"
             href="/favicons/safari-pinned-tab.svg"
-            color="#ff6633"
+            color="#33C2FF"
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
         <meta name="msapplication-TileColor" content="#da532c" />
@@ -40,7 +36,6 @@ import Footer from "../components/Footer.astro";
         />
         <meta name="theme-color" content="#ffffff" />
         <script defer src="/_vercel/insights/script.js"></script>
-        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
         <meta name="description" content="Nyx Iskandar's website" />
         <meta name="author" content="Nyx Iskandar" />
         <meta property="og:title" content="Nyx Iskandar" />
@@ -52,86 +47,18 @@ import Footer from "../components/Footer.astro";
         <meta property="og:url" content="https://xyntechx.com/" />
         <meta property="og:type" content="website" />
     </head>
-    <body>
+    <body
+        class="p-0 m-0 flex items-center justify-center flex-col bg-primary-black text-white"
+    >
         <slot />
-        <Footer />
     </body>
 </html>
-<style is:global>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
 
-    :root {
-        --orange: #ff6633;
-        --blue: #003262;
-        --gray: #00000011;
-        --bg-color: #f9fafb;
-    }
+<style is:global>
+    @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;800&display=swap");
 
     html {
-        font-family: "Inter", sans-serif;
-        color: var(--blue);
-        background-color: var(--bg-color);
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-    }
-
-    body {
-        padding: 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: column;
-    }
-
-    main {
-        width: 100vw;
-        min-height: 100vh;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-    }
-
-    h1,
-    p {
-        margin: 0;
-    }
-
-    h1 {
-        font-size: 4rem;
-    }
-
-    p,
-    button {
-        font-size: 1.5rem;
-    }
-
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    textarea {
-        font-family: "Inter", sans-serif;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    .titleArrow {
-        color: var(--orange);
-    }
-
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 2rem;
-        }
-
-        p,
-        button {
-            font-size: 1rem;
-        }
+        font-family: "Inconsolata", monospace !important;
+        scroll-behavior: smooth !important;
     }
 </style>
