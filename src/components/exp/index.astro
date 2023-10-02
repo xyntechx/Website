@@ -1,0 +1,63 @@
+---
+import Cell from "./cell.astro";
+
+interface IExp {
+    org: string;
+    position: string;
+    startMonth: number;
+    startYear: number;
+    endMonth: number | "Now";
+    endYear?: number;
+    fields: string[];
+    tech: string[];
+}
+
+const exps: IExp[] = [
+    {
+        org: "UC Berkeley CBE",
+        position: "Undergraduate Researcher",
+        startMonth: 9,
+        startYear: 2023,
+        endMonth: "Now",
+        fields: ["Machine Learning", "Web Development"],
+        tech: ["Three.js", "Next.js", "Axios", "Chakra UI"],
+    },
+    {
+        org: "TranscribeGlass",
+        position: "Data Science and Software Engineering Intern",
+        startMonth: 9,
+        startYear: 2023,
+        endMonth: "Now",
+        fields: ["Data Science", "iOS Development"],
+        tech: ["Swift", "Firebase"],
+    },
+    {
+        org: "GovTech Singapore",
+        position: "Software Engineering Intern",
+        startMonth: 4,
+        startYear: 2023,
+        endMonth: 7,
+        endYear: 2023,
+        fields: ["Web Development"],
+        tech: ["React", "Redux", "WebSocket", "Ruby on Rails", "MySQL", "AWS"],
+    },
+    {
+        org: "A*STAR Singapore",
+        position: "Robotic Intelligence Research Intern",
+        startMonth: 11,
+        startYear: 2021,
+        endMonth: 1,
+        endYear: 2022,
+        fields: ["Robotics", "Deep Learning", "Computer Vision"],
+        tech: ["Robotic Operating System (ROS)", "UR5", "CNN"],
+    },
+];
+---
+
+<section
+    id="exp"
+    class="w-full min-h-[80vh] flex flex-col items-start justify-start gap-y-8 py-24 px-8 md:px-0"
+>
+    <h1 class="text-4xl md:text-6xl font-bold">Exp</h1>
+    {exps.map((exp) => <Cell {...exp} />)}
+</section>

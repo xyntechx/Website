@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import nyxImg from "../assets/nyx.jpg";
+import githubImg from "../assets/github.svg";
+import linkedinImg from "../assets/linkedin.png";
+import emailImg from "../assets/email.png";
+---
+
+<section
+    id="intro"
+    class="w-full min-h-[70vh] flex flex-col md:flex-row items-center justify-center md:justify-between gap-y-8"
+>
+    <div
+        class="flex flex-col items-center md:items-start justify-center w-full md:w-3/4 gap-y-2 md:gap-y-4 font-bold"
+    >
+        <h1 class="text-4xl md:text-6xl">Nyx Iskandar</h1>
+        <p class="text-xl md:text-2xl font-normal text-primary-blue">
+            {"= () => { "}<span class="text-white">Build to Solve</span>{" }"}
+        </p>
+        <div class="flex flex-row w-full items-center justify-center md:justify-start gap-x-6">
+            <a href="https://github.com/xyntechx" target="_blank">
+                <Image
+                    src={githubImg}
+                    alt="Nyx's GitHub: https://github.com/xyntechx"
+                    width={25}
+                />
+            </a>
+            <a href="https://www.linkedin.com/in/nyx-iskandar/" target="_blank">
+                <Image
+                    src={linkedinImg}
+                    alt="Nyx's LinkedIn: https://www.linkedin.com/in/nyx-iskandar/"
+                    width={25}
+                />
+            </a>
+            <a href="mailto:nyx@berkeley.edu" target="_blank">
+                <Image
+                    src={emailImg}
+                    alt="Nyx's email: nyx@berkeley.edu"
+                    width={25}
+                />
+            </a>
+        </div>
+    </div>
+    <Image
+        src={nyxImg}
+        alt="Nyx in front of Golden Gate Bridge"
+        class="rounded-full w-1/2 md:w-1/4"
+    />
+</section>

@@ -1,0 +1,29 @@
+---
+import Cell from "./cell.astro";
+
+interface IResearch {
+    title: string;
+    url: string;
+    aim: string;
+    fields: string[];
+    tech: string[];
+}
+
+const research: IResearch[] = [
+    {
+        title: "Manga Layout Analysis via Deep Learning",
+        url: "https://doi.org/10.1007/978-981-19-7222-5",
+        aim: "Alleviate the extremely heavy workload faced by Japanese animators daily when adapting manga into anime, movies, etc.",
+        fields: ["Deep Learning", "Instance Segmentation", "Optical Character Recognition"],
+        tech: ["TensorFlow", "Keras", "OpenCV"],
+    },
+];
+---
+
+<section
+    id="research"
+    class="w-full min-h-[80vh] flex flex-col items-start justify-start gap-y-8 py-24 px-8 md:px-0"
+>
+    <h1 class="text-4xl md:text-6xl font-bold">Research</h1>
+    {research.map((r) => <Cell {...r} />)}
+</section>

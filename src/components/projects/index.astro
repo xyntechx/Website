@@ -1,0 +1,47 @@
+---
+import Cell from "./cell.astro";
+
+interface IProject {
+    org: string;
+    position: string;
+    startMonth: number;
+    startYear: number;
+    endMonth: number | "Now";
+    endYear?: number;
+    aim: string;
+    fields: string[];
+    tech: string[];
+}
+
+const projects: IProject[] = [
+    {
+        org: "NexLiber",
+        position: "Founder and Lead Developer",
+        startMonth: 5,
+        startYear: 2022,
+        endMonth: "Now",
+        aim: "Promote greater accessibility in coding education and wider collaboration amongst student developers",
+        fields: ["Web Development", "Education", "Dev Community"],
+        tech: ["Next.js", "Supabase", "Storyblok"],
+    },
+    {
+        org: "Code for Hope",
+        position: "Founder and Lead Mentor",
+        startMonth: 4,
+        startYear: 2021,
+        endMonth: 4,
+        endYear: 2022,
+        aim: "Close the income gap by teaching underprivileged students the highly relevant and sought-after skill of coding",
+        fields: ["Education"],
+        tech: ["Python"],
+    },
+];
+---
+
+<section
+    id="projects"
+    class="w-full min-h-[80vh] flex flex-col items-start justify-start gap-y-8 py-24 px-8 md:px-0"
+>
+    <h1 class="text-4xl md:text-6xl font-bold">Projects</h1>
+    {projects.map((proj) => <Cell {...proj} />)}
+</section>

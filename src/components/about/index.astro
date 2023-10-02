@@ -1,0 +1,37 @@
+---
+import Cell from "./cell.astro";
+---
+
+<section
+    id="about"
+    class="w-full min-h-[80vh] flex flex-col items-start justify-start gap-y-8 py-24 px-8 md:px-0"
+>
+    <h1 class="text-4xl md:text-6xl font-bold">About</h1>
+    <Cell title="intro">
+        <span>
+            Hi! I'm Nyx, a coder and tech founder committed to building
+            impactful tech to <span class="text-primary-blue">solve</span>
+             problems in the community.
+        </span>
+    </Cell>
+    <Cell title="edu">
+        <span>
+            I'm currently studying Electrical Engineering and Computer Sciences
+            (<span class="text-primary-blue">EECS</span>) at <span
+                class="text-primary-blue">UC Berkeley</span
+            >, where I also contribute to organizations like <span
+                class="text-primary-blue">Machine Learning at Berkeley</span
+            > and the <span class="text-primary-blue"
+                >Associated Students of the University of California</span
+            > (Student Government).
+        </span>
+    </Cell>
+    <Cell title="scholarship">
+        <span>
+            I've been awarded the <span class="text-primary-blue"
+                >highly selective, full-ride Smart Nation Scholarship</span
+            > from the Singapore Government for the entirety of my undergraduate
+            studies.
+        </span>
+    </Cell>
+</section>
