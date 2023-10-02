@@ -31,7 +31,7 @@ const projects: IProject[] = [
         startYear: 2021,
         endMonth: 4,
         endYear: 2022,
-        aim: "Teach the highly relevant and sought-after skill of coding to underprivileged students to close the income gap",
+        aim: "Close the income gap by teaching underprivileged students the highly relevant and sought-after skill of coding",
         fields: ["Education"],
         tech: ["Python"],
     },
@@ -40,8 +40,8 @@ const projects: IProject[] = [
 
 <section
     id="projects"
-    class="w-full min-h-[80vh] flex flex-col items-start justify-start gap-y-8 py-24"
+    class="w-full min-h-[80vh] flex flex-col items-start justify-start gap-y-8 py-24 px-8 md:px-0"
 >
-    <h1 class="text-6xl font-bold">Projects</h1>
+    <h1 class="text-4xl md:text-6xl font-bold">Projects</h1>
     {projects.map((proj) => <Cell {...proj} />)}
 </section>

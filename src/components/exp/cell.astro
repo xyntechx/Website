@@ -12,18 +12,11 @@ const {
 ---
 
 <div
-    class="text-lg font-normal bg-secondary-black border border-dim-black w-full rounded-md p-4 flex flex-row items-start justify-between"
+    class="text-md md:text-lg font-normal bg-secondary-black border border-dim-black w-full rounded-md p-4 flex flex-col items-start justify-center gap-y-2"
 >
-    <div>
-        <p class="text-2xl">{org}</p>
-        <p class="text-xl text-primary-blue">{position}</p>
-        <p class="pt-4">
-            {fields.length > 1 ? "Fields" : "Field"}: {fields.join(", ")}
-        </p>
-        <p>{tech.length > 1 ? "Techs" : "Tech"}: {tech.join(", ")}</p>
-    </div>
-    <div class="min-w-[150px] text-right pl-4">
-        <p class="text-sm">
+    <div class="flex flex-row items-start justify-between w-full">
+        <p class="text-xl md:text-2xl">{org}</p>
+        <p class="text-sm text-right min-w-[150px]">
             {startMonth.toString().padStart(2, "0")}/{startYear} - {
                 endMonth === "Now"
                     ? endMonth
@@ -31,4 +24,9 @@ const {
             }{endYear && `/${endYear}`}
         </p>
     </div>
+    <p class="text-lg md:text-xl text-primary-blue">{position}</p>
+    <p class="pt-4">
+        {fields.length > 1 ? "Fields" : "Field"}: {fields.join(", ")}
+    </p>
+    <p>{tech.length > 1 ? "Techs" : "Tech"}: {tech.join(", ")}</p>
 </div>
