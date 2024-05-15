@@ -1,26 +1,52 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Topnav from "../components/topnav/index.astro";
-import Landing from "../components/Landing.astro";
-import About from "../components/about/index.astro";
-import Exp from "../components/exp/index.astro";
-import Projects from "../components/projects/index.astro";
-import Research from "../components/research/index.astro";
-import Links from "../components/links/index.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
+<Layout title="Nyx Iskandar">
     <main
-        class="min-h-screen flex flex-col items-center justify-center bg-primary-black text-white md:px-48 py-16"
+        class="w-screen h-screen flex items-center justify-center flex-col gap-y-4"
     >
-        <Topnav />
-        <Landing />
-        <About />
-        <Exp />
-        <Projects />
-        <Research />
-        <Links />
+        <div
+            class="flex items-center justify-center flex-col bg-triangle bg-no-repeat bg-center bg-[length:150px_150px] h-[150px] w-fit"
+        >
+            <h1 class="text-4xl font-semibold">nyx iskandar</h1>
+            <p>ai/ml researcher {"<>"} full stack swe</p>
+        </div>
+        <div class="flex flex-row items-center justify-center gap-x-4">
+            <a
+                href="/about"
+                class="px-4 py-1 bg-black text-white rounded-lg transition-colors hover:bg-gray-800"
+                >/about</a
+            >
+            <a
+                href="/projects"
+                class="px-4 py-1 bg-black text-white rounded-lg transition-colors hover:bg-gray-800"
+                >/projects</a
+            >
+            <a
+                href="/resume.pdf"
+                class="px-4 py-1 bg-black text-white rounded-lg transition-colors hover:bg-gray-800"
+                >/resume</a
+            >
+        </div>
+        <div
+            class="flex flex-row items-center justify-center gap-x-4 bottom-[10px] fixed"
+        >
+            <a
+                href="https://github.com/xyntechx"
+                target="_blank"
+                class="underline transition-colors hover:text-white">github</a
+            >
+            <a
+                href="https://www.linkedin.com/in/nyx-iskandar"
+                target="_blank"
+                class="underline transition-colors hover:text-white">linkedin</a
+            >
+            <a
+                href="mailto:nyx@berkeley.edu"
+                target="_blank"
+                class="underline transition-colors hover:text-white">email</a
+            >
+        </div>
     </main>
-    <Footer />
 </Layout>
