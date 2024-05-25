@@ -6,9 +6,9 @@
 
 ## 🔨 Usage
 ```bash
-npm i
+pnpm i
 ```
 
 ```bash
-npm run dev
+pnpm dev
 ```
