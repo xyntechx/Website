@@ -23,6 +23,10 @@ import Link from "../components/Link.astro";
         : {desc}
     </p>
     <div class="flex flex-row items-center justify-center gap-x-2">
-        {links.map((l) => <Link href={l.href} display={l.display} />)}
+        {
+            links.map((l) => (
+                <Link href={l.href} target="_blank" display={l.display} />
+            ))
+        }
     </div>
 </div>
