@@ -1,0 +1,28 @@
+---
+interface ILink {
+    href: string;
+    display: string;
+}
+
+interface Props {
+    title: string;
+    desc: string;
+    links: ILink[];
+}
+
+const { title, desc, links } = Astro.props;
+
+import Link from "../components/Link.astro";
+---
+
+<div
+    class="p-4 border border-gray-400 rounded-md flex items-start justify-center flex-col gap-y-1 w-full"
+>
+    <p>{title}</p>
+    <p class="text-gray-400">
+        : {desc}
+    </p>
+    <div class="flex flex-row items-center justify-center gap-x-2">
+        {links.map((l) => <Link href={l.href} display={l.display} />)}
+    </div>
+</div>
