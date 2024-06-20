@@ -2,9 +2,10 @@
 interface Props {
     href: string;
     display: string;
+    target?: string;
 }
 
-const { href, display } = Astro.props;
+const { href, display, target } = Astro.props;
 ---
 
-<a href={href} class="text-gray-400 hover:text-blue-400 underline transition">{display}</a>
+<a href={href} target={target || "_self"} class="text-gray-400 hover:text-blue-400 underline transition">{display}</a>
