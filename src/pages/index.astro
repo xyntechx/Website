@@ -1,52 +1,158 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
+import Card from "../components/Card.astro";
+import nyx from "../assets/nyx.jpeg";
+import logo from "../assets/logo.svg";
 ---
 
 <Layout title="Nyx Iskandar">
     <main
-        class="w-screen min-h-screen flex items-center justify-center flex-col gap-y-4"
+        class="w-screen min-h-screen flex items-center justify-start flex-col gap-y-10 md:p-10 p-6"
     >
-        <div
-            class="flex items-center justify-center flex-col bg-triangle bg-no-repeat bg-center bg-[length:150px_150px] h-[150px] w-fit"
+        <nav
+            class="w-full md:w-1/2 h-fit flex items-center justify-between flex-row gap-x-4"
         >
-            <h1 class="text-4xl font-semibold">nyx iskandar</h1>
-            <p>ai/ml researcher {"<>"} full stack swe</p>
-        </div>
-        <div class="flex flex-row items-center justify-center gap-x-4">
-            <a
-                href="/about"
-                class="px-4 py-1 bg-black text-white rounded-lg transition-colors hover:bg-gray-800"
-                >/about</a
-            >
-            <a
-                href="/projects"
-                class="px-4 py-1 bg-black text-white rounded-lg transition-colors hover:bg-gray-800"
-                >/projects</a
-            >
-            <a
-                href="/nyx-resume.pdf"
-                class="px-4 py-1 bg-black text-white rounded-lg transition-colors hover:bg-gray-800"
-                >/resume</a
-            >
-        </div>
-        <div
-            class="flex flex-row items-center justify-center gap-x-4 bottom-[10px] fixed"
+            <Image src={logo} alt="xyntechx" width={50} />
+            <div class="flex items-center justify-center gap-x-4">
+                <Link href="#about" display="#about" />
+                <Link href="#projects" display="#projects" />
+                <Link href="#connect" display="#connect" />
+            </div>
+        </nav>
+
+        <section
+            class="w-full md:w-1/2 h-fit flex items-center justify-center flex-col gap-y-2"
         >
-            <a
-                href="https://github.com/xyntechx"
-                target="_blank"
-                class="underline transition-colors hover:text-white">github</a
+            <Image
+                src={nyx}
+                alt="Nyx in front of the Golden Gate Bridge"
+                width={200}
+                class="rounded-full border-4 border-blue-200 p-2"
+            />
+            <h1 class="text-4xl font-bold pt-4">Nyx Iskandar</h1>
+            <p class="text-gray-400 text-center">
+                🐻 EECS (+ Public Policy & Economics) @ UC Berkeley
+            </p>
+            <p class="text-gray-400 text-center">
+                🤖 AI Researcher @ Center for Human-Compatible Artificial
+                Intelligence
+            </p>
+            <p class="text-gray-400 text-center">
+                🚀 GovTech Singapore Scholar
+            </p>
+        </section>
+
+        <section
+            class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
+        >
+            <h1
+                id="about"
+                class="text-3xl font-bold w-full border-b-2 border-blue-200 py-1"
             >
-            <a
+                #about
+            </h1>
+            <p class="w-full text-gray-400">
+                I'm an engineer and entrepreneur committed to building
+                beneficial tech for public good. I'm most passionate about and
+                thus primarily build in the AI/ML and full-stack web development
+                spaces. At the Center for Human-Compatible Artificial
+                Intelligence (CHAI), I conduct research under postdoc Cam Allen
+                in value alignment and bounded optimality in human-AI assistance
+                games given resource asymmetry and constraints. For my talent
+                and passion in technology, leadership, and public service, I've
+                been awarded the full-ride Smart Nation Scholarship by GovTech
+                Singapore for my undergraduate studies at UC Berkeley.
+            </p>
+            <p class="w-full text-gray-400">
+                Outside of tech, I love to play volleyball, boulder, and draw
+                manga!
+            </p>
+        </section>
+
+        <section
+            class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
+        >
+            <h1
+                id="projects"
+                class="text-3xl font-bold w-full border-b-2 border-blue-200 py-1"
+            >
+                #projects
+            </h1>
+            <Card
+                title="Manga Layout Analysis"
+                desc="a deep learning computer vision pipeline (instance segmentation and OCR) to automate the semantic and structural analysis of manga"
+                links={[
+                    {
+                        href: "https://doi.org/10.1007/978-981-19-7222-5_6",
+                        display: "paper",
+                    },
+                    {
+                        href: "https://github.com/xyntechx/Manga-Layout-Analysis",
+                        display: "github",
+                    },
+                ]}
+            />
+            <Card
+                title="NexLiber"
+                desc="an edutech platform to promote greater accessibility in coding education and wider collaboration among developers"
+                links={[
+                    {
+                        href: "https://nexliber.vercel.app/",
+                        display: "website",
+                    },
+                    {
+                        href: "https://github.com/xyntechx/NexLiber",
+                        display: "github",
+                    },
+                ]}
+            />
+            <Card
+                title="ASUC Elections Dashboard"
+                desc="a dashboard to analyze and visualize UC Berkeley student government election outcomes"
+                links={[
+                    {
+                        href: "https://asuc-elections.vercel.app/",
+                        display: "website",
+                    },
+                    {
+                        href: "https://github.com/xyntechx/NexLiber",
+                        display: "github",
+                    },
+                ]}
+            />
+            <Card
+                title="hack-a-month"
+                desc="[in progress] basically Advent of Code x NexLiber"
+                links={[
+                    {
+                        href: "https://github.com/xyntechx/hack-a-month",
+                        display: "github",
+                    },
+                ]}
+            />
+        </section>
+
+        <section
+            class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
+        >
+            <h1
+                id="connect"
+                class="text-3xl font-bold w-full border-b-2 border-blue-200 py-1"
+            >
+                #connect
+            </h1>
+            <Link href="https://github.com/xyntechx" display="github" />
+            <Link
                 href="https://www.linkedin.com/in/nyx-iskandar"
-                target="_blank"
-                class="underline transition-colors hover:text-white">linkedin</a
-            >
-            <a
-                href="mailto:nyx@berkeley.edu"
-                target="_blank"
-                class="underline transition-colors hover:text-white">email</a
-            >
-        </div>
+                display="linkedin"
+            />
+            <Link href="mailto:nyx@berkeley.edu" display="email" />
+        </section>
+
+        <p class="text-gray-400 text-center">
+            Copyright &copy; 2024 Nyx Iskandar
+        </p>
     </main>
 </Layout>
