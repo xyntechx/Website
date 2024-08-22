@@ -1,8 +1,12 @@
 ---
 import { Image } from "astro:assets";
+
 import Layout from "../layouts/Layout.astro";
-import Link from "../components/Link.astro";
+
 import Card from "../components/Card.astro";
+import Heading from "../components/Heading.astro";
+import Link from "../components/Link.astro";
+
 import nyx from "../assets/nyx.jpeg";
 import logo from "../assets/logo.svg";
 ---
@@ -46,12 +50,7 @@ import logo from "../assets/logo.svg";
         <section
             class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
         >
-            <h1
-                id="about"
-                class="text-3xl font-bold w-full border-b-2 border-blue-200 py-1"
-            >
-                #about
-            </h1>
+            <Heading text="about" />
             <p class="w-full text-gray-400">
                 My passion lies in the unique union of engineering and public
                 policy in technology. Currently, I'm an undergraduate researcher
@@ -72,12 +71,7 @@ import logo from "../assets/logo.svg";
         <section
             class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
         >
-            <h1
-                id="projects"
-                class="text-3xl font-bold w-full border-b-2 border-blue-200 py-1"
-            >
-                #projects
-            </h1>
+            <Heading text="projects" />
             <Card
                 title="Manga Layout Analysis"
                 desc="a deep learning computer vision pipeline (instance segmentation and OCR) to automate the semantic and structural analysis of manga"
@@ -125,12 +119,7 @@ import logo from "../assets/logo.svg";
         <section
             class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
         >
-            <h1
-                id="connect"
-                class="text-3xl font-bold w-full border-b-2 border-blue-200 py-1"
-            >
-                #connect
-            </h1>
+            <Heading text="connect" />
             <Link
                 href="https://github.com/xyntechx"
                 target="_blank"
