@@ -8,4 +8,10 @@ interface Props {
 const { href, display, target } = Astro.props;
 ---
 
-<a href={href} target={target || "_self"} class="text-gray-400 hover:text-blue-400 underline transition">{display}</a>
+<a
+    href={href}
+    target={target || "_self"}
+    class="text-gray-400 hover:text-blue-400 underline transition"
+>
+    {display}
+</a>
