@@ -6,11 +6,13 @@ interface ILink {
 
 interface Props {
     title: string;
-    desc: string;
-    links: ILink[];
+    desc?: string;
+    links?: ILink[];
+    position?: string;
+    duration?: string;
 }
 
-const { title, desc, links } = Astro.props;
+const { title, desc, links, position, duration } = Astro.props;
 
 import Link from "../components/Link.astro";
 ---
@@ -19,14 +21,15 @@ import Link from "../components/Link.astro";
     class="p-4 border border-gray-400 rounded-md flex items-start justify-center flex-col gap-y-1 w-full"
 >
     <p>{title}</p>
-    <p class="text-gray-400">
-        : {desc}
-    </p>
+    {desc && <p class="text-gray-400">: {desc}</p>}
+    {position && <p class="text-gray-400">{position}</p>}
+    {duration && <p class="text-gray-500">{duration}</p>}
     <div class="flex flex-row items-center justify-center gap-x-2">
         {
-            links.map((l) => (
-                <Link href={l.href} target="_blank" display={l.display} />
-            ))
+            links &&
+                links.map((l) => (
+                    <Link href={l.href} target="_blank" display={l.display} />
+                ))
         }
     </div>
 </div>

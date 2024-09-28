@@ -19,9 +19,10 @@ import logo from "../assets/logo.svg";
             class="w-full md:w-1/2 h-fit flex items-center justify-between flex-row gap-x-4"
         >
             <Image src={logo} alt="xyntechx" width={50} />
-            <div class="flex items-center justify-center gap-x-4">
+            <div class="flex items-center justify-center md:gap-x-4 gap-x-2">
                 <Link href="#about" display="#about" />
-                <Link href="#projects" display="#projects" />
+                <Link href="#research" display="#research" />
+                <Link href="#exp" display="#exp" />
                 <Link href="#connect" display="#connect" />
             </div>
         </nav>
@@ -37,11 +38,30 @@ import logo from "../assets/logo.svg";
             />
             <h1 class="text-4xl font-bold pt-4">Nyx Iskandar</h1>
             <p class="text-gray-400 text-center">
-                🐻 EECS + Public Policy (+ Economics) @ UC Berkeley
+                🐻 EECS + Public Policy @ UC Berkeley
             </p>
-            <p class="text-gray-400 text-center">
-                🤖 AI Undergrad Researcher @ Center for Human-Compatible AI
-            </p>
+            <div
+                class="text-gray-400 text-center flex items-center justify-center flex-row gap-x-1"
+            >
+                <p>🤖 Research @</p>
+                <Link
+                    href="https://humancompatible.ai/"
+                    display="CHAI"
+                    target="_blank"
+                />
+                <p>+</p>
+                <Link
+                    href="https://bair.berkeley.edu/"
+                    display="BAIR"
+                    target="_blank"
+                />
+                <p>+</p>
+                <Link
+                    href="https://brsl.berkeley.edu/"
+                    display="BRSL"
+                    target="_blank"
+                />
+            </div>
             <p class="text-gray-400 text-center">
                 🚀 GovTech Singapore Scholar
             </p>
@@ -52,37 +72,38 @@ import logo from "../assets/logo.svg";
         >
             <Heading text="about" />
             <p class="w-full text-gray-400">
-                My passion lies in the unique union of engineering and public
-                policy in technology, my ultimate mission being to shape tech
-                for public good. As an undergraduate researcher at the Center
-                for Human-Compatible AI, I study and design action abstractions
-                to improve the optimality, reliability, and efficiency of
-                black-box planning agents. I'm also currently conducting
-                independent research (advised by UC Berkeley professors) in the
-                intersection of AI and education with the aim of realizing
-                personalized education. In the policy sphere, I'm primarily
-                interested in analyzing policies in safe and responsible AI,
-                making efforts to ensure that these policies are established on
-                well-founded ground. For my talent and passion in technology,
-                leadership, and public service, I've been awarded the
-                prestigious Smart Nation Scholarship by GovTech Singapore to
-                pursue my undergraduate studies in Electrical Engineering &
-                Computer Sciences (EECS) and Public Policy at UC Berkeley.
+                Passionate about AI from both the technical and policy
+                perspectives, I'm a Singapore Government scholar and UC Berkeley
+                undergraduate researcher actively working on action abstractions
+                for black-box planning agents, data-centric AI governance, LLM
+                safety testing, and AI for personalized education. Outside of
+                tech, I love to play volleyball, climb/boulder, and draw manga!
             </p>
         </section>
 
         <section
             class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
         >
-            <Heading text="projects" />
+            <Heading text="research" />
             <Card
-                title="AI x Edu Research Project [Name TBD]"
-                desc="an automated tool to personalize the medium of instruction to enhance learner motivation (e.g. transform textbooks into choose-your-own-adventures)"
-                links={[]}
+                title="Center for Human-Compatible AI (CHAI)"
+                desc="Designing action abstractions to improve the optimality, reliability, and efficiency of black-box planning agents (advised by Cameron Allen)"
+                duration="Jun 2024 - Now"
             />
             <Card
-                title="Manga Layout Analysis"
-                desc="a deep learning computer vision pipeline (instance segmentation and OCR) to automate the semantic and structural analysis of manga"
+                title="Berkeley Artificial Intelligence Research (BAIR) / Berkeley Risk and Security Lab (BRSL)"
+                desc="Creating and testing novel technical approaches for data-centric AI governance for the Frontier Data Initiative (advised by Ritwik Gupta)"
+                duration="Sep 2024 - Now"
+            />
+            <Card
+                title="[Independent Research] AI for Education"
+                desc="Creating an AI pipeline to personalize online textbooks to enhance learner motivation (advised by Profs Gireeja Ranade, Narges Norouzi)"
+                duration="Sep 2024 - Now"
+            />
+            <Card
+                title="[Independent Research] Manga Layout Analysis"
+                desc="Innovated a novel deep learning computer vision pipeline (instance segmentation and OCR) to automate the semantic and structural analysis of manga"
+                duration="Apr 2021 - Dec 2022"
                 links={[
                     {
                         href: "https://doi.org/10.1007/978-981-19-7222-5_6",
@@ -94,33 +115,31 @@ import logo from "../assets/logo.svg";
                     },
                 ]}
             />
+        </section>
+
+        <section
+            class="w-full md:w-1/2 h-fit flex items-start justify-center flex-col gap-y-2"
+        >
+            <Heading text="exp" />
             <Card
-                title="NexLiber"
-                desc="an edutech platform to promote greater accessibility in coding education and wider collaboration among developers"
-                links={[
-                    {
-                        href: "https://nexliber.vercel.app/",
-                        display: "website",
-                    },
-                    {
-                        href: "https://github.com/xyntechx/NexLiber",
-                        display: "github",
-                    },
-                ]}
+                title="Government Technology Agency (GovTech) Singapore"
+                position="AI Engineer/Researcher (Responsible AI Team)"
+                duration="Sep 2024 - Now"
             />
             <Card
-                title="ASUC Elections Dashboard"
-                desc="the official dashboard to analyze and visualize UC Berkeley student government election outcomes"
-                links={[
-                    {
-                        href: "https://asuc-elections.vercel.app/",
-                        display: "website",
-                    },
-                    {
-                        href: "https://github.com/xyntechx/asuc-elections",
-                        display: "github",
-                    },
-                ]}
+                title="Machine Learning at Berkeley"
+                position="ML Engineer & External Relations Officer"
+                duration="Sep 2023 - Now"
+            />
+            <Card
+                title="Associated Students of the University of California, Office of the CTO"
+                position="Product Owner & Lead Software Engineer"
+                duration="Jan 2024 - May 2024"
+            />
+            <Card
+                title="Government Technology Agency (GovTech) Singapore"
+                position="Full Stack Software Engineering Intern"
+                duration="Apr 2023 - Jul 2023"
             />
         </section>
 
