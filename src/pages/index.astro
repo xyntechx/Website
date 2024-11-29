@@ -41,20 +41,34 @@ import logo from "../assets/logo.svg";
                 🐻 EECS + Public Policy @ UC Berkeley
             </p>
             <div
-                class="text-gray-400 text-center flex items-center justify-center flex-row gap-x-1"
+                class="text-gray-400 text-center flex items-center justify-center flex-col lg:flex-row gap-x-1"
             >
-                <p>🤖 AI/ML Research @</p>
-                <Link
-                    href="https://humancompatible.ai/"
-                    display="CHAI"
-                    target="_blank"
-                />
-                <p>+</p>
-                <Link
-                    href="https://bair.berkeley.edu/"
-                    display="BAIR"
-                    target="_blank"
-                />
+                <p class="text-gray-400 text-center">🤖 AI/ML Research @</p>
+                <div class="flex items-center justify-center flex-row gap-x-1">
+                    <Link
+                        href="https://humancompatible.ai/"
+                        display="CHAI"
+                        target="_blank"
+                    />
+                    <p>+</p>
+                    <Link
+                        href="https://bair.berkeley.edu/"
+                        display="BAIR"
+                        target="_blank"
+                    />
+                    <p>+</p>
+                    <Link
+                        href="https://brsl.berkeley.edu/"
+                        display="BRSL"
+                        target="_blank"
+                    />
+                    <p>+</p>
+                    <Link
+                        href="https://www.tech.gov.sg/"
+                        display="GovTech SG"
+                        target="_blank"
+                    />
+                </div>
             </div>
         </section>
 
@@ -88,28 +102,28 @@ import logo from "../assets/logo.svg";
             <Heading text="research" />
             <Card
                 title="Center for Human-Compatible AI (CHAI)"
-                desc="action abstractions for black-box planning agents (advised by Dr Cameron Allen, Stuart Russell Group)"
+                desc="Action abstractions for black-box planning agents (advised by Dr. Cameron Allen*, Dr. Stuart Russell)"
                 duration="Jun 2024 - Now"
             />
             <Card
                 title="Berkeley Artificial Intelligence Research (BAIR)"
-                desc="data-centric AI governance (advised by Ritwik Gupta, Trevor Darrell Group)"
+                desc="AI Frontiers Initiative (advised by Ritwik Gupta*, Dr. Andrew W. Reddie, Dr. Trevor Darrell)"
                 duration="Sep 2024 - Now"
             />
             <Card
-                title="[Independent Research] AI for Education"
-                desc="textbook personalization (advised by Prof Gireeja Ranade and Prof Narges Norouzi)"
+                title="[Independent] PeTII: Personalizing Textbooks on Individual Interests"
+                desc="Interdisciplinary textbook personalization (advised by Dr. Gireeja Ranade and Dr. Narges Norouzi)"
                 duration="Sep 2024 - Now"
                 links={[
                     {
-                        href: "https://github.com/xyntechx/personalize-tb",
+                        href: "https://github.com/xyntechx/PeTII",
                         display: "github",
                     },
                 ]}
             />
             <Card
-                title="[Independent Research] Manga Layout Analysis"
-                desc="deep learning computer vision pipeline (instance segmentation and OCR) for semantic and structural analysis of manga"
+                title="[Independent] Manga Layout Analysis"
+                desc="Deep learning computer vision pipeline (instance segmentation and OCR) for semantic and structural analysis of manga"
                 duration="Apr 2021 - Dec 2022"
                 links={[
                     {
@@ -130,7 +144,7 @@ import logo from "../assets/logo.svg";
             <Heading text="exp" />
             <Card
                 title="Government Technology Agency (GovTech) Singapore"
-                position="AI Engineer / Researcher (Responsible AI Team)"
+                position="AI Engineer (Responsible AI Team)"
                 duration="Sep 2024 - Now"
             />
             <Card
