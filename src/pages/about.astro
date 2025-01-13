@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Link from "../components/about/link.astro";
+---
+
+<Layout title="Nyx Iskandar | About">
+    <main
+        class="w-full md:w-3/5 min-h-screen flex items-start justify-start flex-col p-10 md:p-20 gap-x-4 gap-y-4"
+    >
+        <div class="w-full flex items-center justify-between flex-row">
+            <h1 class="text-5xl font-extrabold text-blue-xyn">About Me</h1>
+            <a href="/" class="underline underline-offset-4">&lt; Back</a>
+        </div>
+        <p>
+            My name is Nyx Iskandar, and I am an undergraduate AI and Policy
+            researcher passionate about building and shaping AI for public good.
+            I'm honored to have been awarded the prestigious full-ride GovTech
+            Singapore Smart Nation Scholarship to study Electrical Engineering &
+            Computer Sciences (EECS) and Public Policy at the University of
+            California, Berkeley.
+        </p>
+        <p>
+            Broadly, my research focus is improving the capabilities and safety
+            of AI systems, particularly to solve challenges in the community. At
+            the <Link href="https://humancompatible.ai/"
+                >Center for Human-Compatible AI (CHAI)</Link
+            >, I investigate and improve the fundamental intelligence of AI
+            systems under the mentorship of
+            <Link href="https://camallen.net/">Dr. Cam Allen</Link>.
+            Collaborating with <Link href="https://ritwikgupta.me/"
+                >Ritwik Gupta</Link
+            > under the <Link href="https://bair.berkeley.edu/"
+                >Berkeley AI Research lab (BAIR)</Link
+            > and <Link href="https://brsl.berkeley.edu/"
+                >Berkeley Risk and Security Lab (BRSL)</Link
+            >, I evaluate the cyber capabilities of LLMs to inform AI governance
+            and public policy. I'm also interested in the intersection of AI and
+            education, currently working on AI-driven tools for textbook
+            personalization as well as the verification of mathematical proofs,
+            advised by <Link href="https://people.eecs.berkeley.edu/~gireeja/"
+                >Dr. Gireeja Ranade</Link
+            > and <Link href="https://nargesnorouzi.me/"
+                >Dr. Narges Norouzi</Link
+            >. Recognizing the importance of safe and responsible AI, I'm also
+            currently working on an LLM safety testing and benchmarking project
+            with the Singapore Government.
+        </p>
+        <p>
+            I currently serve as the Vice President of External at <Link
+                href="https://ml.berkeley.edu/"
+                >Machine Learning at Berkeley</Link
+            >, the premier organization for Berkeley students in AI/ML, where I
+            spearhead events (e.g. talks, hackathons, workshops, career fairs,
+            company visits) with leading figures and companies / organizations
+            in the AI/ML space. I'm also an active officer at <Link
+                href="https://tbp.berkeley.edu/">Tau Beta Pi (TBP)</Link
+            > and <Link href="https://hkn.eecs.berkeley.edu/"
+                >Eta Kappa Nu (HKN)</Link
+            >, the Engineering and EECS Honors Societies respectively.
+            Additionally, I serve as the Vice President of the <Link
+                href="https://ssa.berkeley.edu/"
+                >Singapore Student Association</Link
+            > and a product owner / lead developer at the Office of the CTO of the
+            Associated Students of the University of California (student government).
+        </p>
+        <p>
+            Outside of tech, I love to play volleyball, climb/boulder, and draw
+            manga!
+        </p>
+    </main>
+</Layout>
