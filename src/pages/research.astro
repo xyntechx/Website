@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Paper from "../components/research/paper.astro";
 
-interface Paper {
+interface IPaper {
     title: string;
     authors?: string[];
     description: string;
@@ -11,7 +11,7 @@ interface Paper {
     githubUrl?: string;
 }
 
-const papers: Paper[] = [
+const papers: IPaper[] = [
     {
         title: "Manga Layout Analysis via Deep Learning",
         authors: ["Nyx Iskandar"],
@@ -60,7 +60,6 @@ const papers: Paper[] = [
             <h1 class="text-5xl font-extrabold text-blue-xyn">Research</h1>
             <a href="/" class="underline underline-offset-4">&lt; Back</a>
         </div>
-
         {papers.map((p) => <Paper {...p} />)}
     </main>
 </Layout>
