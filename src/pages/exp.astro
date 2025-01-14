@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Work from "../components/exp/work.astro";
+
+interface IWork {
+    company: string;
+    position: string;
+}
+
+const work: IWork[] = [
+    {
+        company: "Ramen VR",
+        position: "AI/VR Engineer Intern [Summer 2025]",
+    },
+    {
+        company: "UC Berkeley",
+        position: "Teaching Assistant (TA), AI and Public Policy",
+    },
+    {
+        company: "GovTech Singapore",
+        position: "AI Engineer/Research Intern",
+    },
+    {
+        company: "GovTech Singapore",
+        position: "Software Engineer Intern",
+    },
+    {
+        company: "Infocomm Media Development Authority (IMDA) Singapore",
+        position: "Tech Policy Research Intern",
+    },
+    {
+        company: "A* Singapore",
+        position: "Robotics/ML Research Intern",
+    },
+];
+---
+
+<Layout title="Nyx Iskandar | Experience">
+    <main
+        class="w-full md:w-3/5 min-h-screen flex items-start justify-start flex-col p-10 md:p-20 gap-x-4 gap-y-10"
+    >
+        <div class="w-full flex items-center justify-between flex-row">
+            <h1 class="text-5xl font-extrabold text-blue-xyn">Work Exp</h1>
+            <a href="/" class="underline underline-offset-4">&lt; Back</a>
+        </div>
+        {work.map((p) => <Work {...p} />)}
+    </main>
+</Layout>
