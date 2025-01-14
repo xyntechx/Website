@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Paper from "../components/research/paper.astro";
+
+interface Paper {
+    title: string;
+    authors?: string[];
+    description: string;
+    conference: string;
+    paperUrl?: string;
+    githubUrl?: string;
+}
+
+const papers: Paper[] = [
+    {
+        title: "Manga Layout Analysis via Deep Learning",
+        authors: ["Nyx Iskandar"],
+        description:
+            "An end-to-end automated manga reading and analysis system leveraging instance segmentation and optical character recognition.",
+        conference: "IRC-SET 2022",
+        paperUrl: "https://doi.org/10.1007/978-981-19-7222-5_6",
+        githubUrl: "https://github.com/xyntechx/Manga-Layout-Analysis",
+    },
+    {
+        title: "PAL.txt: Personalizations for Associative Learning on Textbooks",
+        description:
+            "An end-to-end pipeline to automate at scale the personalization of textbooks in the context of a student's personal and/or professional interests, alleviating motivation asymmetries between students in the traditional classroom and self-directed settings to ultimately elevate the effectiveness of other EdTech solutions in enhancing learning.",
+        conference: "TBD",
+    },
+    {
+        title: "The Gap: Current LAWS Technologies vs Slaughterbots",
+        description:
+            "I examine the capabilities of individual-targeting drones in the context of today's level of technology, arguing that today's technologies are insufficient to build them while also evaluating the feasibility of the necessary technical milestones from both a technological and political perspective. This paper is my capstone research paper for UC Berkeley's Emerging Technologies and National Security Policy course, achieving a perfect score.",
+        conference: "TBD",
+    },
+    {
+        title: "Evaluating the Actual Cyber Capabilities of Open-Source LLMs",
+        description:
+            "As part of the AI Frontiers Initiative at the Berkeley Risk and Security Lab.",
+        conference: "TBD",
+    },
+    {
+        title: "A Practical and Empirical Approach to Safety Testing for LLM-Powered Apps",
+        description: "As part of GovTech Singapore's Responsible AI team.",
+        conference: "TBD",
+    },
+    {
+        title: "Optimizing the Efficiency of Learning and Searching With Focused Macros for AI Planning Agents",
+        description: "As part of the Center for Human-Compatible AI.",
+        conference: "TBD",
+    },
+];
+---
+
+<Layout title="Nyx Iskandar | Research">
+    <main
+        class="w-full md:w-3/5 min-h-screen flex items-start justify-start flex-col p-10 md:p-20 gap-x-4 gap-y-10"
+    >
+        <div class="w-full flex items-center justify-between flex-row">
+            <h1 class="text-5xl font-extrabold text-blue-xyn">Research</h1>
+            <a href="/" class="underline underline-offset-4">&lt; Back</a>
+        </div>
+
+        {papers.map((p) => <Paper {...p} />)}
+    </main>
+</Layout>
