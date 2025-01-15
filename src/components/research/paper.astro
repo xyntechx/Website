@@ -6,11 +6,12 @@ interface Props {
     authors?: string[];
     description: string;
     conference: string;
+    color: "bg-green-300" | "bg-orange-300" | "bg-gray-xyn";
     paperUrl?: string;
     githubUrl?: string;
 }
 
-const { title, authors, description, conference, paperUrl, githubUrl } =
+const { title, authors, description, conference, color, paperUrl, githubUrl } =
     Astro.props;
 ---
 
@@ -19,12 +20,7 @@ const { title, authors, description, conference, paperUrl, githubUrl } =
     {authors && <p>{authors.join(", ")}</p>}
     <p class="py-2">{description}</p>
     <div class="flex flex-row items-center justify-start gap-x-4">
-        <p
-            class={clsx(
-                conference == "TBD" ? "bg-orange-300" : "bg-green-300",
-                "px-2 py-1 rounded-lg text-bg-xyn"
-            )}
-        >
+        <p class={clsx(color, "px-2 py-1 rounded-lg text-bg-xyn")}>
             {conference}
         </p>
         {
