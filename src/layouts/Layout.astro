@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/overpass";
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
     title: string;
@@ -28,6 +29,7 @@ const { title } = Astro.props;
         <meta property="og:image" content="https://xyntechx.com/xyntechx.png" />
         <meta property="og:url" content="https://xyntechx.com/" />
         <meta property="og:type" content="website" />
+        <Analytics />
         <link
             rel="apple-touch-icon"
             sizes="180x180"
