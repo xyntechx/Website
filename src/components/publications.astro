@@ -1,0 +1,83 @@
+---
+import clsx from "clsx";
+
+interface IPaper {
+    title: string;
+    authors?: string[];
+    description: string;
+    conference: string;
+    color: "bg-green-300" | "bg-orange-300" | "bg-gray-xyn";
+    paperUrl?: string;
+    githubUrl?: string;
+}
+
+const papers: IPaper[] = [
+    {
+        title: "Measuring What Matters: A Framework for Evaluating Safety Risks in Real-World LLM Applications",
+        authors: [
+            "Jia Yi Goh*",
+            "Shaun Khoo*",
+            "Nyx Iskandar*",
+            "Gabriel Chua",
+            "Leanne Tan",
+            "Jessica Foo",
+        ],
+        description:
+            "A practical framework for evaluating application-level safety in LLM systems, validated through real-world deployment across multiple use cases.",
+        conference: "ICML 2025 TAIG Workshop (Oral)",
+        color: "bg-green-300",
+        // paperUrl: "TBD",
+    },
+    {
+        title: "Manga Layout Analysis via Deep Learning",
+        authors: ["Nyx Iskandar"],
+        description:
+            "An end-to-end automated manga reading and analysis system leveraging instance segmentation and optical character recognition.",
+        conference: "IRC-SET 2022",
+        color: "bg-green-300",
+        paperUrl: "https://doi.org/10.1007/978-981-19-7222-5_6",
+        githubUrl: "https://github.com/xyntechx/Manga-Layout-Analysis",
+    },
+];
+---
+
+<>
+    <h1 class="text-3xl font-extrabold text-blue-xyn">Publications</h1>
+    {
+        papers.map((p) => (
+            <div class="flex flex-col items-start justify-center">
+                <h3 class="text-xl">{p.title}</h3>
+                {p.authors && <p class="text-stone-600">{p.authors.join(", ")}</p>}
+                <p class="pb-2">{p.description}</p>
+                <div class="flex flex-row items-center justify-start gap-x-4">
+                    <p
+                        class={clsx(
+                            p.color,
+                            "px-2 py-1 rounded-lg text-bg-xyn"
+                        )}
+                    >
+                        {p.conference}
+                    </p>
+                    {p.paperUrl && (
+                        <a
+                            href={p.paperUrl}
+                            target="_blank"
+                            class="text-blue-xyn underline underline-offset-4"
+                        >
+                            Paper
+                        </a>
+                    )}
+                    {p.githubUrl && (
+                        <a
+                            href={p.githubUrl}
+                            target="_blank"
+                            class="text-blue-xyn underline underline-offset-4"
+                        >
+                            GitHub
+                        </a>
+                    )}
+                </div>
+            </div>
+        ))
+    }
+</>

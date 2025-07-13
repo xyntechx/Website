@@ -30,7 +30,7 @@ const Grid = () => {
 
             <NAN {...{ hex, isHover }} />
             <Link
-                id="about"
+                id="github"
                 hoverID={hoverID}
                 isHover={isHover}
                 handleHover={handleHover}
@@ -59,7 +59,7 @@ const Grid = () => {
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
             <Link
-                id="research"
+                id="linkedin"
                 hoverID={hoverID}
                 isHover={isHover}
                 handleHover={handleHover}
@@ -76,18 +76,11 @@ const Grid = () => {
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
             <Link
-                id="exp"
+                id="mail"
                 hoverID={hoverID}
                 isHover={isHover}
                 handleHover={handleHover}
             />
-            <NAN {...{ hex, isHover }} />
-            <NAN {...{ hex, isHover }} />
-            <NAN {...{ hex, isHover }} />
-
-            <NAN {...{ hex, isHover }} />
-            <NAN {...{ hex, isHover }} />
-            <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
@@ -120,18 +113,30 @@ interface LinkParams {
 }
 
 const Link = ({ id, hoverID, isHover, handleHover }: LinkParams) => {
+    const getURL = (id: string) => {
+        switch (id) {
+            case "github":
+                return "https://github.com/xyntechx";
+            case "linkedin":
+                return "https://www.linkedin.com/in/nyx-iskandar/";
+            case "mail":
+                return "mailto:nyx@berkeley.edu";
+        }
+    };
+
     return (
         <a
             id={id}
-            href={`/${id}`}
+            href={getURL(id)}
+            target="_blank"
             className={clsx(
                 isHover && hoverID !== id && "text-opacity-50",
-                "text-blue-xyn underline underline-offset-4"
+                "text-blue-xyn underline underline-offset-4 cursor-pointer"
             )}
             onMouseEnter={(e) => handleHover(e.currentTarget.id)}
             onMouseLeave={(e) => handleHover(e.currentTarget.id)}
         >
-            /{id}
+            @{id}
         </a>
     );
 };
