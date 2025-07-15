@@ -43,7 +43,12 @@ const Grid = () => {
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
-            <NAN {...{ hex, isHover }} />
+            <Link
+                id="orcid"
+                hoverID={hoverID}
+                isHover={isHover}
+                handleHover={handleHover}
+            />
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
 
@@ -76,7 +81,7 @@ const Grid = () => {
             <NAN {...{ hex, isHover }} />
             <NAN {...{ hex, isHover }} />
             <Link
-                id="mail"
+                id="email"
                 hoverID={hoverID}
                 isHover={isHover}
                 handleHover={handleHover}
@@ -119,8 +124,10 @@ const Link = ({ id, hoverID, isHover, handleHover }: LinkParams) => {
                 return "https://github.com/xyntechx";
             case "linkedin":
                 return "https://www.linkedin.com/in/nyx-iskandar/";
-            case "mail":
+            case "email":
                 return "mailto:nyx@berkeley.edu";
+            case "orcid":
+                return "https://orcid.org/0009-0008-4361-3364";
         }
     };
 
