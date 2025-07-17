@@ -26,9 +26,6 @@ importers:
       '@vercel/analytics':
         specifier: ^1.4.1
         version: 1.4.1(react@19.0.0)
-      '@xterm/xterm':
-        specifier: ^5.5.0
-        version: 5.5.0
       astro:
         specifier: ^5.11.0
         version: 5.11.0(@types/node@22.15.21)(jiti@1.21.7)(rollup@4.41.1)(typescript@5.7.3)(yaml@2.7.0)
@@ -708,9 +705,6 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0
-
-  '@xterm/xterm@5.5.0':
-    resolution: {integrity: sha512-hqJHYaQb5OptNunnyAnkHyM8aCjZ1MEIDTQu1iIbbTD/xops91NB5yq1ZK/dC2JDbVWtF23zUtl9JE2NqwT87A==}
 
   acorn@8.14.1:
     resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
@@ -2674,8 +2668,6 @@ snapshots:
       vite: 6.3.5(@types/node@22.15.21)(jiti@1.21.7)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
-
-  '@xterm/xterm@5.5.0': {}
 
   acorn@8.14.1: {}
 
