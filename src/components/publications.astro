@@ -24,7 +24,7 @@ const papers: IPaper[] = [
         ],
         description:
             "A practical framework for evaluating application-level safety in LLM systems, validated through real-world deployment across multiple use cases.",
-        conference: "ICML 2025 TAIG Workshop (Oral)",
+        conference: "ICML 2025 TAIG Workshop (Spotlight)",
         color: "bg-green-300",
         paperUrl: "https://doi.org/10.48550/arXiv.2507.09820",
     },
@@ -47,7 +47,9 @@ const papers: IPaper[] = [
         papers.map((p) => (
             <div class="flex flex-col items-start justify-center">
                 <h3 class="text-xl">{p.title}</h3>
-                {p.authors && <p class="text-stone-600">{p.authors.join(", ")}</p>}
+                {p.authors && (
+                    <p class="text-stone-600">{p.authors.join(", ")}</p>
+                )}
                 <p class="pb-2">{p.description}</p>
                 <div class="flex flex-row items-center justify-start gap-x-4">
                     <p
