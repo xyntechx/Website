@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
 
 import { Image } from "astro:assets";
 import nyxPP from "../assets/nyx.jpg";
@@ -20,30 +21,24 @@ const links = [
     class="flex items-center justify-center flex-col gap-4 py-12 px-4 md:px-0 md:w-2/5 w-full h-full"
   >
     <div class="w-[100px] h-[100px]">
-      <Image src={nyxPP} alt="Nyx Profile Picture" class="rounded-sm" />
+      <Image src={nyxPP} alt="Nyx at Times Square, NYC" class="rounded-sm" />
     </div>
     <h1 class="font-bold">
-      nyx iskand<a href="/name" class="underline text-blue-500">a</a>r
+      nyx iskand<Link href="/name" target="_self">a</Link>r
     </h1>
 
     <p class="text-sm w-full text-justify">
       Hey, I'm Nyx! I'm building AI for root-cause analysis in production code
-      as Founding Research Engineer at <a
-        href="https://foam.ai/"
-        target="_blank"
-        class="underline text-blue-500">foam</a
-      >. Independently, I conduct ML research primarily in the intersection of
-      vision and language, exploring multi-agent communication using RL-centric
-      paradigms beyond LLMs.
+      as Founding Research Engineer at <Link href="https://foam.ai/">foam</Link
+      >. For fun, I'm independently exploring RL-centric communication through
+      vision.
     </p>
 
     <p class="text-sm w-full text-center">
       {
         links.map((link, i) => (
           <>
-            <a href={link.url} target="_blank" class="underline text-blue-500">
-              {link.name}
-            </a>
+            <Link href={link.url}>{link.name}</Link>
             <span>{i < links.length - 1 ? " | " : ""}</span>
           </>
         ))
@@ -51,8 +46,8 @@ const links = [
     </p>
 
     <p class="text-xs w-full text-right mt-10">
-      <a href="/about" class="underline text-blue-500"
-        >A loose collection of 'about' fragments {">"}</a
+      <Link href="/about" target="_self"
+        >A loose collection of 'about' fragments {">"}</Link
       >
     </p>
   </main>
