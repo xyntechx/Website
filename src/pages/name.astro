@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
 ---
 
 <Layout>
@@ -8,10 +9,8 @@ import Layout from "../layouts/Layout.astro";
   >
     <h1 class="font-bold w-full text-justify">Nyx?</h1>
     <p class="text-sm w-full text-justify">
-      I'm named after <a
-        href="https://en.wikipedia.org/wiki/Nyx"
-        target="_blank"
-        class="underline text-blue-500">Greek goddess of the night Nyx</a
+      I'm named after <Link href="https://en.wikipedia.org/wiki/Nyx"
+        >Greek goddess of the night Nyx</Link
       >, and the name's pronounced like New York <span class="font-bold"
         >Knicks</span
       >. Though I'm only marginally familiar with Greek mythology, ditto for the
@@ -19,7 +18,7 @@ import Layout from "../layouts/Layout.astro";
       last name's spelled with an 'a', not an 'e' :))
     </p>
     <p class="text-xs w-full text-justify">
-      <a href="/" class="underline text-blue-500">{"<"} okay cool!</a>
+      <Link href="/" target="_self">{"<"} okay cool!</Link>
     </p>
   </main>
 </Layout>
