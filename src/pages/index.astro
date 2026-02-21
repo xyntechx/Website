@@ -5,35 +5,55 @@ import { Image } from "astro:assets";
 import nyxPP from "../assets/nyx.jpg";
 
 const links = [
-    {name: "GitHub", url: "https://github.com/xyntechx"},
-    {name: "LinkedIn", url: "https://www.linkedin.com/in/nyx-iskandar/"},
-    {name: "ORCID", url: "https://orcid.org/0009-0008-4361-3364"},
-    {name: "Scholar", url: "https://scholar.google.com/citations?user=6CbTfzIAAAAJ&hl=en&oi=ao"}
-]
+  { name: "GitHub", url: "https://github.com/xyntechx" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/nyx-iskandar/" },
+  { name: "ORCID", url: "https://orcid.org/0009-0008-4361-3364" },
+  {
+    name: "Scholar",
+    url: "https://scholar.google.com/citations?user=6CbTfzIAAAAJ&hl=en&oi=ao",
+  },
+];
 ---
 
 <Layout>
-    <main
-        class="flex items-center justify-center flex-col gap-4 py-12 px-4 md:px-0 md:w-2/5 w-full h-full"
-    >
-        <div class="w-[100px] h-[100px]">
-            <Image
-                src={nyxPP}
-                alt="Nyx Profile Picture"
-                class="rounded-sm"
-            />
-        </div>
-        <h1 class="font-bold">nyx iskand<a href="/name" class="underline text-blue-500">a</a>r</h1>
+  <main
+    class="flex items-center justify-center flex-col gap-4 py-12 px-4 md:px-0 md:w-2/5 w-full h-full"
+  >
+    <div class="w-[100px] h-[100px]">
+      <Image src={nyxPP} alt="Nyx Profile Picture" class="rounded-sm" />
+    </div>
+    <h1 class="font-bold">
+      nyx iskand<a href="/name" class="underline text-blue-500">a</a>r
+    </h1>
 
-        <p class="text-sm w-full text-justify">Hey, I'm Nyx! I'm building AI for root-cause analysis in production code as Founding Research Engineer at <a href="https://foam.ai/" target="_blank" class="underline text-blue-500">foam</a>. Independently, I conduct ML research primarily in the intersection of vision and language, exploring multi-agent communication using RL-centric paradigms beyond LLMs.</p>
+    <p class="text-sm w-full text-justify">
+      Hey, I'm Nyx! I'm building AI for root-cause analysis in production code
+      as Founding Research Engineer at <a
+        href="https://foam.ai/"
+        target="_blank"
+        class="underline text-blue-500">foam</a
+      >. Independently, I conduct ML research primarily in the intersection of
+      vision and language, exploring multi-agent communication using RL-centric
+      paradigms beyond LLMs.
+    </p>
 
-        <p class="text-sm w-full text-center">
-            {links.map((link, i) => (
-            <a href={link.url} target="_blank" class="underline text-blue-500">{link.name}</a>
+    <p class="text-sm w-full text-center">
+      {
+        links.map((link, i) => (
+          <>
+            <a href={link.url} target="_blank" class="underline text-blue-500">
+              {link.name}
+            </a>
             <span>{i < links.length - 1 ? " | " : ""}</span>
-        ))}
-        </p>
+          </>
+        ))
+      }
+    </p>
 
-        <p class="text-xs w-full text-right mt-10"><a href="/about" class="underline text-blue-500">A loose collection of 'about' fragments {">"}</a></p>
-    </main>
+    <p class="text-xs w-full text-right mt-10">
+      <a href="/about" class="underline text-blue-500"
+        >A loose collection of 'about' fragments {">"}</a
+      >
+    </p>
+  </main>
 </Layout>
