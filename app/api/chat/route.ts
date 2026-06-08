@@ -8,8 +8,8 @@ import {
 
 const model_id = "onnx-community/gemma-4-E2B-it-ONNX";
 
-export async function GET(request: NextRequest) {
-  const text = request.nextUrl.searchParams.get("text");
+export async function POST(request: NextRequest) {
+  const { text } = await request.json();
   if (!text) {
     return new Response("Missing text parameter", { status: 400 });
   }
@@ -26,10 +26,16 @@ export async function GET(request: NextRequest) {
   }
 
   const vocab = tokenizer.get_vocab();
-  const endOfTurnId: bigint = BigInt(vocab.get("<turn|>")!);
-  const eosTokenId = BigInt(tokenizer.eos_token_id);
+  const turn_token = "<turn|>";
+  const turn_id_int = vocab.get(turn_token);
 
-  const stopTokenIds = new Set<bigint>([eosTokenId, endOfTurnId]);
+  if (!turn_id_int) {
+    return new Response(`${turn_token} is not a valid token.`, { status: 500 });
+  }
+
+  const turn_id: bigint = BigInt(turn_id_int);
+  const eos_id = BigInt(tokenizer.eos_token_id);
+  const stop_ids = new Set<bigint>([eos_id, turn_id]);
 
   const messages = [
     { role: "system", content: "You are a helpful assistant." },
@@ -61,7 +67,7 @@ export async function GET(request: NextRequest) {
 
           const outputs = (await model.generate({
             input_ids: current_input_ids,
-            max_new_tokens: 512,
+            max_new_tokens: 2048,
             do_sample: false,
             streamer,
           })) as Tensor;
@@ -71,15 +77,14 @@ export async function GET(request: NextRequest) {
             input_len,
             outputs.dims.at(-1)!,
           ]);
-          // last token comes back as BigInt from the underlying TypedArray
+
           const last_token_id = generated.data[
             generated.data.length - 1
           ] as bigint;
 
-          if (stopTokenIds.has(last_token_id)) {
+          if (stop_ids.has(last_token_id)) {
             finished = true;
           } else {
-            // Hit max_new_tokens — feed full sequence back to continue.
             current_input_ids = outputs;
           }
         }

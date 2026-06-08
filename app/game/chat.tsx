@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, InputEvent } from "react";
 
 const Chat = () => {
   // Keep track of the classification result and the model loading status.
@@ -8,13 +8,17 @@ const Chat = () => {
   const [ready, setReady] = useState<boolean | null>(null);
   const [userMessage, setUserMessage] = useState<string | null>(null);
 
-  const classify = async (text: string) => {
+  const generate = async (text: string) => {
     if (!text) return;
     if (ready === null) setReady(false);
 
     setResult("");
 
-    const response = await fetch(`/api/chat?text=${encodeURIComponent(text)}`);
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
 
     if (!ready) setReady(true);
 
@@ -41,22 +45,18 @@ const Chat = () => {
     <>
       <div className="w-1/2 flex flex-row items-center justify-center gap-4">
         <input
-        type="text"
-        className="w-full max-w-xs p-2 border border-gray-300 rounded mb-4"
-        placeholder="Enter text here"
-        onInput={(e: React.FormEvent<HTMLInputElement>) => setUserMessage((e.target as HTMLInputElement).value)}
-        // onInput={(e) => {
-        //   console.log(e.target.value)
-        //   classify(e.target.value);
-        // }}
-      />
-      <button onClick={() => classify(userMessage ?? "")}>Go</button>
+          type="text"
+          className="w-full max-w-xs p-2 border border-gray-300 rounded mb-4"
+          placeholder="Enter text here"
+          onInput={(e: InputEvent<HTMLInputElement>) =>
+            setUserMessage((e.target as HTMLInputElement).value)
+          }
+        />
+        <button onClick={() => generate(userMessage ?? "")}>Go</button>
       </div>
       {ready !== null && (
         <div className="w-full border p-4">
-          <p>
-          {!ready || !result ? "Loading..." : result}
-        </p>
+          <p>{!ready || !result ? "Loading..." : result}</p>
         </div>
       )}
     </>
