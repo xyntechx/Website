@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import {
   AutoProcessor,
   Gemma4ForConditionalGeneration,
+  Tensor,
   TextStreamer,
 } from "@huggingface/transformers";
 
@@ -19,11 +20,14 @@ export async function GET(request: NextRequest) {
     device: "webgpu",
   });
 
-  const eosTokenId = BigInt(processor.tokenizer.eos_token_id);
+  const tokenizer = processor.tokenizer;
+  if (!tokenizer) {
+    return new Response("Tokenizer not available", { status: 500 });
+  }
 
-  const vocab: Record<string, number> | undefined =
-    processor.tokenizer.get_vocab?.();
-  const endOfTurnId: bigint = BigInt(vocab["<end_of_turn>"]); // 106n
+  const vocab = tokenizer.get_vocab();
+  const endOfTurnId: bigint = BigInt(vocab.get("<turn|>")!);
+  const eosTokenId = BigInt(tokenizer.eos_token_id);
 
   const stopTokenIds = new Set<bigint>([eosTokenId, endOfTurnId]);
 
@@ -35,9 +39,10 @@ export async function GET(request: NextRequest) {
   const prompt = processor.apply_chat_template(messages, {
     enable_thinking: true,
     add_generation_prompt: true,
-  });
+    tokenize: false,
+  } as Parameters<typeof tokenizer.apply_chat_template>[1]) as string;
 
-  const inputs = processor.tokenizer(prompt, { add_special_tokens: true });
+  const inputs = tokenizer(prompt, { add_special_tokens: true });
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -46,7 +51,7 @@ export async function GET(request: NextRequest) {
 
       try {
         while (!finished) {
-          const streamer = new TextStreamer(processor.tokenizer, {
+          const streamer = new TextStreamer(tokenizer, {
             skip_prompt: true,
             skip_special_tokens: false,
             callback_function: (chunk: string) => {
@@ -54,15 +59,18 @@ export async function GET(request: NextRequest) {
             },
           });
 
-          const outputs = await model.generate({
+          const outputs = (await model.generate({
             input_ids: current_input_ids,
             max_new_tokens: 512,
             do_sample: false,
             streamer,
-          });
+          })) as Tensor;
 
           const input_len = current_input_ids.dims.at(-1)!;
-          const generated = outputs.slice(null, [input_len, null]);
+          const generated = outputs.slice(null, [
+            input_len,
+            outputs.dims.at(-1)!,
+          ]);
           // last token comes back as BigInt from the underlying TypedArray
           const last_token_id = generated.data[
             generated.data.length - 1
