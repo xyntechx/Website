@@ -8,6 +8,67 @@ import {
 
 const model_id = "onnx-community/gemma-4-E2B-it-ONNX";
 
+const drawTools = [
+  {
+    type: "function",
+    function: {
+      name: "drawCircle",
+      description: "Draw a filled circle at (x, y) with given radius",
+      parameters: {
+        type: "object",
+        properties: {
+          x: { type: "number" },
+          y: { type: "number" },
+          radius: { type: "number" },
+          fillStyle: {
+            type: "string",
+            description: "CSS color, e.g. red, #ff0000",
+          },
+        },
+        required: ["x", "y", "radius"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "drawTriangle",
+      description: "Draw a filled triangle through three points",
+      parameters: {
+        type: "object",
+        properties: {
+          x1: { type: "number" },
+          y1: { type: "number" },
+          x2: { type: "number" },
+          y2: { type: "number" },
+          x3: { type: "number" },
+          y3: { type: "number" },
+          fillStyle: { type: "string", description: "CSS color" },
+        },
+        required: ["x1", "y1", "x2", "y2", "x3", "y3"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "drawRectangle",
+      description: "Draw a filled rectangle at (x, y) with width and height",
+      parameters: {
+        type: "object",
+        properties: {
+          x: { type: "number" },
+          y: { type: "number" },
+          width: { type: "number" },
+          height: { type: "number" },
+          fillStyle: { type: "string", description: "CSS color" },
+        },
+        required: ["x", "y", "width", "height"],
+      },
+    },
+  },
+];
+
 export async function POST(request: NextRequest) {
   const { text } = await request.json();
   if (!text) {
@@ -38,7 +99,11 @@ export async function POST(request: NextRequest) {
   const stop_ids = new Set<bigint>([eos_id, turn_id]);
 
   const messages = [
-    { role: "system", content: "You are a helpful assistant." },
+    {
+      role: "system",
+      content:
+        "You are a helpful assistant that draws shapes on a canvas. Use the available drawing tools when asked. If the request is ambiguous, make the necessary assumptions.",
+    },
     { role: "user", content: text },
   ];
 
@@ -46,6 +111,7 @@ export async function POST(request: NextRequest) {
     enable_thinking: true,
     add_generation_prompt: true,
     tokenize: false,
+    tools: drawTools,
   } as Parameters<typeof tokenizer.apply_chat_template>[1]) as string;
 
   const inputs = tokenizer(prompt, { add_special_tokens: true });
