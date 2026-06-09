@@ -17,7 +17,7 @@ export default function RootLayout({
       className="h-full antialiased"
     >
       {/* <body className="font-[TTNormsProSerif] bg-zinc-950 text-zinc-100 text-sm min-h-full flex flex-col">{children}</body> */}
-      <body className="font-sans bg-zinc-950 text-zinc-100 text-sm min-h-full flex flex-col">{children}</body>
+      <body className="font-mono bg-zinc-950 text-zinc-100 text-xs min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

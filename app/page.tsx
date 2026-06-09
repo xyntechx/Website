@@ -44,7 +44,7 @@ export default function Home() {
             key={h.id}
             className="w-full h-fit flex flex-col items-start justify-start gap-x-2"
           >
-            <div className="w-fit h-fit flex flex-row items-start justify-start gap-x-2 ">
+            <div className="w-fit h-fit flex flex-row items-start justify-start gap-x-2">
               <p>
                 guest@xyntechx{" "}
                 <span className="text-green-600">{h.directory}</span>{" "}
@@ -56,7 +56,7 @@ export default function Home() {
           </div>
         ))}
 
-        <div className="w-full h-5 flex flex-row items-center justify-start gap-x-2">
+        <div className="w-full h-4 flex flex-row items-center justify-start gap-x-2">
           <p>
             guest@xyntechx <span className="text-green-600">{directory}</span>{" "}
             <span className="text-zinc-500">%</span>
