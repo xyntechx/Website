@@ -67,12 +67,25 @@ const drawTools = [
       },
     },
   },
+  {
+    type: "function",
+    function: {
+      name: "inspectCanvas",
+      description:
+        "Returns the canvas dimensions and a list of all shapes currently drawn on the canvas.",
+      parameters: {
+        type: "object",
+        properties: {},
+        required: [],
+      },
+    },
+  },
 ];
 
 export async function POST(request: NextRequest) {
-  const { text } = await request.json();
-  if (!text) {
-    return new Response("Missing text parameter", { status: 400 });
+  const { messages } = await request.json();
+  if (!messages || !Array.isArray(messages) || messages.length === 0) {
+    return new Response("Missing messages parameter", { status: 400 });
   }
 
   const processor = await AutoProcessor.from_pretrained(model_id);
@@ -98,15 +111,6 @@ export async function POST(request: NextRequest) {
   const eos_id = BigInt(tokenizer.eos_token_id);
   const stop_ids = new Set<bigint>([eos_id, turn_id]);
 
-  const messages = [
-    {
-      role: "system",
-      content:
-        "You are a helpful assistant that draws shapes on a canvas. Use the available drawing tools when asked. If the request is ambiguous, make the necessary assumptions.",
-    },
-    { role: "user", content: text },
-  ];
-
   const prompt = processor.apply_chat_template(messages, {
     enable_thinking: true,
     add_generation_prompt: true,
@@ -120,6 +124,7 @@ export async function POST(request: NextRequest) {
     async start(controller) {
       let current_input_ids = inputs.input_ids;
       let finished = false;
+      let fullOutput = "";
 
       try {
         while (!finished) {
@@ -127,6 +132,7 @@ export async function POST(request: NextRequest) {
             skip_prompt: true,
             skip_special_tokens: false,
             callback_function: (chunk: string) => {
+              fullOutput += chunk;
               controller.enqueue(new TextEncoder().encode(chunk));
             },
           });
@@ -155,6 +161,20 @@ export async function POST(request: NextRequest) {
           }
         }
       } finally {
+        try {
+          const parseFn = (processor as unknown as Record<string, unknown>)
+            .parse_response;
+          if (typeof parseFn === "function") {
+            const parsed = parseFn(fullOutput) as Record<string, unknown>;
+            controller.enqueue(
+              new TextEncoder().encode(
+                "\n__PARSED__" + JSON.stringify(parsed),
+              ),
+            );
+          }
+        } catch {
+          // parse_response not available; client will use regex fallback
+        }
         controller.close();
       }
     },
