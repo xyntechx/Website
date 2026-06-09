@@ -2,24 +2,51 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-type THistory = {
-  id: number;
-  directory: string;
-  command: string;
-  result: string;
-};
+import { THistory } from "./utils/types";
+import { directories, files } from "./utils/content";
 
 export default function Home() {
   const [isTyping, setIsTyping] = useState(false);
+
   const [command, setCommand] = useState("");
+  const [user, setUser] = useState("guest");
   const [directory, setDirectory] = useState("~");
   const [history, setHistory] = useState<THistory[]>([]);
 
   const handleCommand = () => {
+    const [prg, ...args] = command.split(" ");
+    let result = "";
+
+    if (prg === "whoami") {
+      result = user;
+    } else if (prg === "ls") {
+      if (args.length === 0) {
+        result = directories[directory].join("\n");
+      } else if (args.length === 1) {
+        const arg = args[0];
+        try {
+          result = directories[arg].join("\n");
+        } catch {
+          result = `ls: ${arg}: No such file or directory`;
+        }
+      } else {
+        const results: string[] = [];
+        for (const arg of args) {
+          try {
+            results.push(`${arg}:\n${directories[arg].join("\n")}`);
+          } catch {
+            results.push(`ls: ${arg}: No such file or directory`);
+          }
+        }
+        result = results.join("\n\n");
+      }
+    } else {
+      result = `fakezsh: command not found: ${command}`;
+    }
+
     setHistory([
       ...history,
-      { id: history.length, directory, command, result: `result: ${command}` },
+      { id: history.length, directory, command, result },
     ]);
 
     // setIsTyping(false);
@@ -46,19 +73,19 @@ export default function Home() {
           >
             <div className="w-fit h-fit flex flex-row items-start justify-start gap-x-2">
               <p>
-                guest@xyntechx{" "}
+                {user}@xyntechx{" "}
                 <span className="text-green-600">{h.directory}</span>{" "}
                 <span className="text-zinc-500">%</span>
               </p>
               <p>{h.command}</p>
             </div>
-            <p>{h.result}</p>
+            <p className="whitespace-pre-line">{h.result}</p>
           </div>
         ))}
 
         <div className="w-full h-4 flex flex-row items-center justify-start gap-x-2">
           <p>
-            guest@xyntechx <span className="text-green-600">{directory}</span>{" "}
+            {user}@xyntechx <span className="text-green-600">{directory}</span>{" "}
             <span className="text-zinc-500">%</span>
           </p>
           {isTyping ? (
