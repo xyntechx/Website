@@ -34,6 +34,7 @@ const PARSED_DELIM = "\n__PARSED__";
 function parseStreamText(raw: string) {
   const thinking: string[] = [];
   const toolCalls: string[] = [];
+  const toolResponses: string[] = [];
 
   let display = raw.replace(
     /<\|channel>thought([\s\S]*?)<channel\|>/g,
@@ -56,16 +57,28 @@ function parseStreamText(raw: string) {
     },
   );
 
+  display = display.replace(
+    /<\|tool_response>response:(\w+)\{([\s\S]*?)\}<tool_response\|>/g,
+    (_, name, result) => {
+      toolResponses.push(`${name}: ${result}`);
+      return "";
+    },
+  );
+
   display = display
     .replace(/<\|turn>/g, "")
     .replace(/<turn\|>/g, "")
-    .replace(/<\|tool_response>[\s\S]*?<tool_response\|>/g, "")
     .replace(/<\|channel>/g, "")
     .replace(/<\|channel\|>/g, "")
     .replace(/<eos>/g, "")
     .trim();
 
-  return { thinking: thinking.join("\n"), toolCalls: toolCalls.join("\n"), content: display };
+  return {
+    thinking: thinking.join("\n"),
+    toolCalls: toolCalls.join("\n"),
+    toolResponses: toolResponses.join("\n"),
+    content: display,
+  };
 }
 
 function parseToolCalls(text: string) {
@@ -98,9 +111,6 @@ function parseToolCalls(text: string) {
   const cleanText = text
     .replace(/<\|tool_call>[\s\S]*?<tool_call\|>/g, "")
     .replace(/<\|channel>thought[\s\S]*?<channel\|>/g, "")
-    .replace(/<think>[\s\S]*?<\/think>/g, "")
-    .replace(/<\|channel\|>/g, "")
-    .replace(/<\|channel>/g, "")
     .replace(/<\|turn>/g, "")
     .replace(/<turn\|>/g, "")
     .replace(/<\|tool_response>[\s\S]*?<tool_response\|>/g, "")
@@ -119,16 +129,20 @@ function executeToolCalls(toolCalls: ToolCall[]): ToolResponse[] {
 
   for (const { name, arguments: args } of toolCalls) {
     switch (name) {
-      case "drawCircle":
-        drawCircle(
-          ctx,
-          args.x as number,
-          args.y as number,
-          args.radius as number,
-          args.fillStyle as string | undefined,
-        );
+      case "drawCircle": {
+        const cx = args.x as number;
+        const cy = args.y as number;
+        const r = args.radius as number;
+        const fill = args.fillStyle as string | undefined;
+        drawCircle(ctx, cx, cy, r, fill);
+        results.push({
+          name: "drawCircle",
+          response: `circle at (${cx}, ${cy}) radius ${r} fill ${fill ?? "#0070f3"}`,
+        });
         break;
-      case "drawTriangle":
+      }
+      case "drawTriangle": {
+        const fill = args.fillStyle as string | undefined;
         drawTriangle(
           ctx,
           args.x1 as number,
@@ -137,19 +151,27 @@ function executeToolCalls(toolCalls: ToolCall[]): ToolResponse[] {
           args.y2 as number,
           args.x3 as number,
           args.y3 as number,
-          args.fillStyle as string | undefined,
+          fill,
         );
+        results.push({
+          name: "drawTriangle",
+          response: `triangle (${args.x1},${args.y1})-(${args.x2},${args.y2})-(${args.x3},${args.y3}) fill ${fill ?? "#0070f3"}`,
+        });
         break;
-      case "drawRectangle":
-        drawRectangle(
-          ctx,
-          args.x as number,
-          args.y as number,
-          args.width as number,
-          args.height as number,
-          args.fillStyle as string | undefined,
-        );
+      }
+      case "drawRectangle": {
+        const rx = args.x as number;
+        const ry = args.y as number;
+        const w = args.width as number;
+        const h = args.height as number;
+        const fill = args.fillStyle as string | undefined;
+        drawRectangle(ctx, rx, ry, w, h, fill);
+        results.push({
+          name: "drawRectangle",
+          response: `rectangle at (${rx}, ${ry}) size ${w}×${h} fill ${fill ?? "#0070f3"}`,
+        });
         break;
+      }
       case "inspectCanvas": {
         const shapes = getShapes();
         const dims = `Canvas size: ${canvas.width} × ${canvas.height}`;
@@ -180,6 +202,7 @@ const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([systemMessage]);
   const [thinkingText, setThinkingText] = useState("");
   const [toolCallsText, setToolCallsText] = useState("");
+  const [toolResponsesText, setToolResponsesText] = useState("");
   const [displayText, setDisplayText] = useState("");
   const [ready, setReady] = useState<boolean | null>(null);
   const [userInput, setUserInput] = useState("");
@@ -188,20 +211,22 @@ const Chat = () => {
 
   const flushDisplay = (buffer: string) => {
     const cleaned = buffer.replace(/\n?__PARSED__[\s\S]*$/, "");
-    const { thinking, toolCalls, content } = parseStreamText(cleaned);
+    const { thinking, toolCalls, toolResponses, content } =
+      parseStreamText(cleaned);
     setThinkingText(thinking);
     setToolCallsText(toolCalls);
+    setToolResponsesText(toolResponses);
     setDisplayText(content);
   };
 
   const generate = async (history: Message[], round = 0) => {
-    console.log("round", round)
     if (round >= 5) return;
 
     if (round === 0) {
       rawBufferRef.current = "";
       setThinkingText("");
       setToolCallsText("");
+      setToolResponsesText("");
       setDisplayText("");
     }
 
@@ -238,12 +263,15 @@ const Chat = () => {
 
     const delimIdx = fullText.lastIndexOf(PARSED_DELIM);
     let rawForParse = fullText;
-    let parsedResult: { content?: string; tool_calls?: ToolCall[] } | null = null;
+    let parsedResult: { content?: string; tool_calls?: ToolCall[] } | null =
+      null;
 
     if (delimIdx >= 0) {
       rawForParse = fullText.slice(0, delimIdx);
       try {
-        parsedResult = JSON.parse(fullText.slice(delimIdx + PARSED_DELIM.length));
+        parsedResult = JSON.parse(
+          fullText.slice(delimIdx + PARSED_DELIM.length),
+        );
       } catch {
         // ignore parse error
       }
@@ -261,18 +289,16 @@ const Chat = () => {
     if (toolCalls.length > 0) {
       const toolResponses = executeToolCalls(toolCalls);
 
-      if (toolResponses.length > 0) {
-        const assistantMsg: Message = {
-          role: "assistant",
-          content: parsedResult?.content ?? "",
-          tool_calls: toolCalls.map((c) => ({
-            function: { name: c.name, arguments: c.arguments },
-          })),
-          tool_responses: toolResponses,
-        };
-        await generate([...history, assistantMsg], round + 1);
-        return;
-      }
+      const assistantMsg: Message = {
+        role: "assistant",
+        content: parsedResult?.content ?? "",
+        tool_calls: toolCalls.map((c) => ({
+          function: { name: c.name, arguments: c.arguments },
+        })),
+        tool_responses: toolResponses,
+      };
+      await generate([...history, assistantMsg], round + 1);
+      return;
     }
 
     const finalText =
@@ -317,6 +343,11 @@ const Chat = () => {
           {toolCallsText && (
             <div className="text-gray-400 font-mono text-xs whitespace-pre-wrap">
               {toolCallsText}
+            </div>
+          )}
+          {toolResponsesText && (
+            <div className="text-gray-500 text-xs whitespace-pre-wrap">
+              {toolResponsesText}
             </div>
           )}
           <div className="whitespace-pre-wrap">
