@@ -40,6 +40,33 @@ export default function Home() {
         }
         result = results.join("\n\n");
       }
+    } else if (prg === "cd") {
+      if (args.length === 0) {
+        setDirectory("~");
+      } else if (args.length === 1) {
+        const arg = args[0];
+        if (Object.keys(directories).includes(arg)) {
+          setDirectory(arg);
+        } else if (arg === ".." || arg === "../") {
+          setDirectory("~");
+          // This is valid since it's a depth-1 directory structure
+          // But expanding this project requires some refactoring here
+        } else if (arg === "../about" && directory === "exp") {
+          setDirectory("about");
+          // This is valid since the only sibling is about/
+          // But expanding this project requires some refactoring here
+        } else if (arg === "../exp" && directory === "about") {
+          setDirectory("exp");
+          // This is valid since the only sibling is exp/
+          // But expanding this project requires some refactoring here
+        } else if (arg.includes(".")) {
+          result = `cd: not a directory: ${arg}`;
+        } else {
+          result = `cd: no such file or directory: ${arg}`;
+        }
+      } else {
+        result = "cd: too many arguments";
+      }
     } else {
       result = `fakezsh: command not found: ${command}`;
     }
