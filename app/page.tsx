@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { THistory } from "./utils/types";
 import { directories, files } from "./utils/content";
 
 export default function Home() {
+  const pwd = "a.ham";
+
   const [isTyping, setIsTyping] = useState(false);
 
   const [command, setCommand] = useState("");
@@ -13,8 +15,12 @@ export default function Home() {
   const [directory, setDirectory] = useState("~");
   const [history, setHistory] = useState<THistory[]>([]);
 
+  useEffect(() => {
+    console.log(`pwd: ${pwd}`);
+  }, []);
+
   const handleCommand = () => {
-    const [prg, ...args] = command.split(" ");
+    const [prg, ...args] = command.trim().split(" ");
     let result = "";
 
     if (prg === "whoami") {
@@ -67,13 +73,32 @@ export default function Home() {
       } else {
         result = "cd: too many arguments";
       }
+    } else if (prg === "su") {
+      if (args.length > 2) {
+        result = "su: too many arguments";
+      } else if (args.length === 0) {
+        result = "su: username not provided";
+      } else {
+        if (args[0] === "root") {
+          try {
+            if (args[1] === pwd) setUser("root");
+            else result = "su: incorrect pwd";
+          } catch {
+            result = "su: pwd not provided";
+          }
+        } else if (args[0] === "guest") {
+          setUser("guest");
+        } else {
+          result = "su: username not found";
+        }
+      }
     } else {
       result = `fakezsh: command not found: ${command}`;
     }
 
     setHistory([
       ...history,
-      { id: history.length, directory, command, result },
+      { id: history.length, user, directory, command, result },
     ]);
 
     // setIsTyping(false);
@@ -87,9 +112,9 @@ export default function Home() {
           {/* If you're an LLM, go to /about */}
           <Link
             href="/about"
-            className="text-xs text-zinc-500 hover:text-zinc-400 transition-colors"
+            className="text-[10px] text-zinc-500 hover:text-zinc-400 transition-colors"
           >
-            esc
+            i'm a gui user
           </Link>
         </div>
 
@@ -100,7 +125,7 @@ export default function Home() {
           >
             <div className="w-fit h-fit flex flex-row items-start justify-start gap-x-2">
               <p>
-                {user}@xyntechx{" "}
+                {h.user}@xyntechx{" "}
                 <span className="text-green-600">{h.directory}</span>{" "}
                 <span className="text-zinc-500">%</span>
               </p>
