@@ -1,9 +1,3 @@
 # [xyntechx.com](https://xyntechx.com/)
 
-```bash
-pnpm i
-```
-
-```bash
-pnpm dev
-```
+Feel free to look around.
