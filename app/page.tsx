@@ -21,9 +21,37 @@ export default function Home() {
     console.log(`pwd: ${pwd}`);
   }, []);
 
-  const changeDir = (currentDir: string) => {
-    pass
-  }
+  const changeDir = (currentDir: string, components: string[], prg: string) => {
+    let dir = currentDir;
+    let warning = "";
+    let isValidPath = true;
+
+    for (const component of components) {
+      if (component === "." || component === "") {
+        continue;
+      } else if (component === "..") {
+        const parent = directories[dir].parent;
+        if (!parent) {
+          break;
+        }
+        dir = parent;
+      } else {
+        if (component.includes(".")) {
+          warning = `${prg}: not a directory: ${component}`;
+          isValidPath = false;
+          break;
+        } else if (directories[dir].children.includes(component)) {
+          dir = component;
+        } else {
+          warning = `${prg}: no such file or directory: ${component}`;
+          isValidPath = false;
+          break;
+        }
+      }
+    }
+
+    return { dir, warning, isValidPath };
+  };
 
   const handleCommand = () => {
     const [prg, ...args] = command.trim().split(" ");
@@ -35,19 +63,30 @@ export default function Home() {
       if (args.length === 0) {
         result = directories[directory].children.join("\n");
       } else if (args.length === 1) {
-        const arg = args[0];
-        try {
-          result = directories[arg].children.join("\n");
-        } catch {
-          result = `ls: ${arg}: No such file or directory`;
+        const components = args[0].trim().split("/");
+        const { dir, warning, isValidPath } = changeDir(
+          directory,
+          components,
+          "ls",
+        );
+        if (isValidPath) {
+          result = directories[dir].children.join("\n");
+        } else {
+          result = warning;
         }
       } else {
         const results: string[] = [];
         for (const arg of args) {
-          try {
-            results.push(`${arg}:\n${directories[arg].children.join("\n")}`);
-          } catch {
-            results.push(`ls: ${arg}: No such file or directory`);
+          const components = arg.trim().split("/");
+          const { dir, warning, isValidPath } = changeDir(
+            directory,
+            components,
+            "ls",
+          );
+          if (isValidPath) {
+            results.push(`${dir}:\n${directories[dir].children.join("\n")}`);
+          } else {
+            results.push(warning);
           }
         }
         result = results.join("\n\n");
@@ -57,31 +96,12 @@ export default function Home() {
         setDirectory("~");
       } else if (args.length === 1) {
         const components = args[0].trim().split("/");
-        let dir = directory;
-        let isValidPath = true;
-
-        for (const component of components) {
-          if (component === "." || component === "") {
-            continue;
-          } else if (component === "..") {
-            const parent = directories[dir].parent;
-            if (!parent) {
-              break;
-            }
-            dir = parent;
-          } else {
-            if (directories[dir].children.includes(component)) {
-              dir = component;
-            } else if (component.includes(".")) {
-              result = `cd: not a directory: ${component}`;
-              isValidPath = false;
-            } else {
-              result = `cd: no such file or directory: ${component}`;
-              isValidPath = false;
-            }
-          }
-        }
-
+        const { dir, warning, isValidPath } = changeDir(
+          directory,
+          components,
+          "cd",
+        );
+        result = warning;
         if (isValidPath) setDirectory(dir);
       } else {
         result = "cd: too many arguments";
@@ -111,23 +131,36 @@ export default function Home() {
         }
       }
     } else if (prg === "cat") {
-      try {
-        const results = [];
-        for (const arg of args) {
-          if (directories[directory].children.includes(arg)) {
-            if (!arg.includes(".")) {
-              results.push(`cat: ${arg}: Is a directory`);
+      const results = [];
+
+      for (const arg of args) {
+        const components = arg.trim().split("/");
+        const componentsNoFile = components.slice(0, components.length - 1);
+        const file = components.at(-1);
+
+        const { dir, warning, isValidPath } = changeDir(
+          directory,
+          componentsNoFile,
+          "cat",
+        );
+
+        if (isValidPath && file) {
+          if (directories[dir].children.includes(file)) {
+            if (!file.includes(".")) {
+              results.push(`cat: ${file}: Is a directory`);
             } else {
-              results.push(`${files[arg]}`);
+              results.push(`${files[file]}`);
             }
           } else {
-            results.push(`cat: ${arg}: No such file or directory`);
+            results.push(
+              warning ? warning : `cat: ${file}: No such file or directory`,
+            );
           }
+        } else {
+          results.push(warning);
         }
-        result = results.join("\n");
-      } catch {
-        result = `cat: ${args[0]}: missing arguments`;
       }
+      result = results.join("\n");
     } else if (prg === "toggle") {
       router.push("/about");
     } else {
