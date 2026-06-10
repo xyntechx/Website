@@ -25,7 +25,7 @@ const researchTxt = `My research is focused on understanding, generating, and po
 
 I've published workshop papers at NeurIPS and ICML, and contributed to a chapter in a technical book. I plan to continue publishing. You can find my publications on my Google Scholar.`;
 
-const motivationTxt = `I love working on hard puzzles no one has ever tried working on before, or in a way that no one has ever tried before. I get restless easy. I move fast. I get excited when I get to share my work and whatever I've learned with others. I'm curious. These qualities draw me towards research.
+const motivationTxt = `I love working on hard puzzles no one has ever tried working on before, or in a way that no one has ever tried before. I move fast. I take risks and seek new challenges. I gravitate towards collaborating and competing with the smartest and most driven of them all. I get excited when I get to share my work and whatever I've learned with others. I'm curious. These qualities draw me towards research and the startup life.
 
 I realize that I most enjoy learning about and am most proud of my works in deep tech ML, including both theory and engineering. Spending a lot of time at Machine Learning at Berkeley (as VP no less) had some influence, I'm sure.`;
 

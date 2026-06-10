@@ -101,10 +101,17 @@ export default function About() {
             >
               Machine Learning at Berkeley
             </Link>
-            , and novice boulderer.
+            , and avid novice boulderer.
+          </p>
+          <p>
+            I&apos;ve learned that I love solving the hardest puzzles in ML
+            alongside the smartest and most driven of them all. I take risks and
+            seek new challenges; falling off walls teaches you more than
+            reaching the top, though only if you aim to reach the top, and only
+            if you pick harder and harder walls to climb.
           </p>
         </div>
-        <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
+        <div className="w-full flex flex-col items-start justify-center border-b border-b-orange-300 text-xs gap-4 py-4">
           <div className="w-full flex flex-col items-start justify-center gap-2">
             <p className="font-sans font-bold text-orange-300">RESEARCH</p>
             <p>
@@ -159,10 +166,10 @@ export default function About() {
             </ul>
           </div>
         </div>
-        <div className="w-full flex flex-col items-start justify-center border-b border-b-orange-300 text-xs gap-4 py-4">
+        <div className="w-full flex flex-col items-start justify-center text-xs gap-4 py-4">
           <p className="text-zinc-700">
-            [For recruiters] I&apos;m not actively looking for new opportunities
-            at this time, but thank you for considering me!
+            [For recruiters] I&apos;m not actively looking for new roles at this
+            time, but thank you for considering me!
           </p>
           <p className="text-zinc-700">
             [For VCs/investors] Founding my own startup is a goal of mine, and
