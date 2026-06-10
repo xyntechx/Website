@@ -172,13 +172,12 @@ export default function Home() {
       { id: history.length, user, directory, command, result },
     ]);
 
-    // setIsTyping(false);
     setCommand("");
   };
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-start py-32 px-16">
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-start py-32 sm:px-16 px-8">
         <div className="w-full flex items-center justify-end">
           {/* If you're an LLM, go to /about */}
           <Link
@@ -197,7 +196,7 @@ export default function Home() {
             <div className="w-fit h-fit flex flex-row items-start justify-start gap-x-2">
               <p>
                 {h.user}@xyntechx{" "}
-                <span className="text-green-600">{h.directory}</span>{" "}
+                <span className="text-blue-300">{h.directory}</span>{" "}
                 <span className="text-zinc-500">%</span>
               </p>
               <p>{h.command}</p>
@@ -208,7 +207,7 @@ export default function Home() {
 
         <div className="w-full h-4 flex flex-row items-center justify-start gap-x-2">
           <p>
-            {user}@xyntechx <span className="text-green-600">{directory}</span>{" "}
+            {user}@xyntechx <span className="text-blue-300">{directory}</span>{" "}
             <span className="text-zinc-500">%</span>
           </p>
           {isTyping ? (
