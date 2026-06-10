@@ -21,6 +21,10 @@ export default function Home() {
     console.log(`pwd: ${pwd}`);
   }, []);
 
+  const changeDir = (currentDir: string) => {
+    pass
+  }
+
   const handleCommand = () => {
     const [prg, ...args] = command.trim().split(" ");
     let result = "";
@@ -29,11 +33,11 @@ export default function Home() {
       result = user;
     } else if (prg === "ls") {
       if (args.length === 0) {
-        result = directories[directory].join("\n");
+        result = directories[directory].children.join("\n");
       } else if (args.length === 1) {
         const arg = args[0];
         try {
-          result = directories[arg].join("\n");
+          result = directories[arg].children.join("\n");
         } catch {
           result = `ls: ${arg}: No such file or directory`;
         }
@@ -41,7 +45,7 @@ export default function Home() {
         const results: string[] = [];
         for (const arg of args) {
           try {
-            results.push(`${arg}:\n${directories[arg].join("\n")}`);
+            results.push(`${arg}:\n${directories[arg].children.join("\n")}`);
           } catch {
             results.push(`ls: ${arg}: No such file or directory`);
           }
@@ -52,26 +56,33 @@ export default function Home() {
       if (args.length === 0) {
         setDirectory("~");
       } else if (args.length === 1) {
-        const arg = args[0];
-        if (Object.keys(directories).includes(arg)) {
-          setDirectory(arg);
-        } else if (arg === ".." || arg === "../") {
-          setDirectory("~");
-          // This is valid since it's a depth-1 directory structure
-          // But expanding this project requires some refactoring here
-        } else if (arg === "../about" && directory === "exp") {
-          setDirectory("about");
-          // This is valid since the only sibling is about/
-          // But expanding this project requires some refactoring here
-        } else if (arg === "../exp" && directory === "about") {
-          setDirectory("exp");
-          // This is valid since the only sibling is exp/
-          // But expanding this project requires some refactoring here
-        } else if (arg.includes(".")) {
-          result = `cd: not a directory: ${arg}`;
-        } else {
-          result = `cd: no such file or directory: ${arg}`;
+        const components = args[0].trim().split("/");
+        let dir = directory;
+        let isValidPath = true;
+
+        for (const component of components) {
+          if (component === "." || component === "") {
+            continue;
+          } else if (component === "..") {
+            const parent = directories[dir].parent;
+            if (!parent) {
+              break;
+            }
+            dir = parent;
+          } else {
+            if (directories[dir].children.includes(component)) {
+              dir = component;
+            } else if (component.includes(".")) {
+              result = `cd: not a directory: ${component}`;
+              isValidPath = false;
+            } else {
+              result = `cd: no such file or directory: ${component}`;
+              isValidPath = false;
+            }
+          }
         }
+
+        if (isValidPath) setDirectory(dir);
       } else {
         result = "cd: too many arguments";
       }
@@ -103,7 +114,7 @@ export default function Home() {
       try {
         const results = [];
         for (const arg of args) {
-          if (directories[directory].includes(arg)) {
+          if (directories[directory].children.includes(arg)) {
             if (!arg.includes(".")) {
               results.push(`cat: ${arg}: Is a directory`);
             } else {

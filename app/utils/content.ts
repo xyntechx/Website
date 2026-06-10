@@ -19,10 +19,21 @@ const motivationTxt = `I love working on hard puzzles no one has ever tried work
 
 const industryTxt = `Today, I'm a research engineer at Ramen VR / Aura. My previous industry experiences include Founding Engineer at Foam, [Research Fellow at OpenAI], and Research Intern at GovTech Singapore and A*STAR Singapore.`;
 
-export const directories: { [k: string]: string[] } = {
-  "~": ["about", "exp", "secret.txt", "toggle.txt"],
-  about: ["intro.txt", "name.txt", "motivation.txt"],
-  exp: ["research.txt", "industry.txt"],
+export const directories: {
+  [k: string]: { parent: string | null; children: string[] };
+} = {
+  "~": {
+    parent: null,
+    children: ["about", "exp", "secret.txt", "toggle.txt"],
+  },
+  about: {
+    parent: "~",
+    children: ["intro.txt", "name.txt", "motivation.txt"],
+  },
+  exp: {
+    parent: "~",
+    children: ["research.txt", "industry.txt"],
+  },
 };
 
 export const files: { [k: string]: string } = {
