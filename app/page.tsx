@@ -92,6 +92,24 @@ export default function Home() {
           result = "su: username not found";
         }
       }
+    } else if (prg === "cat") {
+      try {
+        const results = [];
+        for (const arg of args) {
+          if (directories[directory].includes(arg)) {
+            if (!arg.includes(".")) {
+              results.push(`cat: ${arg}: Is a directory`);
+            } else {
+              results.push(`${files[arg]}`);
+            }
+          } else {
+            results.push(`cat: ${arg}: No such file or directory`);
+          }
+        }
+        result = results.join("\n");
+      } catch {
+        result = `cat: ${args[0]}: missing arguments`;
+      }
     } else {
       result = `fakezsh: command not found: ${command}`;
     }
