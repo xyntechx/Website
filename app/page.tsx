@@ -81,8 +81,13 @@ export default function Home() {
       } else {
         if (args[0] === "root") {
           try {
-            if (args[1] === pwd) setUser("root");
-            else result = "su: incorrect pwd";
+            if (args[1] === pwd) {
+              setUser("root");
+              result =
+                "Welcome impersonator! You've earned the right to contact the real root user at xyntechx@gmail.com if you'd like. Make sure to mention the password in your email.";
+            } else {
+              result = "su: incorrect pwd";
+            }
           } catch {
             result = "su: pwd not provided";
           }
