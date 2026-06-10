@@ -149,7 +149,7 @@ export default function Home() {
               </p>
               <p>{h.command}</p>
             </div>
-            <p className="whitespace-pre-line">{h.result}</p>
+            <p className="whitespace-pre-line text-orange-300">{h.result}</p>
           </div>
         ))}
 
