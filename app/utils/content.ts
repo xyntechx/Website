@@ -1,6 +1,9 @@
 const secretTxt =
   "You know... you can log in as root. All you need to do is to run `su root <pwd>` with the right password. If only we could inspect the source code...";
 
+const toggleTxt =
+  "Pro tip: The command `toggle` toggles from CLI view to normal website view.";
+
 const introTxt = `Hey! I'm Nyx. I'm currently leading world generation research at Ramen VR / Aura as the first member of Ramen Labs. I'm also a fellow at V11.
 
 I recently graduated from UC Berkeley EECS, spending a grand total of 2.5 years in school -- don't worry, I did a bunch of research, took a bunch of grad classes, and made a bunch of unforgettable memories with the kindest and smartest people I've ever met.`;
@@ -17,13 +20,14 @@ const motivationTxt = `I love working on hard puzzles no one has ever tried work
 const industryTxt = `Today, I'm a research engineer at Ramen VR / Aura. My previous industry experiences include Founding Engineer at Foam, [Research Fellow at OpenAI], and Research Intern at GovTech Singapore and A*STAR Singapore.`;
 
 export const directories: { [k: string]: string[] } = {
-  "~": ["about", "exp", "secret.txt"],
+  "~": ["about", "exp", "secret.txt", "toggle.txt"],
   about: ["intro.txt", "name.txt", "motivation.txt"],
   exp: ["research.txt", "industry.txt"],
 };
 
 export const files: { [k: string]: string } = {
   "secret.txt": secretTxt,
+  "toggle.txt": toggleTxt,
   "intro.txt": introTxt,
   "name.txt": nameTxt,
   "motivation.txt": motivationTxt,

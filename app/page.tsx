@@ -1,12 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { THistory } from "./utils/types";
 import { directories, files } from "./utils/content";
 
 export default function Home() {
   const pwd = "a.ham";
+  const router = useRouter();
 
   const [isTyping, setIsTyping] = useState(false);
 
@@ -115,6 +117,8 @@ export default function Home() {
       } catch {
         result = `cat: ${args[0]}: missing arguments`;
       }
+    } else if (prg === "toggle") {
+      router.push("/about");
     } else {
       result = `fakezsh: command not found: ${command}`;
     }
@@ -137,7 +141,7 @@ export default function Home() {
             href="/about"
             className="text-[10px] text-zinc-500 hover:text-zinc-400 transition-colors"
           >
-            i'm a gui user
+            i&apos;m a gui user
           </Link>
         </div>
 
