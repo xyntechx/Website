@@ -48,7 +48,7 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I&apos;m currently leading world generation research at{" "}
+            I&apos;m currently leading research at{" "}
             <Link
               href="https://ramenvr.com/"
               target="_blank"
@@ -64,8 +64,7 @@ export default function About() {
             >
               Aura
             </Link>{" "}
-            as the first member of Ramen Labs (researcher #1). I&apos;m also a
-            fellow at{" "}
+            as the first member of Ramen Labs. I&apos;m also a fellow at{" "}
             <Link
               href="https://velocity11.us/"
               target="_blank"
@@ -73,11 +72,12 @@ export default function About() {
             >
               V11
             </Link>
-            .
+            . I spend my days reading, thinking, musing, writing, coding,
+            climbing, and meeting and learning from the coolest people.
           </p>
           <p>
-            I graduated from UC Berkeley EECS (Honors) in 2.5 years. I spent
-            many semesters as an undergrad ML researcher at{" "}
+            I graduated from UC Berkeley EECS (Honors) in 2.5 years. I was
+            active as an undergrad ML researcher at{" "}
             <Link
               href="https://bair.berkeley.edu/"
               target="_blank"
@@ -93,7 +93,7 @@ export default function About() {
             >
               CHAI
             </Link>
-            , VP of{" "}
+            , as well as VP of{" "}
             <Link
               href="https://ml.berkeley.edu"
               target="_blank"
@@ -101,7 +101,8 @@ export default function About() {
             >
               Machine Learning at Berkeley
             </Link>
-            , and avid novice boulderer.
+            . After the AI lab, my local bouldering gym was (and still is) my
+            next most frequented place.
           </p>
           <p>
             I&apos;ve learned that I love solving the hardest puzzles in ML
@@ -111,13 +112,10 @@ export default function About() {
             if you pick harder and harder walls to climb.
           </p>
         </div>
-        <div className="w-full flex flex-col items-start justify-center border-b border-b-orange-300 text-xs gap-4 py-4">
+        <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <div className="w-full flex flex-col items-start justify-center gap-2">
-            <p className="font-sans font-bold text-orange-300">RESEARCH</p>
-            <p>
-              Curr: Consistent and physically accurate 3D environments (at Ramen
-              VR)
-            </p>
+            <h2 className="font-sans font-bold text-orange-300">RESEARCH</h2>
+            <p>Curr: 3D world generation and understanding</p>
             <p>Prev:</p>
             <ul className="list-disc pl-4">
               <li>
@@ -145,6 +143,10 @@ export default function About() {
               </li>
               <li>Inverse RL (as OpenAI Research Fellow)</li>
               <li>
+                LLM agent tool usage strategies for concise context (as Foam
+                Founding Engineer)
+              </li>
+              <li>
                 Emergent symbols/language for communicating abstract concepts
                 (pet project)
               </li>
@@ -156,7 +158,7 @@ export default function About() {
             </p>
           </div>
           <div className="w-full flex flex-col items-start justify-center gap-2">
-            <p className="font-sans font-bold text-orange-300">INDUSTRY</p>
+            <h2 className="font-sans font-bold text-orange-300">INDUSTRY</h2>
             <p>Curr: Research Engineer @ Ramen VR</p>
             <p>Prev:</p>
             <ul className="list-disc pl-4">
@@ -166,16 +168,51 @@ export default function About() {
             </ul>
           </div>
         </div>
+        <div className="w-full flex flex-col items-start justify-center border-b border-b-orange-300 text-xs gap-4 py-4">
+          <h2 className="font-sans font-bold text-orange-300">
+            SELECTED PUBLICATIONS
+          </h2>
+          <ol className="list-decimal pl-6">
+            <li>
+              Eta Given Delta: Defining LLM Tool Efficiency With Marginal Tool
+              Utility [
+              <Link
+                href="https://foam.ai/research/tool-efficiency.pdf"
+                target="_blank"
+                className="border-b border-b-blue-300 hover:text-blue-300"
+              >
+                Preprint
+              </Link>
+              ]
+            </li>
+            <li>
+              A Matter of Representation: Towards Graph-Based Abstract Code
+              Generation [
+              <Link
+                href="https://arxiv.org/pdf/2510.13163?"
+                target="_blank"
+                className="border-b border-b-blue-300 hover:text-blue-300"
+              >
+                NeurIPS 2025 DL4C Workshop
+              </Link>
+              ]
+            </li>
+            <li>
+              Measuring what matters: A framework for evaluating safety risks in
+              real-world LLM applications [
+              <Link
+                href="https://arxiv.org/pdf/2507.09820"
+                target="_blank"
+                className="border-b border-b-blue-300 hover:text-blue-300"
+              >
+                ICML 2025 TAIG Workshop
+              </Link>
+              ]
+            </li>
+          </ol>
+        </div>
         <div className="w-full flex flex-col items-start justify-center text-xs gap-4 py-4">
-          <p className="text-zinc-700">
-            [For recruiters] I&apos;m not actively looking for new roles at this
-            time, but thank you for considering me!
-          </p>
-          <p className="text-zinc-700">
-            [For VCs/investors] Founding my own startup is a goal of mine, and
-            one of the main reasons as to why I choose the founding
-            eng/researcher startup life. I&apos;d love to keep in touch!
-          </p>
+          <p className="text-zinc-700">Thanks for stopping by!</p>
         </div>
       </main>
     </div>
