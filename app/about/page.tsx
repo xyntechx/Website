@@ -115,7 +115,7 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <div className="w-full flex flex-col items-start justify-center gap-2">
             <h2 className="font-sans font-bold text-orange-300">RESEARCH</h2>
-            <p>Curr: 3D world generation and understanding</p>
+            <p>Curr: 3D unified multimodal models</p>
             <p>Prev:</p>
             <ul className="list-disc pl-4">
               <li>
