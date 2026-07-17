@@ -177,7 +177,7 @@ export default function About() {
               Eta Given Delta: Defining LLM Tool Efficiency With Marginal Tool
               Utility [
               <Link
-                href="https://foam.ai/research/tool-efficiency.pdf"
+                href="https://arxiv.org/abs/2607.14108"
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
@@ -189,7 +189,7 @@ export default function About() {
               A Matter of Representation: Towards Graph-Based Abstract Code
               Generation [
               <Link
-                href="https://arxiv.org/pdf/2510.13163?"
+                href="https://arxiv.org/abs/2510.13163?"
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
@@ -201,7 +201,7 @@ export default function About() {
               Measuring what matters: A framework for evaluating safety risks in
               real-world LLM applications [
               <Link
-                href="https://arxiv.org/pdf/2507.09820"
+                href="https://arxiv.org/abs/2507.09820"
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
