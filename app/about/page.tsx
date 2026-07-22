@@ -154,7 +154,7 @@ export default function About() {
             </ul>
             <p>
               I&apos;ve published workshop papers at NeurIPS and ICML, and
-              contributed to a chapter in a technical book. More papers on multimodal model architectures coming up.
+              contributed to a chapter in a technical book. More papers on multimodal model architectures coming up!
             </p>
           </div>
           <div className="w-full flex flex-col items-start justify-center gap-2">
