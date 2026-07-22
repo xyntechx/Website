@@ -125,6 +125,11 @@ export default function About() {
             <p>Curr: 3D unified multimodal models</p>
             <p>Prev:</p>
             <ul className="list-disc pl-4">
+              <li>Inverse RL (as OpenAI Research Fellow)</li>
+              <li>
+                Emergent symbols/language for communicating abstract concepts
+                (pet project)
+              </li>
               <li>
                 Action abstractions for efficient planners (with{" "}
                 <Link
@@ -148,14 +153,9 @@ export default function About() {
                 </Link>
                 )
               </li>
-              <li>Inverse RL (as OpenAI Research Fellow)</li>
               <li>
                 LLM agent tool usage strategies for concise context (as Foam
                 Founding Engineer)
-              </li>
-              <li>
-                Emergent symbols/language for communicating abstract concepts
-                (pet project)
               </li>
             </ul>
             <p>

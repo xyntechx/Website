@@ -16,7 +16,7 @@ const linksTxt = `# In the wild
 - Kairos Society
 - Amplify Writing Fellowship: https://www.amplifypartners.com/writing-fellowship`;
 
-const introTxt = `Hey! I'm Nyx. I'm currently leading 3D unified multimodal model research at Ramen VR / Aura as the first member of Ramen Labs. I'm also a fellow at V11.
+const introTxt = `Hey! I'm Nyx. I'm currently leading 3D unified multimodal model research at Ramen VR / Aura as the first member of Ramen Labs. I'm also an Amplify Writing Fellow and a proud member of V11 and Kairos Society.
 
 I recently graduated from UC Berkeley EECS, spending a grand total of 2.5 years in school -- don't worry, I did a bunch of research, took a bunch of grad classes, and made a bunch of unforgettable memories with the kindest and smartest people I've ever met.`;
 
