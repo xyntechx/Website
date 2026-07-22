@@ -64,20 +64,23 @@ export default function About() {
             >
               Aura
             </Link>{" "}
-            as the first member of Ramen Labs. I&apos;m also an <Link
+            as the first member of Ramen Labs. I&apos;m also an{" "}
+            <Link
               href="https://www.amplifypartners.com/writing-fellowship"
               target="_blank"
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               Amplify Writing Fellow
-            </Link> and a proud member of{" "}
+            </Link>{" "}
+            and a proud member of{" "}
             <Link
               href="https://velocity11.us/"
               target="_blank"
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               V11
-            </Link> and Kairos Society.
+            </Link>{" "}
+            and Kairos Society.
           </p>
           <p>
             I graduated from UC Berkeley EECS (Honors) in 2.5 years. I was
@@ -105,12 +108,15 @@ export default function About() {
             >
               Machine Learning at Berkeley
             </Link>
-            . I was also a Research Fellow at OpenAI as part of their exclusive invite-only 6-month undergraduate research program.
+            . I was also a Research Fellow at OpenAI as part of their exclusive
+            invite-only 6-month undergraduate research program.
           </p>
           <p>
             I&apos;ve learned that I love solving the hardest puzzles in ML
             alongside the smartest and most driven of them all. I take risks and
-            seek new challenges. Proof: I left behind a US$300,000 Singapore government scholarship to pursue frontier AI research in the US.
+            seek new challenges. Proof: I left behind a US$300,000 Singapore
+            government scholarship to pursue frontier AI research in the US.
+            I&apos;m fully committed to make my mark.
           </p>
         </div>
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
@@ -154,7 +160,8 @@ export default function About() {
             </ul>
             <p>
               I&apos;ve published workshop papers at NeurIPS and ICML, and
-              contributed to a chapter in a technical book. More papers on multimodal model architectures coming up!
+              contributed to a chapter in a technical book. More papers on
+              multimodal model architectures coming up!
             </p>
           </div>
           <div className="w-full flex flex-col items-start justify-center gap-2">

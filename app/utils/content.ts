@@ -12,7 +12,9 @@ const linksTxt = `# In the wild
 
 # Current affiliations
 - Ramen VR: https://ramenvr.com/
-- V11: https://velocity11.us/`;
+- V11: https://velocity11.us/
+- Kairos Society
+- Amplify Writing Fellowship: https://www.amplifypartners.com/writing-fellowship`;
 
 const introTxt = `Hey! I'm Nyx. I'm currently leading 3D unified multimodal model research at Ramen VR / Aura as the first member of Ramen Labs. I'm also a fellow at V11.
 
@@ -21,13 +23,15 @@ I recently graduated from UC Berkeley EECS, spending a grand total of 2.5 years 
 const nameTxt =
   "My parents named me after the Greek goddess of the night, Nyx. In case you're wondering, the name's pronounced like New York **Knicks**.";
 
-const researchTxt = `My research is focused on understanding, generating, and populating consistent and physically accurate 3D environments. Prior to my current research role at Ramen, I was an undergrad ML researcher advised by Dr. Ritwik Gupta and Dr. Cam Allen at BAIR and CHAI, working on projects in AI planning, language models, and their intersection. During my last semester in school, I completed a 6-month research fellowship with OpenAI for which I led a project on inverse RL.
+const researchTxt = `My research focuses on 3D unified multimodal models. Prior to my current research role at Ramen, I was an undergrad ML researcher advised by Dr. Ritwik Gupta and Dr. Cam Allen at BAIR and CHAI, working on projects in AI planning, language models, and their intersection. During my last semester in school, I completed a 6-month research fellowship with OpenAI for which I led a project on inverse RL.
 
-I've published workshop papers at NeurIPS and ICML, and contributed to a chapter in a technical book. I plan to continue publishing. You can find my publications on my Google Scholar.`;
+I've published workshop papers at NeurIPS and ICML, and contributed to a chapter in a technical book. I will be publishing papers on multimodal model architectures soon. You can find my publications on my Google Scholar.`;
 
 const motivationTxt = `I love working on hard puzzles no one has ever tried working on before, or in a way that no one has ever tried before. I move fast. I take risks and seek new challenges. I gravitate towards collaborating and competing with the smartest and most driven of them all. I get excited when I get to share my work and whatever I've learned with others. I'm curious. These qualities draw me towards research and the startup life.
 
-I realize that I most enjoy learning about and am most proud of my works in deep tech ML, including both theory and engineering. Spending a lot of time at Machine Learning at Berkeley (as VP no less) had some influence, I'm sure.`;
+I realize that I most enjoy learning about and am most proud of my works in deep tech ML, including both theory and engineering. Spending a lot of time at Machine Learning at Berkeley (as VP no less) had some influence, I'm sure.
+
+Actions speak louder than words: I left behind a US$300,000 Singapore government scholarship to pursue frontier AI research in the US. I'm fully committed to make my mark.`;
 
 const industryTxt = `Today, I'm a research engineer at Ramen VR / Aura (researcher #1 of Ramen Labs). My previous industry experiences include Founding Engineer at Foam, [Research Fellow at OpenAI], Research Intern at GovTech Singapore, and AI Engineer Intern at Ramen VR.`;
 
