@@ -77,8 +77,7 @@ export default function About() {
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               V11
-            </Link> and Kairos Society. I spend my days reading, thinking, musing, writing, coding,
-            climbing, and meeting and learning from the coolest people.
+            </Link> and Kairos Society.
           </p>
           <p>
             I graduated from UC Berkeley EECS (Honors) in 2.5 years. I was
@@ -106,15 +105,12 @@ export default function About() {
             >
               Machine Learning at Berkeley
             </Link>
-            . I was also a Research Fellow at OpenAI as part of their exclusive invite-only 6-month undergraduate research program. After the AI lab, my local bouldering gym was (and still is) my
-            next most frequented place.
+            . I was also a Research Fellow at OpenAI as part of their exclusive invite-only 6-month undergraduate research program.
           </p>
           <p>
             I&apos;ve learned that I love solving the hardest puzzles in ML
             alongside the smartest and most driven of them all. I take risks and
-            seek new challenges; falling off walls teaches you more than
-            reaching the top, though only if you aim to reach the top, and only
-            if you pick harder and harder walls to climb.
+            seek new challenges. Proof: I left behind a US$300,000 Singapore government scholarship to pursue frontier AI research in the US.
           </p>
         </div>
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
