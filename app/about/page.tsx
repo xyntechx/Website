@@ -64,15 +64,20 @@ export default function About() {
             >
               Aura
             </Link>{" "}
-            as the first member of Ramen Labs. I&apos;m also a fellow at{" "}
+            as the first member of Ramen Labs. I&apos;m also an <Link
+              href="https://www.amplifypartners.com/writing-fellowship"
+              target="_blank"
+              className="border-b border-b-blue-300 hover:text-blue-300"
+            >
+              Amplify Writing Fellow
+            </Link> and a proud member of{" "}
             <Link
               href="https://velocity11.us/"
               target="_blank"
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               V11
-            </Link>
-            . I spend my days reading, thinking, musing, writing, coding,
+            </Link> and Kairos Society. I spend my days reading, thinking, musing, writing, coding,
             climbing, and meeting and learning from the coolest people.
           </p>
           <p>
@@ -101,7 +106,7 @@ export default function About() {
             >
               Machine Learning at Berkeley
             </Link>
-            . After the AI lab, my local bouldering gym was (and still is) my
+            . I was also a Research Fellow at OpenAI as part of their exclusive invite-only 6-month undergraduate research program. After the AI lab, my local bouldering gym was (and still is) my
             next most frequented place.
           </p>
           <p>
