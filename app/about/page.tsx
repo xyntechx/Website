@@ -64,7 +64,7 @@ export default function About() {
             >
               Aura
             </Link>{" "}
-            as the first member of Ramen Labs. I&apos;m also an{" "}
+            (YC S19) as Researcher #1. I&apos;m also an{" "}
             <Link
               href="https://www.amplifypartners.com/writing-fellowship"
               target="_blank"
@@ -99,8 +99,26 @@ export default function About() {
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               CHAI
-            </Link>
-            , as well as VP of{" "}
+            </Link>{" "}
+            advised by{" "}
+            <Link
+              href="https://ritwikgupta.me/"
+              target="_blank"
+              className="border-b border-b-blue-300 hover:text-blue-300"
+            >
+              Dr. Ritwik Gupta
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="https://camallen.net/"
+              target="_blank"
+              className="border-b border-b-blue-300 hover:text-blue-300"
+            >
+              Dr. Cam Allen
+            </Link>{" "}
+            in Prof. Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
+            respectively. Much of my time was also spent in Berkeley&apos;s
+            unique technical student community landscape as VP of{" "}
             <Link
               href="https://ml.berkeley.edu"
               target="_blank"
@@ -108,59 +126,47 @@ export default function About() {
             >
               Machine Learning at Berkeley
             </Link>
-            . I was also a Research Fellow at OpenAI as part of their exclusive
-            invite-only 6-month undergraduate research program.
+            .
+          </p>
+          <p>
+            I was also a Research Fellow at OpenAI as part of their exclusive
+            invite-only 6-month undergraduate research program during my last
+            semester.
           </p>
           <p>
             I&apos;ve learned that I love solving the hardest puzzles in ML
             alongside the smartest and most driven of them all. I take risks and
-            seek new challenges. Proof: I left behind a US$300,000 Singapore
+            seek new challenges. In fact, I left behind a US$300,000 Singapore
             government scholarship to pursue frontier AI research in the US.
-            I&apos;m fully committed to make my mark.
           </p>
         </div>
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <div className="w-full flex flex-col items-start justify-center gap-2">
             <h2 className="font-sans font-bold text-orange-300">RESEARCH</h2>
             <p>Curr: 3D unified multimodal models</p>
-            <p>Prev:</p>
-            <ul className="list-disc pl-4">
-              <li>Inverse RL (as OpenAI Research Fellow)</li>
-              <li>
-                Emergent symbols/language for communicating abstract concepts
-                (pet project)
-              </li>
-              <li>
-                Action abstractions for efficient planners (with{" "}
-                <Link
-                  href="https://camallen.net/"
-                  target="_blank"
-                  className="border-b border-b-blue-300 hover:text-blue-300"
-                >
-                  Dr. Cam Allen
-                </Link>
-                )
-              </li>
-              <li>
-                Language model pre-training, evals, and wargame simulations
-                (with{" "}
-                <Link
-                  href="https://ritwikgupta.me/"
-                  target="_blank"
-                  className="border-b border-b-blue-300 hover:text-blue-300"
-                >
-                  Dr. Ritwik Gupta
-                </Link>
-                )
-              </li>
-              <li>
-                LLM agent tool usage strategies for concise context (as Foam
-                Founding Engineer)
-              </li>
-            </ul>
+            <p>
+              Prev: Inverse RL under stochastic human preference drift{" "}
+              <span className="text-zinc-500">(RL/theory)</span>; perception and
+              generation of visual symbols for communication{" "}
+              <span className="text-zinc-500">(RL/viz)</span>; visual puzzles
+              with LLMs <span className="text-zinc-500">(RL/lang/viz)</span>;
+              action abstractions for efficient planners{" "}
+              <span className="text-zinc-500">(planning)</span>; LM pre-training
+              and cyber evals <span className="text-zinc-500">(lang)</span>;
+              wargaming (behavior) simulations{" "}
+              <span className="text-zinc-500">(lang)</span>.
+            </p>
             <p>
               I&apos;ve published workshop papers at NeurIPS and ICML, and
-              contributed to a chapter in a technical book. More papers on
+              contributed to a technical chapter in the{" "}
+              <Link
+                href="https://scholar.google.com/scholar?oi=bibs&cluster=6803861956171744956&btnI=1&hl=en"
+                target="_blank"
+                className="border-b border-b-blue-300 hover:text-blue-300"
+              >
+                Online Trust and Safety
+              </Link>{" "}
+              book in collaboration with Singapore universities. More papers on
               multimodal model architectures coming up!
             </p>
           </div>
@@ -181,8 +187,7 @@ export default function About() {
           </h2>
           <ol className="list-decimal pl-6">
             <li>
-              Eta Given Delta: Defining LLM Tool Efficiency With Marginal Tool
-              Utility [
+              Online Trust and Safety (ch. 5) [
               <Link
                 href="https://arxiv.org/abs/2607.14108"
                 target="_blank"
@@ -212,7 +217,7 @@ export default function About() {
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
-                ICML 2025 TAIG Workshop
+                ICML 2025 TAIG Workshop (Oral/Spotlight)
               </Link>
               ]
             </li>
