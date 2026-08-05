@@ -16,9 +16,9 @@ const linksTxt = `# In the wild
 - Kairos Society
 - Amplify Writing Fellowship: https://www.amplifypartners.com/writing-fellowship`;
 
-const introTxt = `Hey! I'm Nyx. I'm currently leading 3D unified multimodal model research at Ramen VR / Aura as the first member of Ramen Labs. I'm also an Amplify Writing Fellow and a proud member of V11 and Kairos Society.
+const introTxt = `Hey! I'm Nyx. I'm currently leading 3D unified multimodal model research at Ramen VR / Aura (YC S19) as the first researcher on the team. I'm also an Amplify Writing Fellow and a proud member of V11 and Kairos Society.
 
-I recently graduated from UC Berkeley EECS, spending a grand total of 2.5 years in school. Much of my time was spent on research at BAIR and CHAI and leading ML@B, with some CS/AI grad classes here and there.`;
+I graduated from UC Berkeley EECS (Honors) in 2.5 years. I was locked in on ML research at BAIR and CHAI, running and building with Machine Learning at Berkeley (ML@B), and the occasional PhD-level class on AI (cuz why not!).`;
 
 const nameTxt =
   "My parents named me after the Greek goddess of the night, Nyx. In case you're wondering, the name's pronounced like New York **Knicks**.";
