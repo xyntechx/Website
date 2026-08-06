@@ -117,21 +117,19 @@ export default function About() {
               Dr. Cam Allen
             </Link>{" "}
             in Prof. Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
-            respectively. Much of my time was also spent in Berkeley&apos;s
-            unique technical student community landscape as VP of{" "}
+            respectively. I also led{" "}
             <Link
               href="https://ml.berkeley.edu"
               target="_blank"
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               Machine Learning at Berkeley
-            </Link>
-            .
+            </Link>{" "}
+            as Vice President.
           </p>
           <p>
-            I was also a Research Fellow at OpenAI as part of their exclusive
-            invite-only 6-month undergraduate research program during my last
-            semester.
+            I was a Research Fellow at OpenAI as part of their exclusive
+            invite-only 6-month undergraduate research program.
           </p>
           <p>
             I&apos;ve learned that I love solving the hardest puzzles in ML
