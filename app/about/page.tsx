@@ -187,7 +187,7 @@ export default function About() {
             <li>
               Online Trust and Safety (ch. 5) [
               <Link
-                href="https://arxiv.org/abs/2607.14108"
+                href="https://scholar.google.com/scholar?oi=bibs&cluster=6803861956171744956&btnI=1&hl=en"
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
