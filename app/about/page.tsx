@@ -191,7 +191,7 @@ export default function About() {
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
-                Preprint
+                Book
               </Link>
               ]
             </li>
