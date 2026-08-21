@@ -185,13 +185,13 @@ export default function About() {
           </h2>
           <ol className="list-decimal pl-6">
             <li>
-              Online Trust and Safety (ch. 5) [
+              Projector Is All You Train [
               <Link
-                href="https://scholar.google.com/scholar?oi=bibs&cluster=6803861956171744956&btnI=1&hl=en"
+                href="https://arxiv.org/abs/2608.19726"
                 target="_blank"
                 className="border-b border-b-blue-300 hover:text-blue-300"
               >
-                Book
+                Preprint
               </Link>
               ]
             </li>
