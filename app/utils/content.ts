@@ -6,6 +6,7 @@ const toggleTxt =
 
 const linksTxt = `# In the wild
 - GitHub: https://github.com/xyntechx
+- X: https://x.com/xyntechx
 - LinkedIn: https://www.linkedin.com/in/nyx-iskandar/
 - ORCID: https://orcid.org/0009-0008-4361-3364
 - Google Scholar: https://scholar.google.com/citations?user=6CbTfzIAAAAJ

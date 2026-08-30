@@ -24,6 +24,13 @@ export default function About() {
             GitHub
           </Link>
           <Link
+            href="https://x.com/xyntechx"
+            target="_blank"
+            className="text-zinc-500 hover:text-zinc-400"
+          >
+            X
+          </Link>
+          <Link
             href="https://www.linkedin.com/in/nyx-iskandar/"
             target="_blank"
             className="text-zinc-500 hover:text-zinc-400"
