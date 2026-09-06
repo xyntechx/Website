@@ -192,6 +192,17 @@ export default function About() {
           </h2>
           <ol className="list-decimal pl-6">
             <li>
+              A brief history of learning in imagination [
+              <Link
+                href="https://www.amplifypartners.com/blog-posts/a-brief-history-of-learning-in-imagination"
+                target="_blank"
+                className="border-b border-b-blue-300 hover:text-blue-300"
+              >
+                Blog
+              </Link>
+              ]
+            </li>
+            <li>
               Projector Is All You Train [
               <Link
                 href="https://arxiv.org/abs/2608.19726"
