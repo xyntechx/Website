@@ -7,6 +7,7 @@ export type Cell = 0 | 1 | "P" | "A" | "S";
 export type Action = "W" | "A" | "S" | "D" | "";
 export type StopRoad = "A" | "S";
 export type Coord = readonly [number, number];
+type Edge = readonly [Coord, Coord];
 
 export const NUM_ROWS = 16;
 export const NUM_COLS = 12;
@@ -183,7 +184,7 @@ export class City {
       }
     }
     if (this.needNewTask) {
-      const [task, directions] = this.generateTask();
+      const [task, directions] = this.generateTask(this.pRow, this.pCol);
       this.task = task;
       this.taskDirections = directions;
       this.taskIdx += 1;
@@ -302,16 +303,82 @@ export class City {
     this.grid[this.pRow][this.pCol] = "P";
   }
 
-  private generateTask(): [string, Action[]] {
-    let currRow = this.pRow;
-    let currCol = this.pCol;
-    const target0 = this.rng.choice(this.graph.outEdges([currRow, currCol]));
-    const diffRow = target0[0] - this.pRow;
-    const diffCol = target0[1] - this.pCol;
+  /**
+   * A random task issued from (row, col): a description and its golden list of
+   * actions (WASD). Only the static road graph is consulted, so this can draw
+   * tasks for any position, from any random source (Python uses the global one).
+   */
+  generateTask(
+    row: number,
+    col: number,
+    rng: Random = this.rng,
+  ): [string, Action[]] {
+    // pick one random out-edge from the player node
+    const outEdge: Edge = [
+      [row, col],
+      rng.choice(this.graph.outEdges([row, col])),
+    ];
+    const { direction, diff, intersections } = this.straightRun(outEdge);
+
+    // pick random intersection, randomly pick different out-edge (new direction / turn)
+    const { node: intersection, repeat } = rng.choice([
+      ...intersections.values(),
+    ]);
+    const newOutEdges = this.turnEdges(intersection, diff);
+    const target =
+      this.graph.outEdges(intersection).length === 1
+        ? newOutEdges[0]
+        : rng.choice(newOutEdges);
+
+    return this.describeTask(
+      row,
+      col,
+      direction,
+      repeat,
+      intersection,
+      target,
+      rng.random() > 0.5,
+    );
+  }
+
+  /** Every task generateTask can issue from (row, col), as [description, directions] pairs. */
+  taskOptions(row: number, col: number): [string, Action[]][] {
+    const options: [string, Action[]][] = [];
+    for (const next of this.graph.outEdges([row, col])) {
+      const { direction, diff, intersections } = this.straightRun([
+        [row, col],
+        next,
+      ]);
+      for (const { node, repeat } of intersections.values()) {
+        for (const target of this.turnEdges(node, diff)) {
+          for (const byUnits of [true, false]) {
+            options.push(
+              this.describeTask(row, col, direction, repeat, node, target, byUnits),
+            );
+          }
+        }
+      }
+    }
+    return options;
+  }
+
+  /**
+   * Follow outEdge's direction until no out-edge continues that way. Returns the
+   * direction (WASD), its (row, col) delta, and the intersections passed (nodes
+   * with out-deg > 1 plus the final node) with the number of repeats to reach them.
+   */
+  private straightRun(outEdge: Edge): {
+    direction: Action;
+    diff: Coord;
+    intersections: Map<string, { node: Coord; repeat: number }>;
+  } {
+    let [currRow, currCol] = outEdge[0];
+    const diffRow = outEdge[1][0] - currRow;
+    const diffCol = outEdge[1][1] - currCol;
     const direction = directionOf(diffRow, diffCol);
     let numRepeat = 0;
 
-    // Follow the direction to the end of the avenue/street, recording intersections.
+    // key is intersection coord, val is number of times current direction is repeated to reach the intersection
     const intersections = new Map<string, { node: Coord; repeat: number }>();
     while (
       this.graph.hasEdge(
@@ -333,27 +400,38 @@ export class City {
       node: [currRow, currCol],
       repeat: numRepeat,
     });
+    return { direction, diff: [diffRow, diffCol], intersections };
+  }
 
-    const { node: intersection, repeat } = this.rng.choice([
-      ...intersections.values(),
-    ]);
-    let newOutEdges = this.graph.outEdges(intersection);
-    let target: Coord;
-    if (newOutEdges.length === 1) {
-      target = newOutEdges[0];
-    } else {
-      newOutEdges = newOutEdges.filter(
+  /** Out-edge targets at intersection other than continuing straight (when there is a choice). */
+  private turnEdges(intersection: Coord, diff: Coord): Coord[] {
+    const [diffRow, diffCol] = diff;
+    const newOutEdges = this.graph.outEdges(intersection);
+    if (newOutEdges.length > 1) {
+      return newOutEdges.filter(
         ([r, c]) =>
           !(r === intersection[0] + diffRow && c === intersection[1] + diffCol),
       );
-      target = this.rng.choice(newOutEdges);
     }
+    return [...newOutEdges];
+  }
+
+  /** Task description and golden directions for turning from direction towards target at intersection. */
+  private describeTask(
+    row: number,
+    col: number,
+    direction: Action,
+    numRepeat: number,
+    intersection: Coord,
+    target: Coord,
+    byUnits: boolean,
+  ): [string, Action[]] {
     const turn = directionOf(
       target[0] - intersection[0],
       target[1] - intersection[1],
     );
     const directions: Action[] = [
-      ...Array<Action>(repeat).fill(direction),
+      ...Array<Action>(numRepeat).fill(direction),
       turn,
     ];
 
@@ -386,13 +464,12 @@ export class City {
 
     const units =
       turn === "W" || turn === "S"
-        ? Math.abs(target[1] - this.pCol)
-        : Math.abs(target[0] - this.pRow);
+        ? Math.abs(target[1] - col)
+        : Math.abs(target[0] - row);
 
-    const description =
-      this.rng.random() > 0.5
-        ? `Turn ${leftRight} in ${units} unit${units > 1 ? "s" : ""}.`
-        : `Turn ${leftRight} on ${roadNumber}${ordinal} ${aveSt}.`;
+    const description = byUnits
+      ? `Turn ${leftRight} in ${units} unit${units > 1 ? "s" : ""}.`
+      : `Turn ${leftRight} on ${roadNumber}${ordinal} ${aveSt}.`;
 
     return [description, directions];
   }

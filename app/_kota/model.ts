@@ -7,21 +7,25 @@ import { staticCity } from "./city";
 import type { Random } from "./rng";
 import {
   COL_TOKEN_IDS,
-  DISTANCE_TOKEN_IDS,
+  OBS_BODY,
   OUT_LEN,
-  ROAD_TOKEN_IDS,
   ROW_TOKEN_IDS,
   STEP_LEN,
   STOP_TOKEN_IDS,
+  TASK_INDEX_POS,
   TASK_INDEX_TOKEN_IDS,
+  TASK_POS,
   TOKENS,
-  VOCAB,
   VOCAB_SIZE,
+  playerPosition,
+  sampleTaskToken,
 } from "./tokens";
 
 export const MODEL_URL =
   process.env.NEXT_PUBLIC_KOTA_MODEL_URL ?? "/models/kota-wm.onnx";
-const CACHE_NAME = "kota-wm";
+// Bump on every re-export (new weights, vocabulary or observation layout): the
+// Cache API keys on the URL alone, so an old download must not be reused.
+const CACHE_NAME = "kota-wm-iter1020";
 
 // From the checkpoint's DynaConfig / GPT config; the export writes them into the
 // ONNX metadata, which onnxruntime-web does not expose, so they are repeated here.
@@ -71,6 +75,9 @@ async function fetchModelBytes(
 ): Promise<ArrayBuffer> {
   let cache: Cache | null = null;
   try {
+    for (const name of await caches.keys())
+      if (name.startsWith("kota-wm") && name !== CACHE_NAME)
+        await caches.delete(name); // a model from a previous vocabulary
     cache = await caches.open(CACHE_NAME);
     const hit = await cache.match(url);
     if (hit) {
@@ -198,9 +205,14 @@ export class WorldModel {
       tensors[name] = results[name.replace("past", "present")];
     const scalar = (name: string) =>
       Number((results[name].data as Float32Array)[0]);
+    const logits = results.logits.data as Float32Array;
+    if (logits.length !== VOCAB_SIZE)
+      throw new Error(
+        `The model was exported with ${logits.length} tokens but this page expects ${VOCAB_SIZE}; re-export it from the matching checkpoint`,
+      );
     return {
       outputs: {
-        logits: results.logits.data as Float32Array,
+        logits,
         reward: scalar("reward"),
         termination: scalar("termination"),
         piLogits: results.pi_logits.data as Float32Array,
@@ -276,8 +288,12 @@ export class CachedContext {
 }
 
 /**
- * Generate task, task index, then row/col/stop, masking token types only
- * (dyna.generate_observation). Each sample is appended to the context.
+ * Generate the task index and row/col/stop, masking token types only, then
+ * fill in the task from outside the model as City would (dyna.generate_observation):
+ * when the index advanced since the previous observation, a task City can
+ * issue from the generated player position; otherwise the previous task
+ * carries over, since City only replaces a task when it issues the next one.
+ * Every token, the task included, is appended to the context.
  */
 export async function generateObservation(
   session: CachedContext,
@@ -285,22 +301,25 @@ export async function generateObservation(
   gridTemperature: number,
   rng: Random,
 ): Promise<number[]> {
+  // Rows end at an action, so the previous observation is the STEP_LEN
+  // tokens before it (absent only when the context is a lone observation).
+  const previous =
+    session.length >= STEP_LEN ? session.tokens.slice(-STEP_LEN, -1) : null;
   const generated: number[] = [];
   const take = async (allowed: readonly number[], t: number) => {
     const token = session.sample(allowed, t, rng);
     generated.push(token);
     await session.append([token]);
   };
-  await take([VOCAB["Turn left"], VOCAB["Turn right"]], temperature);
-  await take([...DISTANCE_TOKEN_IDS, ...ROAD_TOKEN_IDS], temperature);
-  const isDistance = DISTANCE_TOKEN_IDS.includes(generated[1]);
-  await take(
-    isDistance ? [VOCAB["EMPTY"]] : [VOCAB["Avenue."], VOCAB["Street."]],
-    temperature,
-  );
   await take(TASK_INDEX_TOKEN_IDS, temperature);
   for (const ids of [ROW_TOKEN_IDS, COL_TOKEN_IDS, STOP_TOKEN_IDS])
     await take(ids, gridTemperature);
+  const task =
+    previous && generated[TASK_INDEX_POS] === previous[TASK_INDEX_POS]
+      ? previous[TASK_POS]
+      : sampleTaskToken(playerPosition(generated), rng);
+  generated.push(task);
+  await session.append([task]);
   return generated;
 }
 
@@ -315,13 +334,9 @@ export function detokenizeObservation(tokens: readonly number[]): {
     throw new Error(
       `Expected ${OUT_LEN} observation tokens, got ${tokens.length}`,
     );
-  const task = tokens
-    .slice(0, 3)
-    .map((t) => TOKENS[t])
-    .filter((t) => t !== "EMPTY")
-    .join(" ");
+  const task = TOKENS[tokens[TASK_POS]];
   const [row, col, stop] = tokens
-    .slice(4, 7)
+    .slice(...OBS_BODY)
     .map((t) => TOKENS[t].split(" ")[1]);
   const grid = STATIC.grid.map((r) => [...r]);
   for (const [r, c] of STATIC.lights) grid[r][c] = stop;
@@ -330,9 +345,11 @@ export function detokenizeObservation(tokens: readonly number[]): {
 }
 
 export function taskIndexOf(tokens: readonly number[]): number {
-  const name = TOKENS[tokens[3]];
+  const name = TOKENS[tokens[TASK_INDEX_POS]];
   if (!name.startsWith("task "))
-    throw new Error(`Expected a task index token at position 3, got ${name}`);
+    throw new Error(
+      `Expected a task index token at position ${TASK_INDEX_POS}, got ${name}`,
+    );
   return Number(name.split(" ")[1]);
 }
 

@@ -20,7 +20,7 @@ const CELL_CLASS: Record<string, string> = {
   P: "bg-yellow-300 text-zinc-950 font-bold",
 };
 
-// Road names as City._generate_task issues them: avenues are numbered from
+// Road names as City.generate_task issues them: avenues are numbered from
 // the east (4th Avenue is column 0; 3rd and 2nd are two-way pairs), streets
 // from the south (6 - row / 3).
 const AVENUES: { label: string; col: number; span: number }[] = [
