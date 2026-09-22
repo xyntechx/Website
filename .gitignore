@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# kota-wm: exported world model (~180MB, see kota-wm/export_onnx.py) and the
+# onnxruntime-web runtime copied by scripts/copy-ort.mjs
+/public/models/*.onnx
+/public/ort

@@ -2,245 +2,245 @@
 
 import Link from "next/link";
 
+function A({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="border-b border-b-blue-300 hover:text-blue-300"
+    >
+      {children}
+    </Link>
+  );
+}
+
+const Timeline = ({
+  items,
+}: {
+  items: { date: string; content: React.ReactNode }[];
+}) => {
+  return (
+    <ol className="relative ml-1 flex flex-col gap-4 border-l border-zinc-700 pl-5">
+      {items.map((item, i) => {
+        const newDate = i === 0 || items[i - 1].date !== item.date;
+        return (
+          <li key={i} className="relative flex flex-col gap-1">
+            <span
+              aria-hidden
+              className={`absolute top-1.25 left-[-24.5px] h-2 w-2 rounded-full ${
+                newDate ? "bg-orange-300" : "bg-zinc-700"
+              }`}
+            />
+            {newDate && (
+              <time className="text-[10px] uppercase tracking-wider text-zinc-500">
+                {item.date}
+              </time>
+            )}
+            <p>{item.content}</p>
+          </li>
+        );
+      })}
+    </ol>
+  );
+};
+
 export default function About() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center text-base">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-start py-32 sm:px-16 px-8">
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-start py-32 sm:px-16 px-8 text-zinc-300">
         <div className="w-full flex items-center justify-end">
           <Link
             href="/"
-            className="text-[10px] text-zinc-500 hover:text-zinc-400 transition-colors"
+            className="text-[10px] text-orange-300 hover:text-orange-400 transition-colors"
           >
-            i like cli
-          </Link>
-        </div>
-        <h1 className="font-sans w-full font-bold">Nyx Iskandar</h1>
-        <div className="w-full flex flex-row items-center justify-start border-b border-b-orange-300 text-xs gap-4 pb-1">
-          <Link
-            href="https://github.com/xyntechx"
-            target="_blank"
-            className="text-zinc-500 hover:text-zinc-400"
-          >
-            GitHub
-          </Link>
-          <Link
-            href="https://x.com/xyntechx"
-            target="_blank"
-            className="text-zinc-500 hover:text-zinc-400"
-          >
-            X
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/nyx-iskandar/"
-            target="_blank"
-            className="text-zinc-500 hover:text-zinc-400"
-          >
-            LinkedIn
-          </Link>
-          <Link
-            href="https://orcid.org/0009-0008-4361-3364"
-            target="_blank"
-            className="text-zinc-500 hover:text-zinc-400"
-          >
-            ORCID
-          </Link>
-          <Link
-            href="https://scholar.google.com/citations?user=6CbTfzIAAAAJ"
-            target="_blank"
-            className="text-zinc-500 hover:text-zinc-400"
-          >
-            Scholar
+            play kota
           </Link>
         </div>
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I&apos;m currently leading research at{" "}
-            <Link
-              href="https://ramenvr.com/"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              Ramen VR
-            </Link>{" "}
-            /{" "}
+            I&apos;m working on multimodal ML and steerable game-playing agents
+            at Ramen VR (YC S19), the developers of{" "}
             <Link
               href="https://www.tryaura.dev/"
               target="_blank"
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               Aura
-            </Link>{" "}
-            (YC S19) as Researcher #1. I&apos;m also an{" "}
-            <Link
-              href="https://www.amplifypartners.com/writing-fellowship"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              Amplify Writing Fellow
-            </Link>{" "}
-            and a proud member of{" "}
-            <Link
-              href="https://velocity11.us/"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              V11
-            </Link>{" "}
-            and Kairos Society.
+            </Link>
+            .
           </p>
-          <p>
-            I graduated from UC Berkeley EECS (Honors) in 2.5 years. I was
-            active as an undergrad ML researcher at{" "}
-            <Link
-              href="https://bair.berkeley.edu/"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              BAIR
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="https://humancompatible.ai/"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              CHAI
-            </Link>{" "}
-            advised by{" "}
-            <Link
-              href="https://ritwikgupta.me/"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              Dr. Ritwik Gupta
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="https://camallen.net/"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              Dr. Cam Allen
-            </Link>{" "}
-            in Prof. Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
-            respectively. I also led{" "}
-            <Link
-              href="https://ml.berkeley.edu"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              Machine Learning at Berkeley
-            </Link>{" "}
-            as Vice President.
-          </p>
-          <p>
-            I was a Research Fellow at OpenAI as part of their exclusive
-            invite-only 6-month undergraduate research program.
-          </p>
-          <p>
-            I&apos;ve learned that I love solving the hardest puzzles in ML
-            alongside the smartest and most driven of them all. I take risks and
-            seek new challenges. In fact, I left behind a US$300,000 Singapore
-            government scholarship to pursue frontier AI research in the US.
-          </p>
-        </div>
-        <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
-          <div className="w-full flex flex-col items-start justify-center gap-2">
-            <h2 className="font-sans font-bold text-orange-300">RESEARCH</h2>
-            <p>Curr: 3D unified multimodal models</p>
-            <p>
-              Prev: Inverse RL under stochastic human preference drift{" "}
-              <span className="text-zinc-500">(RL/theory)</span>; perception and
-              generation of visual symbols for communication{" "}
-              <span className="text-zinc-500">(RL/viz)</span>; visual puzzles
-              with LLMs <span className="text-zinc-500">(RL/lang/viz)</span>;
-              action abstractions for efficient planners{" "}
-              <span className="text-zinc-500">(planning)</span>; LM pre-training
-              and cyber evals <span className="text-zinc-500">(lang)</span>;
-              wargaming (behavior) simulations{" "}
-              <span className="text-zinc-500">(lang)</span>.
-            </p>
-            <p>
-              I&apos;ve published workshop papers at NeurIPS and ICML, and
-              contributed to a technical chapter in the{" "}
-              <Link
-                href="https://scholar.google.com/scholar?oi=bibs&cluster=6803861956171744956&btnI=1&hl=en"
-                target="_blank"
-                className="border-b border-b-blue-300 hover:text-blue-300"
-              >
-                Online Trust and Safety
-              </Link>{" "}
-              book in collaboration with Singapore universities. More papers on
-              multimodal model architectures coming up!
-            </p>
-          </div>
-          <div className="w-full flex flex-col items-start justify-center gap-2">
-            <h2 className="font-sans font-bold text-orange-300">INDUSTRY</h2>
-            <p>Curr: Research Engineer @ Ramen VR</p>
-            <p>Prev:</p>
-            <ul className="list-disc pl-4">
-              <li>Founding Engineer @ Foam</li>
-              <li>Research Intern @ GovTech Singapore</li>
-              <li>AI Engineer Intern @ Ramen VR</li>
-            </ul>
-          </div>
-        </div>
-        <div className="w-full flex flex-col items-start justify-center border-b border-b-orange-300 text-xs gap-4 py-4">
-          <h2 className="font-sans font-bold text-orange-300">
-            SELECTED PUBLICATIONS
-          </h2>
-          <ol className="list-decimal pl-6">
-            <li>
-              A brief history of learning in imagination [
-              <Link
-                href="https://www.amplifypartners.com/blog-posts/a-brief-history-of-learning-in-imagination"
-                target="_blank"
-                className="border-b border-b-blue-300 hover:text-blue-300"
-              >
-                Blog
-              </Link>
-              ]
-            </li>
-            <li>
-              Projector Is All You Train [
-              <Link
-                href="https://arxiv.org/abs/2608.19726"
-                target="_blank"
-                className="border-b border-b-blue-300 hover:text-blue-300"
-              >
-                Preprint
-              </Link>
-              ]
-            </li>
-            <li>
-              A Matter of Representation: Towards Graph-Based Abstract Code
-              Generation [
-              <Link
-                href="https://arxiv.org/abs/2510.13163?"
-                target="_blank"
-                className="border-b border-b-blue-300 hover:text-blue-300"
-              >
-                NeurIPS 2025 DL4C Workshop
-              </Link>
-              ]
-            </li>
-            <li>
-              Measuring what matters: A framework for evaluating safety risks in
-              real-world LLM applications [
-              <Link
-                href="https://arxiv.org/abs/2507.09820"
-                target="_blank"
-                className="border-b border-b-blue-300 hover:text-blue-300"
-              >
-                ICML 2025 TAIG Workshop (Oral/Spotlight)
-              </Link>
-              ]
-            </li>
-          </ol>
+
+          <Timeline
+            items={[
+              {
+                date: "Sep '26",
+                content: (
+                  <>
+                    Published{" "}
+                    <A href="https://www.amplifypartners.com/blog-posts/a-brief-history-of-learning-in-imagination">
+                      A Brief History of Learning in Imagination
+                    </A>{" "}
+                    as part of the Amplify Writing Fellowship.
+                  </>
+                ),
+              },
+              {
+                date: "Aug '26",
+                content: (
+                  <>
+                    Published{" "}
+                    <A href="https://arxiv.org/abs/2608.19726">
+                      Projector Is All You Train
+                    </A>{" "}
+                    with Ramen VR (preprint).
+                  </>
+                ),
+              },
+              {
+                date: "Aug '26",
+                content: (
+                  <>
+                    Selected as an{" "}
+                    <A href="https://www.amplifypartners.com/writing-fellowship">
+                      Amplify Writing Fellow
+                    </A>
+                    .
+                  </>
+                ),
+              },
+              {
+                date: "Jan '26",
+                content:
+                  "Presented my Inverse RL project to OpenAI researchers as a conclusion to the OpenAI Research Fellowship.",
+              },
+              {
+                date: "Dec '25",
+                content: (
+                  <>
+                    Graduated from UC Berkeley EECS (Honors) in 2.5 years. I was
+                    active as an undergrad ML researcher at{" "}
+                    <A href="https://bair.berkeley.edu/">BAIR</A> and{" "}
+                    <A href="https://humancompatible.ai/">CHAI</A> advised by{" "}
+                    <A href="https://ritwikgupta.me/">Dr. Ritwik Gupta</A> and{" "}
+                    <A href="https://camallen.net/">Dr. Cam Allen</A>{" "}in Prof.
+                    Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
+                    respectively. I also led{" "}
+                    <A href="https://ml.berkeley.edu">
+                      Machine Learning at Berkeley
+                    </A>{" "}
+                    (ML@B) as Vice President.
+                  </>
+                ),
+              },
+              { date: "Dec '25", content: "Joined V11 and Kairos Society." },
+              {
+                date: "Dec '25",
+                content: (
+                  <>
+                    Published and presented{" "}
+                    <A href="https://arxiv.org/abs/2510.13163?">
+                      A Matter of Representation: Towards Graph-Based Abstract
+                      Code Generation
+                    </A>
+                    , a paper written as part of my Summer 2025 internship with
+                    Ramen VR, at NeurIPS 2025 DL4C Workshop.
+                  </>
+                ),
+              },
+              {
+                date: "Aug '25",
+                content:
+                  "Started the invite-only OpenAI Research Fellowship for undergraduates.",
+              },
+              {
+                date: "Jul '25",
+                content: (
+                  <>
+                    Published and presented{" "}
+                    <A href="https://arxiv.org/abs/2507.09820">
+                      Measuring What Matters: A Framework for Evaluating Safety
+                      Risks in Real-World LLM Applications
+                    </A>
+                    , a paper written as part of my work with the Singapore
+                    Government, at ICML 2025 TAIG Workshop. This paper was
+                    selected for an oral/spotlight.
+                  </>
+                ),
+              },
+              {
+                date: "Aug '23",
+                content: <>Joined ML@B, Berkeley&apos;s #1 ML student org.</>,
+              },
+              {
+                date: "Aug '23",
+                content: (
+                  <>
+                    Matriculated at UC Berkeley. Little did I know that I would
+                    find my love for climbing, walking uphill, and Bay Area
+                    weather, right here.
+                  </>
+                ),
+              },
+              {
+                date: "Jun '23",
+                content: (
+                  <>
+                    Published my first ever paper,{" "}
+                    <A href="https://link.springer.com/chapter/10.1007/978-981-19-7222-5_6">
+                      Manga Layout Analysis via Deep Learning
+                    </A>
+                    , written when I was in high school (Raffles Institution in
+                    Singapore). This project won several awards, including Best
+                    Presenter at the conference it was submitted to, Gold at
+                    Nanyang Research Programme by NTU Singapore, Silver & 1st
+                    for Poster Presentation at the International Conference of
+                    Young Scientists, and Silver at the Singapore Science &
+                    Engineering Fair.
+                  </>
+                ),
+              },
+            ]}
+          />
         </div>
         <div className="w-full flex flex-col items-start justify-center text-xs gap-4 py-4">
-          <p className="text-zinc-700">Thanks for stopping by!</p>
+          <div className="w-full flex flex-row items-center justify-start text-xs gap-4 pb-1">
+            <Link
+              href="https://github.com/xyntechx"
+              target="_blank"
+              className="text-orange-300 hover:text-orange-400"
+            >
+              GitHub
+            </Link>
+            <Link
+              href="https://x.com/xyntechx"
+              target="_blank"
+              className="text-orange-300 hover:text-orange-400"
+            >
+              X
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/nyx-iskandar/"
+              target="_blank"
+              className="text-orange-300 hover:text-orange-400"
+            >
+              LinkedIn
+            </Link>
+            <Link
+              href="https://orcid.org/0009-0008-4361-3364"
+              target="_blank"
+              className="text-orange-300 hover:text-orange-400"
+            >
+              ORCID
+            </Link>
+            <Link
+              href="https://scholar.google.com/citations?user=6CbTfzIAAAAJ"
+              target="_blank"
+              className="text-orange-300 hover:text-orange-400"
+            >
+              Scholar
+            </Link>
+          </div>
         </div>
       </main>
     </div>
