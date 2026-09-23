@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 function arrowFor(r: number, c: number): string {
   const avenue = c % 4 === 0 ? "\u2191" : (c + 1) % 4 === 0 ? "\u2193" : "";
-  const street = r % 6 === 0 ? "\u2192" : (r + 3) % 6 === 0 ? "\u2194" : "";
+  const street = r % 6 === 0 ? "\u2192" : (r + 3) % 6 === 0 ? "\u2190" : "";
   if (avenue && street) return "";
   return avenue || street;
 }
