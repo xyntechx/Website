@@ -402,10 +402,10 @@ function DreamHistory({ history }: { history: DreamStep[] }) {
           <tr>
             <th className="pr-3 font-normal">step</th>
             <th className="pr-3 font-normal">action</th>
-            <th className="pr-3 font-normal">predicted reward</th>
+            <th className="pr-3 font-normal">reward</th>
             <th className="pr-3 font-normal">return</th>
             <th className="pr-3 font-normal">P(term)</th>
-            <th className="font-normal">imagined task</th>
+            <th className="font-normal">task</th>
           </tr>
         </thead>
         <tbody>
@@ -446,10 +446,10 @@ function RealHistory({ history }: { history: RealStep[] }) {
             <tr key={h.step}>
               <td className="pr-3">{h.step}</td>
               <td className="pr-3">{h.action}</td>
-              <td className="pr-3">{signed(h.reward)}</td>
-              <td className="pr-3">{signed(h.totalReward)}</td>
+              <td className="pr-3">{signed(h.reward, 2)}</td>
+              <td className="pr-3">{signed(h.totalReward, 2)}</td>
               <td>
-                [{h.taskIndex}] {h.task} ({h.taskStatus})
+                [{h.taskIndex}] {h.task}
               </td>
             </tr>
           ))}
