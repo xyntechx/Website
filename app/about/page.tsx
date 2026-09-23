@@ -59,8 +59,8 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I build multimodal game-playing agents at Ramen VR (YC S19), the
-            developers of{" "}
+            I build multimodal game-playing and game-making agents at Ramen VR
+            (YC S19), the developers of{" "}
             <Link
               href="https://www.tryaura.dev/"
               target="_blank"
@@ -123,7 +123,7 @@ export default function About() {
                     <A href="https://bair.berkeley.edu/">BAIR</A> and{" "}
                     <A href="https://humancompatible.ai/">CHAI</A> advised by{" "}
                     <A href="https://ritwikgupta.me/">Dr. Ritwik Gupta</A> and{" "}
-                    <A href="https://camallen.net/">Dr. Cam Allen</A>{" "}in Prof.
+                    <A href="https://camallen.net/">Dr. Cam Allen</A> in Prof.
                     Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
                     respectively. I also led{" "}
                     <A href="https://ml.berkeley.edu">

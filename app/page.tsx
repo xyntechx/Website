@@ -235,7 +235,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center">
+    <div className="flex flex-col flex-1 items-center justify-center w-full">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-start py-32 sm:px-16 px-8 gap-4">
         <div className="w-full flex items-center justify-between">
           <p className="text-zinc-500">
@@ -396,7 +396,7 @@ function DreamView({
 function DreamHistory({ history }: { history: DreamStep[] }) {
   if (history.length === 0) return null;
   return (
-    <div className="mt-1 max-h-48 overflow-y-auto">
+    <div className="mt-1 max-h-48 overflow-y-auto w-full">
       <table className="w-full text-left">
         <thead className="text-zinc-500">
           <tr>
@@ -430,7 +430,7 @@ function DreamHistory({ history }: { history: DreamStep[] }) {
 function RealHistory({ history }: { history: RealStep[] }) {
   if (history.length === 0) return null;
   return (
-    <div className="mt-1 max-h-48 overflow-y-auto">
+    <div className="mt-1 max-h-48 overflow-y-auto w-full">
       <table className="w-full text-left">
         <thead className="text-zinc-500">
           <tr>
