@@ -1,6 +1,3 @@
-// Seeded PRNG so episodes replay: mulberry32 (32-bit state, good enough for
-// task generation and token sampling). Seeds do not line up with Python's
-// `random`, so the same seed as play.ipynb yields a different city.
 export class Random {
   private state: number;
 
@@ -27,7 +24,7 @@ export class Random {
     return items[this.randrange(items.length)];
   }
 
-  /** Index drawn from unnormalised non-negative weights. */
+  /** Index drawn from unnormalized non-negative weights. */
   multinomial(weights: ArrayLike<number>): number {
     let total = 0;
     for (let i = 0; i < weights.length; i++) total += weights[i];

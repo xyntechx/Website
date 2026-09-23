@@ -1,13 +1,12 @@
 "use client";
 
 import { Fragment } from "react";
-import { NUM_COLS, NUM_ROWS, type Action } from "./city";
+import { NUM_COLS, NUM_ROWS } from "./city";
+import clsx from "clsx";
 
-// Traffic direction of each road cell, from graph.py: avenues at columns
-// 0/4/8 run north, 3/7/11 south; streets at rows 0/6/12 run east, 3/9/15 west.
 function arrowFor(r: number, c: number): string {
-  const avenue = c % 4 === 0 ? "↑" : (c + 1) % 4 === 0 ? "↓" : "";
-  const street = r % 6 === 0 ? "→" : (r + 3) % 6 === 0 ? "←" : "";
+  const avenue = c % 4 === 0 ? "\u2191" : (c + 1) % 4 === 0 ? "\u2193" : "";
+  const street = r % 6 === 0 ? "\u2192" : (r + 3) % 6 === 0 ? "\u2194" : "";
   if (avenue && street) return "";
   return avenue || street;
 }
@@ -20,9 +19,6 @@ const CELL_CLASS: Record<string, string> = {
   P: "bg-yellow-300 text-zinc-950 font-bold",
 };
 
-// Road names as City.generate_task issues them: avenues are numbered from
-// the east (4th Avenue is column 0; 3rd and 2nd are two-way pairs), streets
-// from the south (6 - row / 3).
 const AVENUES: { label: string; col: number; span: number }[] = [
   { label: "4th Ave", col: 0, span: 1 },
   { label: "3rd Ave", col: 3, span: 2 },
@@ -86,9 +82,7 @@ export function Grid({
                   key={c}
                   style={{ gridRow: r + 2, gridColumn: c + 2 }}
                   className={`flex items-center justify-center text-[10px] leading-none ${CELL_CLASS[cell] ?? "bg-fuchsia-500"} ${
-                    mismatch
-                      ? "outline outline-2 -outline-offset-2 outline-white"
-                      : ""
+                    mismatch ? "outline-2 -outline-offset-2 outline-white" : ""
                   }`}
                 >
                   {text}
@@ -121,36 +115,6 @@ export function Legend() {
   );
 }
 
-export function ActionPad({
-  onAction,
-  disabled,
-}: {
-  onAction: (a: Action) => void;
-  disabled: boolean;
-}) {
-  const button = (action: Action, text: string, extra = "") => (
-    <button
-      type="button"
-      disabled={disabled}
-      onClick={() => onAction(action)}
-      className={`h-8 min-w-8 px-2 border border-zinc-700 text-zinc-300 hover:border-orange-300 hover:text-orange-300 disabled:opacity-40 disabled:hover:border-zinc-700 disabled:hover:text-zinc-300 transition-colors ${extra}`}
-    >
-      {text}
-    </button>
-  );
-  return (
-    <div className="flex flex-col items-center gap-1 w-fit">
-      {button("W", "w")}
-      <div className="flex gap-1">
-        {button("A", "a")}
-        {button("", "wait", "min-w-16")}
-        {button("D", "d")}
-      </div>
-      {button("S", "s")}
-    </div>
-  );
-}
-
 export function Button({
   children,
   onClick,
@@ -167,57 +131,15 @@ export function Button({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={`px-2 py-1 border transition-colors disabled:opacity-40 hover:cursor-pointer ${
+      className={clsx(
+        "px-2 py-1 border transition-colors disabled:opacity-40 hover:cursor-pointer",
         active
           ? "border-orange-300 text-orange-300"
-          : "border-zinc-700 text-zinc-300 hover:border-zinc-400 disabled:hover:border-zinc-700"
-      }`}
+          : "border-zinc-700 text-zinc-300 hover:border-zinc-400 disabled:hover:border-zinc-700",
+      )}
     >
       {children}
     </button>
-  );
-}
-
-export function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="flex items-center gap-1 text-zinc-500">
-      {label}
-      {children}
-    </label>
-  );
-}
-
-export function NumberInput({
-  value,
-  onChange,
-  step,
-  min,
-  width = "w-20",
-}: {
-  value: number;
-  onChange: (v: number) => void;
-  step?: number;
-  min?: number;
-  width?: string;
-}) {
-  return (
-    <input
-      type="number"
-      value={value}
-      step={step}
-      min={min}
-      onChange={(e) => {
-        const v = Number(e.target.value);
-        if (Number.isFinite(v)) onChange(v);
-      }}
-      className={`${width} bg-transparent border border-zinc-800 px-1 py-0.5 text-zinc-300 outline-none focus:border-zinc-500`}
-    />
   );
 }
 

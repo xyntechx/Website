@@ -59,8 +59,8 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I&apos;m working on multimodal ML and steerable game-playing agents
-            at Ramen VR (YC S19), the developers of{" "}
+            I build multimodal game-playing agents at Ramen VR (YC S19), the
+            developers of{" "}
             <Link
               href="https://www.tryaura.dev/"
               target="_blank"

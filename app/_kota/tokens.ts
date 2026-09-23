@@ -1,5 +1,3 @@
-// Vocabulary and observation encoding from kota-wm/dyna.py, "compact" mode:
-// task index (1) + player row/col + stopped road type + task (1 token).
 import { City, NUM_COLS, NUM_ROWS, type Action, type Coord } from "./city";
 import type { Random } from "./rng";
 
@@ -15,7 +13,6 @@ for (const r of range(NUM_ROWS))
 
 const nodeKey = (r: number, c: number) => `${r},${c}`;
 
-// Road node -> every task text City can issue from there.
 const REACHABLE_TASKS = new Map<string, ReadonlySet<string>>(
   ROAD_NODES.map(([r, c]) => [
     nodeKey(r, c),
@@ -26,9 +23,6 @@ const REACHABLE_TASKS = new Map<string, ReadonlySet<string>>(
 const ordinal = (k: number) =>
   `${k}${k === 1 ? "st" : k === 2 ? "nd" : k === 3 ? "rd" : "th"}`;
 
-// One token per task, in grammar order: Turn left/right in N units, then on
-// the Nth Avenue/Street. Only phrasings some road node can actually issue are
-// kept (43 of the grammar's 50; the one-way layout rules out the rest).
 const ISSUABLE = new Set([...REACHABLE_TASKS.values()].flatMap((s) => [...s]));
 export const TASK_TEXTS: readonly string[] = [
   ...["left", "right"].flatMap((side) =>
@@ -63,7 +57,7 @@ export const TOKENS: readonly string[] = [
   "NOOP",
   // task index: "task k" means k tasks have been issued this episode.
   ...range(City.MAX_TASKS).map((k) => `task ${k + 1}`),
-  // task: one token per instruction City can issue (City.taskOptions)
+  // task: one token per instruction City can issue
   ...TASK_TEXTS,
   // compact observation: player position and the stopped road type
   ...range(NUM_ROWS).map((r) => `row ${r}`),
@@ -86,10 +80,8 @@ export const GRID_COLS = NUM_COLS;
 // task index (1) + row/col/stop (3) + task (1)
 export const OUT_LEN = 1 + 3 + 1;
 export const STEP_LEN = OUT_LEN + 1;
-// The task is not predicted by the world model, so it comes last: a generated
-// observation draws a new task from the ones City can issue at the generated
-// player position exactly when the generated task index advances, which needs
-// both the index and row/col first.
+// The task is not predicted by the world model
+// New task is generated when task index is incremented
 export const TASK_INDEX_POS = 0;
 export const TASK_POS = OUT_LEN - 1;
 export const OBS_BODY: readonly [number, number] = [1, OUT_LEN - 1]; // row/col/stop
@@ -134,11 +126,6 @@ export function playerPosition(tokens: readonly number[]): Coord {
   return [ROW_TOKEN_IDS.indexOf(tokens[1]), COL_TOKEN_IDS.indexOf(tokens[2])];
 }
 
-/**
- * A task City would issue from `position`, drawn with City's own generator.
- * Tasks are issued by the environment, never predicted. Off the road (a
- * generated position inside a building), any task is drawn.
- */
 export function sampleTaskToken(position: Coord, rng: Random): number {
   const [row, col] = position;
   if (REACHABLE_TASKS.has(nodeKey(row, col))) {

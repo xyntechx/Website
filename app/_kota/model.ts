@@ -1,7 +1,3 @@
-// Browser inference for the exported world model (kota-wm/export_onnx.py):
-// one ONNX graph holding the GPT backbone with a KV cache, the reward and
-// termination heads and the actor-critic. Mirrors dyna.CachedContext,
-// dyna.generate_observation and play.detokenize_observation.
 import * as ort from "onnxruntime-web";
 import { staticCity } from "./city";
 import type { Random } from "./rng";
@@ -23,12 +19,10 @@ import {
 
 export const MODEL_URL =
   process.env.NEXT_PUBLIC_KOTA_MODEL_URL ?? "/models/kota-wm.onnx";
-// Bump on every re-export (new weights, vocabulary or observation layout): the
-// Cache API keys on the URL alone, so an old download must not be reused.
-const CACHE_NAME = "kota-wm-iter1020";
 
-// From the checkpoint's DynaConfig / GPT config; the export writes them into the
-// ONNX metadata, which onnxruntime-web does not expose, so they are repeated here.
+// Bump on every re-export (new weights, vocabulary or observation layout)
+const CACHE_NAME = "kota-wm-20rew-iter1200";
+
 export const CONTEXT_STEPS = 64;
 export const CTX_LEN = CONTEXT_STEPS * STEP_LEN;
 export const BLOCK_SIZE = CTX_LEN + OUT_LEN;
@@ -49,12 +43,8 @@ export interface ModelOutputs {
   logits: Float32Array;
   reward: number;
   termination: number;
-  piLogits: Float32Array;
-  value: number;
 }
 
-// One key and one value tensor per layer, (1, n_head, P, hs), as the graph's
-// past_k_{i} / past_v_{i} inputs and present_k_{i} / present_v_{i} outputs.
 interface KVCache {
   tensors: Record<string, ort.Tensor>;
   length: number;
@@ -147,8 +137,6 @@ export class WorldModel {
         const session = await ort.InferenceSession.create(bytes, {
           executionProviders: [backend],
           graphOptimizationLevel: "all",
-          // ORT prints benign notices (shape ops assigned to CPU) through
-          // console.error; only real errors (severity 3) are worth surfacing.
           logSeverityLevel: 3,
           // Keep the cache on the GPU between calls instead of copying it back.
           ...(backend === "webgpu"
@@ -215,15 +203,12 @@ export class WorldModel {
         logits,
         reward: scalar("reward"),
         termination: scalar("termination"),
-        piLogits: results.pi_logits.data as Float32Array,
-        value: scalar("value"),
       },
       cache: { tensors, length: previous.length + ids.length },
     };
   }
 }
 
-/** One inference session over a growing token sequence (dyna.CachedContext, B = 1). */
 export class CachedContext {
   tokens: number[] = [];
   outputs!: ModelOutputs;
@@ -287,22 +272,12 @@ export class CachedContext {
   }
 }
 
-/**
- * Generate the task index and row/col/stop, masking token types only, then
- * fill in the task from outside the model as City would (dyna.generate_observation):
- * when the index advanced since the previous observation, a task City can
- * issue from the generated player position; otherwise the previous task
- * carries over, since City only replaces a task when it issues the next one.
- * Every token, the task included, is appended to the context.
- */
 export async function generateObservation(
   session: CachedContext,
   temperature: number,
   gridTemperature: number,
   rng: Random,
 ): Promise<number[]> {
-  // Rows end at an action, so the previous observation is the STEP_LEN
-  // tokens before it (absent only when the context is a lone observation).
   const previous =
     session.length >= STEP_LEN ? session.tokens.slice(-STEP_LEN, -1) : null;
   const generated: number[] = [];
@@ -351,13 +326,6 @@ export function taskIndexOf(tokens: readonly number[]): number {
       `Expected a task index token at position ${TASK_INDEX_POS}, got ${name}`,
     );
   return Number(name.split(" ")[1]);
-}
-
-export function softmax(logits: Float32Array): number[] {
-  const max = Math.max(...logits);
-  const exps = Array.from(logits, (l) => Math.exp(l - max));
-  const sum = exps.reduce((a, b) => a + b, 0);
-  return exps.map((e) => e / sum);
 }
 
 export { VOCAB_SIZE };

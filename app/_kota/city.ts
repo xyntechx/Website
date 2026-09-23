@@ -1,6 +1,3 @@
-// TypeScript port of kota-wm/envs/full/env.py and graph.py: the real
-// environment. Rewards, termination and task generation follow the Python
-// source line for line; only the random source differs (see rng.ts).
 import { Random } from "./rng";
 
 export type Cell = 0 | 1 | "P" | "A" | "S";
@@ -15,10 +12,8 @@ const BUILDING_COLS = new Set([1, 2, 5, 6, 9, 10]);
 
 const key = (r: number, c: number) => r * NUM_COLS + c;
 
-/** Directed traffic graph over road cells (envs/full/graph.py). */
 export class CityGraph {
   private readonly nodes = new Set<number>();
-  // Out-edges keep insertion order (avenues first, then streets), as networkx does.
   private readonly out = new Map<number, Coord[]>();
   private readonly inDegree = new Map<number, number>();
 
@@ -86,7 +81,6 @@ export class CityGraph {
       : [];
   }
 
-  /** Nodes with in-degree 2, in row-major order: the traffic lights. */
   lightNodes(): Coord[] {
     const lights: Coord[] = [];
     for (let i = 0; i < NUM_ROWS; i++) {
@@ -100,14 +94,10 @@ export class CityGraph {
 
 export class InvalidSpawn extends Error {}
 
-/**
- * City with 6 streets and 4 avenues; streets cut horizontally and are one-way,
- * avenues cut vertically and are two-way (envs/full/env.py).
- */
 export class City {
   static readonly NORMAL_REW = 1;
   static readonly MEDIUM_REW = 5;
-  static readonly SEVERE_REW = 10;
+  static readonly SEVERE_REW = 20;
   static readonly MAX_TASKS = 10;
 
   readonly grid: Cell[][];
@@ -159,7 +149,6 @@ export class City {
     this.grid[this.pRow][this.pCol] = "P";
   }
 
-  /** A city at a random valid road cell, as play.py's reset() does. */
   static random(rng: Random): City {
     for (;;) {
       try {
@@ -193,7 +182,7 @@ export class City {
     }
   }
 
-  /** Consequences of a player action: [reward, terminated]. */
+  /** Handle player actions. */
   step(action: Action): [number, boolean] {
     let futureRow = this.pRow;
     let futureCol = this.pCol;
@@ -276,11 +265,11 @@ export class City {
 
     if (action) {
       if (action !== this.taskDirections[this.dirIdx]) {
-        rew -= City.MEDIUM_REW; // deviates from instruction
+        rew -= City.SEVERE_REW; // deviates from instruction
         this.needNewTask = true;
         if (this.taskIdx === City.MAX_TASKS) termination = true;
       } else if (this.dirIdx === this.taskDirections.length - 1) {
-        rew += City.MEDIUM_REW; // fulfils the task
+        rew += City.SEVERE_REW; // fulfils the task
         this.needNewTask = true;
         if (this.taskIdx === City.MAX_TASKS) termination = true;
       }
@@ -303,11 +292,6 @@ export class City {
     this.grid[this.pRow][this.pCol] = "P";
   }
 
-  /**
-   * A random task issued from (row, col): a description and its golden list of
-   * actions (WASD). Only the static road graph is consulted, so this can draw
-   * tasks for any position, from any random source (Python uses the global one).
-   */
   generateTask(
     row: number,
     col: number,
@@ -341,7 +325,6 @@ export class City {
     );
   }
 
-  /** Every task generateTask can issue from (row, col), as [description, directions] pairs. */
   taskOptions(row: number, col: number): [string, Action[]][] {
     const options: [string, Action[]][] = [];
     for (const next of this.graph.outEdges([row, col])) {
@@ -353,7 +336,15 @@ export class City {
         for (const target of this.turnEdges(node, diff)) {
           for (const byUnits of [true, false]) {
             options.push(
-              this.describeTask(row, col, direction, repeat, node, target, byUnits),
+              this.describeTask(
+                row,
+                col,
+                direction,
+                repeat,
+                node,
+                target,
+                byUnits,
+              ),
             );
           }
         }
@@ -362,11 +353,6 @@ export class City {
     return options;
   }
 
-  /**
-   * Follow outEdge's direction until no out-edge continues that way. Returns the
-   * direction (WASD), its (row, col) delta, and the intersections passed (nodes
-   * with out-deg > 1 plus the final node) with the number of repeats to reach them.
-   */
   private straightRun(outEdge: Edge): {
     direction: Action;
     diff: Coord;
@@ -403,7 +389,6 @@ export class City {
     return { direction, diff: [diffRow, diffCol], intersections };
   }
 
-  /** Out-edge targets at intersection other than continuing straight (when there is a choice). */
   private turnEdges(intersection: Coord, diff: Coord): Coord[] {
     const [diffRow, diffCol] = diff;
     const newOutEdges = this.graph.outEdges(intersection);
@@ -416,7 +401,6 @@ export class City {
     return [...newOutEdges];
   }
 
-  /** Task description and golden directions for turning from direction towards target at intersection. */
   private describeTask(
     row: number,
     col: number,
@@ -483,7 +467,6 @@ function directionOf(diffRow: number, diffCol: number): Action {
   return "";
 }
 
-/** The fixed map (roads, buildings, light nodes) without a player, as strings. */
 export function staticCity(): { grid: string[][]; lights: Coord[] } {
   const city = new City([0, 0]);
   const grid = city.grid.map((row) => row.map(String));

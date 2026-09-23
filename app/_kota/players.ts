@@ -1,6 +1,3 @@
-// The three ways to play, mirroring play.py: a human inside the dreamed city
-// (HumanDreamPlayer), the trained policy in the real city (RealPolicyPlayer)
-// and, new here, a human in the real city (HumanRealPlayer).
 import { City, type Action, type Coord } from "./city";
 import {
   CachedContext,
@@ -11,7 +8,6 @@ import {
   WorldModel,
   detokenizeObservation,
   generateObservation,
-  softmax,
   taskIndexOf,
 } from "./model";
 import { Random } from "./rng";
@@ -31,7 +27,6 @@ function taskStatusAfter(
   expected: Action | undefined,
   terminated: boolean,
 ): TaskStatus {
-  // The old task's outcome, captured before envStep can replace it.
   if (city.needNewTask) return action === expected ? "done" : "failed";
   if (terminated) return "stopped";
   return "wip";
@@ -41,12 +36,9 @@ export function cityGrid(city: City): string[][] {
   return city.grid.map((row) => row.map(String));
 }
 
-/** One action in the real city, whoever chose it (play.PlayStep). */
 export interface RealStep {
   step: number;
   action: string;
-  actionProbability: number | null;
-  value: number | null;
   reward: number;
   totalReward: number;
   terminated: boolean;
@@ -73,12 +65,7 @@ abstract class RealCityPlayer {
     return spawnPoint ? new City(spawnPoint, rng) : City.random(rng);
   }
 
-  /** Apply `action`, record the outcome and advance the city unless the episode ended. */
-  protected apply(
-    action: Action,
-    actionProbability: number | null,
-    value: number | null,
-  ): RealStep {
+  protected apply(action: Action): RealStep {
     const city = this.city;
     const tick = city.time;
     const taskIndex = city.taskIdx;
@@ -94,8 +81,6 @@ abstract class RealCityPlayer {
     return {
       step: this.steps,
       action: actionLabel(action),
-      actionProbability,
-      value,
       reward,
       totalReward: this.totalReward,
       terminated,
@@ -110,7 +95,7 @@ abstract class RealCityPlayer {
   }
 }
 
-/** A human drives the real City. */
+/** A human drives the real city. */
 export class HumanRealPlayer extends RealCityPlayer {
   constructor(maxSteps = MAX_EPISODE_STEPS) {
     super(maxSteps);
@@ -128,70 +113,11 @@ export class HumanRealPlayer extends RealCityPlayer {
   step(action: Action): RealStep {
     if (this.done)
       throw new Error("Call reset() before starting another episode");
-    return this.apply(action, null, null);
+    return this.apply(action);
   }
 }
 
-/** The trained policy drives the real City (play.RealPolicyPlayer). */
-export class RealPolicyPlayer extends RealCityPlayer {
-  private session: CachedContext | null = null;
-  private rng = new Random(0);
-
-  constructor(
-    private readonly model: WorldModel,
-    public deterministic = true,
-    maxSteps = MAX_EPISODE_STEPS,
-  ) {
-    super(maxSteps);
-  }
-
-  async reset(seed: number, spawnPoint: Coord | null = null): Promise<City> {
-    this.rng = new Random(seed);
-    this.city = this.spawn(this.rng, spawnPoint);
-    this.city.envStep();
-    this.session?.dispose();
-    this.session = await CachedContext.create(this.model, observe(this.city));
-    this.steps = 0;
-    this.totalReward = 0;
-    this.done = false;
-    return this.city;
-  }
-
-  /** The policy's action distribution for the current observation. */
-  actionProbabilities(): number[] {
-    if (!this.session) throw new Error("Call reset() first");
-    return softmax(this.session.outputs.piLogits);
-  }
-
-  async step(): Promise<RealStep> {
-    if (this.done || !this.session)
-      throw new Error("Call reset() before starting another episode");
-    const probs = this.actionProbabilities();
-    const actionIdx = this.deterministic
-      ? probs.indexOf(Math.max(...probs))
-      : this.rng.multinomial(probs);
-    const event = this.apply(
-      ACTION_NAMES[actionIdx],
-      probs[actionIdx],
-      this.session.outputs.value,
-    );
-    if (!this.done) {
-      await this.session.append([
-        ACTION_TOKEN_IDS[actionIdx],
-        ...observe(this.city),
-      ]);
-      await this.session.crop(CTX_LEN - 1);
-    }
-    return event;
-  }
-
-  dispose() {
-    this.session?.dispose();
-    this.session = null;
-  }
-}
-
-/** One human action judged by the world model, with the real outcome if shadowed (play.DreamStep). */
+/** One human action judged by the world model, with the real outcome if shadowed. */
 export interface DreamStep {
   step: number;
   action: string;
@@ -220,7 +146,7 @@ export interface DreamOptions {
   sampleTermination?: boolean;
 }
 
-/** A human acts while the world model plays the environment (play.HumanDreamPlayer). */
+/** A human acts while the world model plays the environment. */
 export class HumanDreamPlayer {
   readonly temperature: number;
   readonly gridTemperature: number;
