@@ -123,7 +123,7 @@ export default function About() {
                     <A href="https://bair.berkeley.edu/">BAIR</A> and{" "}
                     <A href="https://humancompatible.ai/">CHAI</A> advised by{" "}
                     <A href="https://ritwikgupta.me/">Dr. Ritwik Gupta</A> and{" "}
-                    <A href="https://camallen.net/">Dr. Cam Allen</A> in Prof.
+                    <A href="https://camallen.net/">Dr. Cam Allen</A>{" "}in Prof.
                     Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
                     respectively. I also led{" "}
                     <A href="https://ml.berkeley.edu">
