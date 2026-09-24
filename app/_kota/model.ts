@@ -21,17 +21,21 @@ export const MODEL_URL =
   process.env.NEXT_PUBLIC_KOTA_MODEL_URL ?? "/models/kota-wm.onnx";
 
 // Bump on every re-export (new weights, vocabulary or observation layout)
-const CACHE_NAME = "kota-wm-20rew-iter1200";
+const CACHE_NAME = "kota-v1";
+// Earlier caches under these prefixes are deleted on load
+const CACHE_PREFIXES = ["kota-wm", "kota-v"];
 
 export const CONTEXT_STEPS = 64;
 export const CTX_LEN = CONTEXT_STEPS * STEP_LEN;
-export const BLOCK_SIZE = CTX_LEN + OUT_LEN;
+// max_tokens: context_steps of history plus the observation being predicted
+export const BLOCK_SIZE = (CONTEXT_STEPS + 1) * STEP_LEN;
 export const DEFAULT_TEMPERATURE = 1.0;
 export const DEFAULT_GRID_TEMPERATURE = 0.5;
 export const MAX_EPISODE_STEPS = 256;
-const N_LAYER = 12;
-const N_HEAD = 12;
-const HEAD_SIZE = 64;
+// gpt-mini
+const N_LAYER = 6;
+const N_HEAD = 6;
+const HEAD_SIZE = 32;
 
 export type Backend = "webgpu" | "wasm";
 
@@ -66,7 +70,10 @@ async function fetchModelBytes(
   let cache: Cache | null = null;
   try {
     for (const name of await caches.keys())
-      if (name.startsWith("kota-wm") && name !== CACHE_NAME)
+      if (
+        CACHE_PREFIXES.some((prefix) => name.startsWith(prefix)) &&
+        name !== CACHE_NAME
+      )
         await caches.delete(name); // a model from a previous vocabulary
     cache = await caches.open(CACHE_NAME);
     const hit = await cache.match(url);
@@ -150,6 +157,13 @@ export class WorldModel {
               }
             : {}),
         });
+        if (
+          PAST_NAMES.some((name) => !session.inputNames.includes(name)) ||
+          session.inputNames.length !== PAST_NAMES.length + 1
+        )
+          throw new Error(
+            `The model has inputs ${session.inputNames.join(", ")} but this page expects ${N_LAYER} layers; re-export it from the matching checkpoint`,
+          );
         return new WorldModel(session, backend);
       } catch (error) {
         lastError = error;
@@ -229,7 +243,7 @@ export class CachedContext {
     return this.tokens.length;
   }
 
-  /** Rebuild from scratch: cropping changes rotary positions and history. */
+  /** Rebuild from scratch: positions are absolute, so a cropped context restarts at 0. */
   async reset(tokens: number[]) {
     if (tokens.length === 0) throw new Error("Context rows must be non-empty");
     this.dispose();
