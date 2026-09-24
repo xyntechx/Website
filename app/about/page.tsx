@@ -68,7 +68,16 @@ export default function About() {
             >
               Aura
             </Link>
-            .
+            . The world model you just played (and the real environment) was
+            designed and trained by me, ditto for the policy [
+            <Link
+              href="https://github.com/xyntechx/kota-wm"
+              target="_blank"
+              className="border-b border-b-blue-300 hover:text-blue-300"
+            >
+              kota-wm
+            </Link>
+            ]!
           </p>
 
           <Timeline
