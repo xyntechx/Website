@@ -21,7 +21,7 @@ export const MODEL_URL =
   process.env.NEXT_PUBLIC_KOTA_MODEL_URL ?? "/models/kota-wm.onnx";
 
 // Bump on every re-export (new weights, vocabulary or observation layout)
-const CACHE_NAME = "kota-v2";
+const CACHE_NAME = "kota-v3";
 // Earlier caches under these prefixes are deleted on load
 const CACHE_PREFIXES = ["kota-wm", "kota-v"];
 
