@@ -7,8 +7,10 @@ import { WorldModel, type LoadProgress } from "./_kota/model";
 import {
   HumanDreamPlayer,
   HumanRealPlayer,
+  PolicyRealPlayer,
   cityGrid,
   type DreamStep,
+  type PolicyStep,
   type RealStep,
 } from "./_kota/players";
 import { randomSeed } from "./_kota/rng";
@@ -16,8 +18,9 @@ import { Button, Grid, Legend, signed } from "./_kota/ui";
 import clsx from "clsx";
 
 const DREAM_MAX_STEPS = 64;
+const POLICY_STEP_MS = 300;
 
-type Mode = "dream" | "human";
+type Mode = "dream" | "human" | "policy";
 
 const MODES: { id: Mode; title: string; blurb: string; needsModel: boolean }[] =
   [
@@ -30,7 +33,13 @@ const MODES: { id: Mode; title: string; blurb: string; needsModel: boolean }[] =
     {
       id: "dream",
       title: "dream",
-      blurb: "drive in a world model",
+      blurb: "drive in a trained world model",
+      needsModel: true,
+    },
+    {
+      id: "policy",
+      title: "auto",
+      blurb: "watch a trained policy drive in the real city",
       needsModel: true,
     },
   ];
@@ -76,15 +85,21 @@ function realFrame(
 export default function Home() {
   const [mode, setMode] = useState<Mode>("dream");
   const [model, setModel] = useState<ModelState>({ status: "idle" });
-  const [busy, setBusy] = useState(false);
+  // Count of in-flight model calls: dream and policy work may overlap.
+  const [pending, setPending] = useState(0);
+  const busy = pending > 0;
   const [error, setError] = useState<string | null>(null);
 
   const dreamPlayer = useRef<HumanDreamPlayer | null>(null);
   const humanPlayer = useRef<HumanRealPlayer | null>(null);
+  const policyPlayer = useRef<PolicyRealPlayer | null>(null);
   const [dream, setDream] = useState<DreamFrame | null>(null);
   const [human, setHuman] = useState<RealFrame | null>(null);
   const [dreamHistory, setDreamHistory] = useState<DreamStep[]>([]);
   const [humanHistory, setHumanHistory] = useState<RealStep[]>([]);
+  const [policy, setPolicy] = useState<RealFrame | null>(null);
+  const [policyHistory, setPolicyHistory] = useState<PolicyStep[]>([]);
+  const [playing, setPlaying] = useState(false);
 
   const current = MODES.find((m) => m.id === mode)!;
 
@@ -116,14 +131,14 @@ export default function Home() {
   }, []);
 
   const guard = useCallback(async (work: () => Promise<void>) => {
-    setBusy(true);
+    setPending((n) => n + 1);
     setError(null);
     try {
       await work();
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
-      setBusy(false);
+      setPending((n) => n - 1);
     }
   }, []);
 
@@ -186,6 +201,37 @@ export default function Home() {
     setHuman(realFrame(player.city, event, player.done));
   }, []);
 
+  const newPolicy = useCallback((episodeSeed: number) => {
+    policyPlayer.current?.dispose();
+    const player = new PolicyRealPlayer();
+    policyPlayer.current = player;
+    const city = player.reset(episodeSeed);
+    setPlaying(false);
+    setPolicyHistory([]);
+    setPolicy(realFrame(city, null, false));
+  }, []);
+
+  const policyAct = useCallback(
+    () =>
+      guard(async () => {
+        const player = policyPlayer.current;
+        if (!player || player.done) return;
+        const event = await player.step(await ensureModel());
+        // A new episode may have replaced the player meanwhile.
+        if (player !== policyPlayer.current) return;
+        setPolicyHistory((h) => [...h, event]);
+        setPolicy(realFrame(player.city, event, player.done));
+      }),
+    [guard, ensureModel],
+  );
+
+  // Autoplay: one policy step per tick while its tab is open.
+  useEffect(() => {
+    if (mode !== "policy" || !playing || busy || !policy || policy.done) return;
+    const timer = setTimeout(() => void policyAct(), POLICY_STEP_MS);
+    return () => clearTimeout(timer);
+  }, [mode, playing, busy, policy, policyAct]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (
@@ -208,6 +254,12 @@ export default function Home() {
         enter: "",
         n: "",
       };
+      if (mode === "policy") {
+        if (e.key !== " ") return;
+        e.preventDefault();
+        setPlaying((p) => !p);
+        return;
+      }
       const action = keys[e.key.toLowerCase()];
       if (action === undefined) return;
       e.preventDefault();
@@ -219,18 +271,20 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mode, busy, dream, human, dreamAct, humanAct]);
 
-  // Start both cities on load, which also begins downloading the world model.
+  // Start every city on load, which also begins downloading the world model.
   const started = useRef(false);
   useEffect(() => {
     if (started.current) return;
     started.current = true;
     newHuman(randomSeed());
+    newPolicy(randomSeed());
     void newDream(randomSeed());
-  }, [newDream, newHuman]);
+  }, [newDream, newHuman, newPolicy]);
 
   const newEpisode = () => {
     const next = randomSeed();
     if (mode === "dream") void newDream(next);
+    else if (mode === "policy") newPolicy(next);
     else newHuman(next);
   };
 
@@ -272,7 +326,7 @@ export default function Home() {
                 >
                   {m.title}
                 </button>
-                {i !== MODES.length - 1 && <span>{"/"}</span>}
+                {i !== MODES.length - 1 && <span>{" / "}</span>}
               </span>
             ))}
             <span className="text-zinc-500">: {current.blurb}</span>
@@ -299,6 +353,17 @@ export default function Home() {
             frame={human}
             history={humanHistory}
             onAction={humanAct}
+            newEpisode={newEpisode}
+          />
+        )}
+        {mode === "policy" && (
+          <PolicyView
+            frame={policy}
+            history={policyHistory}
+            busy={busy}
+            playing={playing}
+            setPlaying={setPlaying}
+            onStep={() => void policyAct()}
             newEpisode={newEpisode}
           />
         )}
@@ -427,8 +492,9 @@ function DreamHistory({ history }: { history: DreamStep[] }) {
   );
 }
 
-function RealHistory({ history }: { history: RealStep[] }) {
+function RealHistory({ history }: { history: (RealStep | PolicyStep)[] }) {
   if (history.length === 0) return null;
+  const policy = "value" in history[0];
   return (
     <div className="mt-1 max-h-48 overflow-y-auto w-full">
       <table className="w-full text-left">
@@ -438,6 +504,8 @@ function RealHistory({ history }: { history: RealStep[] }) {
             <th className="pr-3 font-normal">action</th>
             <th className="pr-3 font-normal">reward</th>
             <th className="pr-3 font-normal">return</th>
+            {policy && <th className="pr-3 font-normal">P(action)</th>}
+            {policy && <th className="pr-3 font-normal">value</th>}
             <th className="font-normal">task</th>
           </tr>
         </thead>
@@ -448,6 +516,10 @@ function RealHistory({ history }: { history: RealStep[] }) {
               <td className="pr-3">{h.action}</td>
               <td className="pr-3">{signed(h.reward, 2)}</td>
               <td className="pr-3">{signed(h.totalReward, 2)}</td>
+              {"value" in h && (
+                <td className="pr-3">{h.actionProbability.toFixed(2)}</td>
+              )}
+              {"value" in h && <td className="pr-3">{signed(h.value, 2)}</td>}
               <td>
                 [{h.taskIndex}] {h.task}
               </td>
@@ -489,6 +561,67 @@ function HumanView({
       <Legend />
       <div className="flex justify-end items-center gap-x-4 gap-y-2 w-full">
         <Button onClick={newEpisode}>pkill -f kota.sh && ./kota.sh</Button>
+      </div>
+      <div className="flex w-full items-start justify-start">
+        <RealHistory history={history} />
+      </div>
+    </section>
+  );
+}
+
+function PolicyView({
+  frame,
+  history,
+  busy,
+  playing,
+  setPlaying,
+  onStep,
+  newEpisode,
+}: {
+  frame: RealFrame | null;
+  history: PolicyStep[];
+  busy: boolean;
+  playing: boolean;
+  setPlaying: (playing: boolean) => void;
+  onStep: () => void;
+  newEpisode: () => void;
+}) {
+  if (!frame) return;
+
+  return (
+    <section className="flex flex-col items-center justify-center gap-3 w-full">
+      <div className="flex flex-col w-full items-start justify-center">
+        <TaskLine
+          label={`${frame.taskIndex}/${City.MAX_TASKS}`}
+          task={frame.task}
+          index={frame.taskIndex}
+        />
+      </div>
+      <div className="flex flex-wrap gap-6 items-start">
+        <Grid grid={frame.grid} />
+      </div>
+      <p className="text-zinc-500">
+        {frame.done
+          ? "episode over"
+          : playing
+            ? "policy driving, space = pause"
+            : "space = play"}
+      </p>
+      <Legend />
+      <div className="flex justify-end items-center gap-x-4 gap-y-2 w-full">
+        <Button
+          onClick={() => setPlaying(!playing)}
+          disabled={frame.done}
+          active={playing && !frame.done}
+        >
+          {playing ? "pause" : "play"}
+        </Button>
+        <Button onClick={onStep} disabled={playing || busy || frame.done}>
+          step
+        </Button>
+        <Button onClick={newEpisode} disabled={busy}>
+          pkill -f kota.sh && ./kota.sh
+        </Button>
       </div>
       <div className="flex w-full items-start justify-start">
         <RealHistory history={history} />

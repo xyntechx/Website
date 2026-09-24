@@ -21,7 +21,7 @@ export const MODEL_URL =
   process.env.NEXT_PUBLIC_KOTA_MODEL_URL ?? "/models/kota-wm.onnx";
 
 // Bump on every re-export (new weights, vocabulary or observation layout)
-const CACHE_NAME = "kota-v1";
+const CACHE_NAME = "kota-v2";
 // Earlier caches under these prefixes are deleted on load
 const CACHE_PREFIXES = ["kota-wm", "kota-v"];
 
@@ -36,6 +36,7 @@ export const MAX_EPISODE_STEPS = 256;
 const N_LAYER = 6;
 const N_HEAD = 6;
 const HEAD_SIZE = 32;
+const EMBED_DIM = N_HEAD * HEAD_SIZE;
 
 export type Backend = "webgpu" | "wasm";
 
@@ -47,10 +48,13 @@ export interface ModelOutputs {
   logits: Float32Array;
   reward: number;
   termination: number;
+  policy: Float32Array;
+  value: number;
 }
 
 interface KVCache {
   tensors: Record<string, ort.Tensor>;
+  obsHidden: ort.Tensor;
   length: number;
 }
 
@@ -61,6 +65,7 @@ const PAST_NAMES = Array.from({ length: N_LAYER }, (_, i) => [
 
 function disposeCache(cache: KVCache) {
   for (const tensor of Object.values(cache.tensors)) tensor.dispose();
+  cache.obsHidden.dispose();
 }
 
 async function fetchModelBytes(
@@ -122,6 +127,8 @@ async function fetchModelBytes(
 }
 
 export class WorldModel {
+  private queue: Promise<unknown> = Promise.resolve();
+
   private constructor(
     private readonly session: ort.InferenceSession,
     readonly backend: Backend,
@@ -159,10 +166,11 @@ export class WorldModel {
         });
         if (
           PAST_NAMES.some((name) => !session.inputNames.includes(name)) ||
-          session.inputNames.length !== PAST_NAMES.length + 1
+          session.inputNames.length !== PAST_NAMES.length + 2 ||
+          !session.outputNames.includes("policy")
         )
           throw new Error(
-            `The model has inputs ${session.inputNames.join(", ")} but this page expects ${N_LAYER} layers; re-export it from the matching checkpoint`,
+            `The model has inputs ${session.inputNames.join(", ")} but this page expects ${N_LAYER} layers and a policy; re-export it from the matching checkpoint`,
           );
         return new WorldModel(session, backend);
       } catch (error) {
@@ -181,7 +189,15 @@ export class WorldModel {
         0,
         HEAD_SIZE,
       ]);
-    return { tensors, length: 0 };
+    return {
+      tensors,
+      obsHidden: new ort.Tensor(
+        "float32",
+        new Float32Array(OUT_LEN * EMBED_DIM),
+        [1, OUT_LEN, EMBED_DIM],
+      ),
+      length: 0,
+    };
   }
 
   /** Run `ids` after `past` (or from scratch); the previous cache is released. */
@@ -194,13 +210,17 @@ export class WorldModel {
     if (previous.length + ids.length > BLOCK_SIZE) {
       throw new Error("Crop the context before appending beyond block_size");
     }
-    const results = await this.session.run({
+    const feeds = {
       ids: new ort.Tensor("int64", BigInt64Array.from(ids, BigInt), [
         1,
         ids.length,
       ]),
+      obs_hidden_in: previous.obsHidden,
       ...previous.tensors,
-    });
+    };
+    const run = this.queue.then(() => this.session.run(feeds));
+    this.queue = run.catch(() => {});
+    const results = await run;
     disposeCache(previous);
     const tensors: Record<string, ort.Tensor> = {};
     for (const name of PAST_NAMES)
@@ -217,8 +237,14 @@ export class WorldModel {
         logits,
         reward: scalar("reward"),
         termination: scalar("termination"),
+        policy: results.policy.data as Float32Array,
+        value: scalar("value"),
       },
-      cache: { tensors, length: previous.length + ids.length },
+      cache: {
+        tensors,
+        obsHidden: results.obs_hidden,
+        length: previous.length + ids.length,
+      },
     };
   }
 }

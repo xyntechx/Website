@@ -117,6 +117,65 @@ export class HumanRealPlayer extends RealCityPlayer {
   }
 }
 
+export interface PolicyStep extends RealStep {
+  actionProbability: number;
+  value: number;
+}
+
+/** Policy drives the real city. */
+export class PolicyRealPlayer extends RealCityPlayer {
+  private session: CachedContext | null = null;
+  private rng = new Random(0);
+
+  constructor(
+    readonly deterministic = true,
+    maxSteps = MAX_EPISODE_STEPS,
+  ) {
+    super(maxSteps);
+  }
+
+  reset(seed: number, spawnPoint: Coord | null = null): City {
+    this.rng = new Random(seed);
+    this.city = this.spawn(this.rng, spawnPoint);
+    this.city.envStep();
+    this.dispose();
+    this.steps = 0;
+    this.totalReward = 0;
+    this.done = false;
+    return this.city;
+  }
+
+  async step(model: WorldModel): Promise<PolicyStep> {
+    if (this.done)
+      throw new Error("Call reset() before starting another episode");
+    // Only before the first action: afterwards the context holds the history.
+    this.session ??= await CachedContext.create(model, observe(this.city));
+    const { policy: probs, value } = this.session.outputs;
+    let actionIdx = 0;
+    if (this.deterministic) {
+      for (let i = 1; i < probs.length; i++)
+        if (probs[i] > probs[actionIdx]) actionIdx = i;
+    } else {
+      actionIdx = this.rng.multinomial(probs);
+    }
+    const actionProbability = probs[actionIdx];
+    const event = this.apply(ACTION_NAMES[actionIdx]);
+    if (!this.done) {
+      await this.session.append([
+        ACTION_TOKEN_IDS[actionIdx],
+        ...observe(this.city),
+      ]);
+      await this.session.crop(CTX_LEN - 1);
+    }
+    return { ...event, actionProbability, value };
+  }
+
+  dispose() {
+    this.session?.dispose();
+    this.session = null;
+  }
+}
+
 /** One human action judged by the world model, with the real outcome if shadowed. */
 export interface DreamStep {
   step: number;
