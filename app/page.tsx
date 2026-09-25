@@ -83,7 +83,7 @@ function realFrame(
 }
 
 export default function Home() {
-  const [mode, setMode] = useState<Mode>("dream");
+  const [mode, setMode] = useState<Mode>("policy");
   const [model, setModel] = useState<ModelState>({ status: "idle" });
   // Count of in-flight model calls: dream and policy work may overlap.
   const [pending, setPending] = useState(0);
