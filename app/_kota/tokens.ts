@@ -43,12 +43,6 @@ if (TASK_TEXTS.length !== ISSUABLE.size)
   throw new Error("City issues a task outside the grammar");
 
 export const TOKENS: readonly string[] = [
-  // obs
-  "0",
-  "1",
-  "A",
-  "S",
-  "P",
   // act
   "W_act",
   "A_act",
@@ -72,7 +66,7 @@ export const VOCAB: Readonly<Record<string, number>> = Object.fromEntries(
   TOKENS.map((t, i) => [t, i]),
 );
 export const VOCAB_SIZE = TOKENS.length;
-if (VOCAB_SIZE !== 94)
+if (VOCAB_SIZE !== 89)
   throw new Error(`Vocabulary drifted from dyna.py: ${VOCAB_SIZE} tokens`);
 
 export const GRID_ROWS = NUM_ROWS;
