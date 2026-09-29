@@ -21,7 +21,7 @@ export const MODEL_URL =
   process.env.NEXT_PUBLIC_KOTA_MODEL_URL ?? "/models/kota-wm.onnx";
 
 // Bump on every re-export (new weights, vocabulary or observation layout)
-const CACHE_NAME = "kota-v5";
+const CACHE_NAME = "kota-v6";
 // Earlier caches under these prefixes are deleted on load
 const CACHE_PREFIXES = ["kota-wm", "kota-v"];
 
@@ -32,9 +32,9 @@ export const BLOCK_SIZE = (CONTEXT_STEPS + 1) * STEP_LEN;
 export const DEFAULT_TEMPERATURE = 1.0;
 export const DEFAULT_GRID_TEMPERATURE = 0.5;
 export const MAX_EPISODE_STEPS = 256;
-// gpt-mini
-const N_LAYER = 6;
-const N_HEAD = 6;
+// gpt-micro (kota-wm model_type), matching the exported checkpoint
+const N_LAYER = 4;
+const N_HEAD = 4;
 const HEAD_SIZE = 32;
 const EMBED_DIM = N_HEAD * HEAD_SIZE;
 
