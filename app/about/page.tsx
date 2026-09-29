@@ -125,22 +125,8 @@ export default function About() {
               },
               {
                 date: "Dec '25",
-                content: (
-                  <>
-                    Graduated from UC Berkeley EECS (Honors) in 2.5 years. I was
-                    active as an undergrad ML researcher at{" "}
-                    <A href="https://bair.berkeley.edu/">BAIR</A> and{" "}
-                    <A href="https://humancompatible.ai/">CHAI</A> advised by{" "}
-                    <A href="https://ritwikgupta.me/">Dr. Ritwik Gupta</A> and{" "}
-                    <A href="https://camallen.net/">Dr. Cam Allen</A>{" "}in Prof.
-                    Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
-                    respectively. I also led{" "}
-                    <A href="https://ml.berkeley.edu">
-                      Machine Learning at Berkeley
-                    </A>{" "}
-                    (ML@B) as Vice President.
-                  </>
-                ),
+                content:
+                  "Graduated from UC Berkeley EECS (Honors) in 2.5 years.",
               },
               { date: "Dec '25", content: "Joined V11 and Kairos Society." },
               {
@@ -163,6 +149,11 @@ export default function About() {
                   "Started the invite-only OpenAI Research Fellowship for undergraduates.",
               },
               {
+                date: "Aug '25",
+                content:
+                  "Selected for the ICAPS 2025 LaunchPad Workshop targeted at promising junior researchers (i.e. undergraduate and Master's students) in AI planning.",
+              },
+              {
                 date: "Jul '25",
                 content: (
                   <>
@@ -174,6 +165,37 @@ export default function About() {
                     , a paper written as part of my work with the Singapore
                     Government, at ICML 2025 TAIG Workshop. This paper was
                     selected for an oral/spotlight.
+                  </>
+                ),
+              },
+              {
+                date: "Jan '25",
+                content:
+                  "Admitted into the Berkeley EECS Honors program with breadth concentration in Emerging Technology Policy.",
+              },
+              {
+                date: "Jan '25",
+                content: (
+                  <>
+                    Started leading{" "}
+                    <A href="https://ml.berkeley.edu">
+                      Machine Learning at Berkeley
+                    </A>{" "}
+                    (ML@B) as Vice President (until graduation).
+                  </>
+                ),
+              },
+              {
+                date: "Jun '24",
+                content: (
+                  <>
+                    Joined <A href="https://bair.berkeley.edu/">BAIR</A> and{" "}
+                    <A href="https://humancompatible.ai/">CHAI</A> as an
+                    undergrad ML researcher. I was advised by{" "}
+                    <A href="https://ritwikgupta.me/">Dr. Ritwik Gupta</A> and{" "}
+                    <A href="https://camallen.net/">Dr. Cam Allen</A>{" "}in Prof.
+                    Trevor Darrell&apos;s and Prof. Stuart Russell&apos;s labs
+                    respectively.
                   </>
                 ),
               },
@@ -192,20 +214,28 @@ export default function About() {
                 ),
               },
               {
-                date: "Jun '23",
+                date: "Pre-college",
                 content: (
                   <>
-                    Published my first ever paper,{" "}
-                    <A href="https://link.springer.com/chapter/10.1007/978-981-19-7222-5_6">
+                    Awarded a full-ride, highly selective Singapore government
+                    scholarship.{" "}
+                    <A href="https://medium.com/ytpo-govtech/beyond-the-ads-smart-nation-scholarship-b1b678986438">
+                      An article I wrote about it
+                    </A>{" "}
+                    was requested and published by GovTech Singapore.
+                  </>
+                ),
+              },
+              {
+                date: "Pre-college",
+                content: (
+                  <>
+                    Published my first ever ML conference paper,{" "}
+                    <A href="https://github.com/xyntechx/Manga-Layout-Analysis">
                       Manga Layout Analysis via Deep Learning
                     </A>
-                    , written when I was in high school (Raffles Institution in
-                    Singapore). This project won several awards, including Best
-                    Presenter at the conference it was submitted to, Gold at
-                    Nanyang Research Programme by NTU Singapore, Silver & 1st
-                    for Poster Presentation at the International Conference of
-                    Young Scientists, and Silver at the Singapore Science &
-                    Engineering Fair.
+                    , written when I was in high school (Raffles Institution,
+                    Singapore).
                   </>
                 ),
               },
