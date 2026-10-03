@@ -458,10 +458,29 @@ function DreamView({
   );
 }
 
+// Keeps a scroll container pinned to the bottom as rows are appended, unless
+// the user has scrolled up to read earlier rows.
+function useStickToBottom(count: number) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const pinned = useRef(true);
+  const onScroll = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 8;
+  }, []);
+  useEffect(() => {
+    const el = ref.current;
+    if (count === 0) pinned.current = true;
+    if (el && pinned.current) el.scrollTop = el.scrollHeight;
+  }, [count]);
+  return { ref, onScroll };
+}
+
 function DreamHistory({ history }: { history: DreamStep[] }) {
+  const scroll = useStickToBottom(history.length);
   if (history.length === 0) return null;
   return (
-    <div className="mt-1 max-h-48 overflow-y-auto w-full">
+    <div {...scroll} className="mt-1 max-h-48 overflow-y-auto w-full">
       <table className="w-full text-left">
         <thead className="text-zinc-500">
           <tr>
@@ -493,10 +512,11 @@ function DreamHistory({ history }: { history: DreamStep[] }) {
 }
 
 function RealHistory({ history }: { history: (RealStep | PolicyStep)[] }) {
+  const scroll = useStickToBottom(history.length);
   if (history.length === 0) return null;
   const policy = "value" in history[0];
   return (
-    <div className="mt-1 max-h-48 overflow-y-auto w-full">
+    <div {...scroll} className="mt-1 max-h-48 overflow-y-auto w-full">
       <table className="w-full text-left">
         <thead className="text-zinc-500">
           <tr>
