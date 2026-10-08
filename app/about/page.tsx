@@ -59,8 +59,8 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I build multimodal game-playing and game-making agents at Ramen VR
-            (YC S19), the developers of{" "}
+            I build game-playing and game-making agents at Ramen VR (YC S19),
+            the developers of{" "}
             <Link
               href="https://www.tryaura.dev/"
               target="_blank"
@@ -68,16 +68,7 @@ export default function About() {
             >
               Aura
             </Link>
-            . The world model you just played (and the real environment) was
-            designed and trained by me, ditto for the policy [
-            <Link
-              href="https://github.com/xyntechx/kota-wm"
-              target="_blank"
-              className="border-b border-b-blue-300 hover:text-blue-300"
-            >
-              kota-wm
-            </Link>
-            ]!
+            .
           </p>
 
           <Timeline
