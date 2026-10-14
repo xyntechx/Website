@@ -59,8 +59,8 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I build game-playing and game-making agents at Ramen VR (YC S19),
-            the developers of{" "}
+            I build game-playing and game-making agents at Ramen (YC S19), the
+            developers of{" "}
             <Link
               href="https://www.tryaura.dev/"
               target="_blank"
@@ -93,7 +93,7 @@ export default function About() {
                     <A href="https://arxiv.org/abs/2608.19726">
                       Projector Is All You Train
                     </A>{" "}
-                    with Ramen VR (preprint).
+                    with Ramen (preprint).
                   </>
                 ),
               },
@@ -130,7 +130,7 @@ export default function About() {
                       Code Generation
                     </A>
                     , a paper written as part of my Summer 2025 internship with
-                    Ramen VR, at NeurIPS 2025 DL4C Workshop.
+                    Ramen, at NeurIPS 2025 DL4C Workshop.
                   </>
                 ),
               },
