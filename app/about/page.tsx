@@ -67,12 +67,20 @@ export default function About() {
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
               Aura
-            </Link>
-            .
+            </Link>{" "}
+            and Autopilot.
           </p>
-
           <Timeline
             items={[
+              {
+                date: "Oct '26",
+                content: (
+                  <>
+                    <A href="https://lnkd.in/p/g8m2naxR">Launched Autopilot</A>{" "}
+                    with Ramen.
+                  </>
+                ),
+              },
               {
                 date: "Sep '26",
                 content: (
