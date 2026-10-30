@@ -59,16 +59,18 @@ export default function About() {
         <div className="w-full flex flex-col items-start justify-center border-b border-b-zinc-500 text-xs gap-4 py-4">
           <p>Hey! I&apos;m Nyx.</p>
           <p>
-            I build game-playing and game-making agents at Ramen (YC S19), the
-            developers of{" "}
+            I&apos;m a Research Engineer at Ramen (YC S19), where I&apos;m
+            currently the lead engineer and open source maintainer of{" "}
             <Link
-              href="https://www.tryaura.dev/"
+              href="https://www.tryaura.dev/autopilot/"
               target="_blank"
               className="border-b border-b-blue-300 hover:text-blue-300"
             >
-              Aura
-            </Link>{" "}
-            and Autopilot.
+              Autopilot
+            </Link>
+            . My technical interests are in continual learning,
+            action-conditioned world models and model-based RL, and the
+            intersection of AI and games.
           </p>
           <Timeline
             items={[
@@ -76,8 +78,24 @@ export default function About() {
                 date: "Oct '26",
                 content: (
                   <>
-                    <A href="https://lnkd.in/p/g8m2naxR">Launched Autopilot</A>{" "}
-                    with Ramen.
+                    Launched Autopilot, a continually learning real-time general
+                    playtesting system. It&apos;s both a part of{" "}
+                    <Link
+                      href="https://www.tryaura.dev/"
+                      target="_blank"
+                      className="border-b border-b-blue-300 hover:text-blue-300"
+                    >
+                      Aura
+                    </Link>{" "}
+                    and an open source project (
+                    <Link
+                      href="https://github.com/ramenvr/autopilot"
+                      target="_blank"
+                      className="border-b border-b-blue-300 hover:text-blue-300"
+                    >
+                      ramenvr/autopilot
+                    </Link>
+                    ).
                   </>
                 ),
               },
